@@ -2,7 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.0">
 <context>
-    <name>main</name>
+    <name>courseListPage</name>
     <message>
         <source>Picture actions</source>
         <translation type="unfinished"></translation>
