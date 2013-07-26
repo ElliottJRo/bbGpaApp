@@ -1,6 +1,9 @@
 1
-4
+7
+CourseListPage.qml
+CoursePage.qml
 images/picture1.png
 images/picture2.png
 main.qml
 mydata.json
+SummaryPage.qml

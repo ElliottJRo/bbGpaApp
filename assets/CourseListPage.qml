@@ -1,5 +1,6 @@
 // List with a context menu project template
 import bb.cascades 1.0
+
 import com.rim.example.custom 1.0
 
 Page {
@@ -13,6 +14,7 @@ Page {
                 id: myListModel
             }
             property int activeItem: -1
+
             contextActions: [
                 ActionSet {
                     // put context menu actions here
@@ -59,6 +61,9 @@ Page {
                         description: ListItemData.description
                         status: ListItemData.status
                         imageSource: ListItemData.image
+                        onTouch: {
+                            
+                        }
                     }
                 }
             ]
@@ -94,16 +99,24 @@ Page {
         }
         return ret;
     }
+    
+    
+    //*********************      SIGNAL HANDLERS        *************************
+    
     onCreationCompleted: {
-        // this slot is called when declarative scene is created
-        // write post creation initialization here
-        console.log("Page - onCreationCompleted()")
-
-        // enable layout to adapt to the device rotation
-        // don't forget to enable screen rotation in bar-bescriptor.xml (Application->Orientation->Auto-orient)
-        OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
-
-        // populate list view model with the sample data
+        // this signal will be called when the qml page is created or loaded
         myListModel.load("app/native/assets/mydata.json")
     }
+    actionBarVisibility: ChromeVisibility.Overlay
+    actions: [
+        ActionItem {
+            title: "Add Class"
+        },
+        ActionItem {
+            title: "Delete Class"
+        },
+        ActionItem {
+            title: "Sort"
+        }
+    ]
 }
