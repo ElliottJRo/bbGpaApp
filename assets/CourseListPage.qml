@@ -2,7 +2,6 @@
 import bb.cascades 1.0
 
 import com.rim.example.custom 1.0
-
 Page {
     id: page1
     content: Container {
@@ -110,7 +109,13 @@ Page {
     actionBarVisibility: ChromeVisibility.Overlay
     actions: [
         ActionItem {
-            title: "Add Class"
+            // An ActionItem for adding more items to the list
+            title: qsTr("Add Class") + Retranslate.onLanguageChanged
+//            imageSource: "asset:///images/add.png"
+            onTriggered: {
+//                addNew.open();
+//                addNew.text = "";
+            }
         },
         ActionItem {
             title: "Delete Class"
@@ -119,4 +124,21 @@ Page {
             title: "Sort"
         }
     ]
+    attachedObjects: [
+//        EditSheet {
+//            // A sheet is used to add new items to the list, which is the same sheet used to edit items
+//            id: addNew
+//
+//            onSaveCourseItem: {
+//                courseModel.addCourseItem(text);
+//                courseList.scrollToPosition(ScrollPosition.Beginning, ScrollAnimation.Default);
+//            }
+//        }
+//        ComponentDefinition {
+//            // A Component definition of the Page used to display more details on the Course item.
+//            id: coursePage
+//            source: "CoursePage.qml"
+//        }
+    ]
+
 }

@@ -2,6 +2,8 @@
 import bb.cascades 1.0
 import com.rim.example.custom 1.0
 
+import com.courselist.coursedata 1.0
+
 // creates one page with a label
 TabbedPane {
     id: tabbedPane
@@ -14,14 +16,6 @@ TabbedPane {
         CourseListPage {
         }
     } // end of first Tab
-
-    Tab {
-        id: courseTab
-        title: "Course"
-        CoursePage {
-        } // end of second tab
-
-    }
     Tab {
         id: summaryTab
         title: "Summary"

@@ -43,10 +43,10 @@ CourseListApp::CourseListApp() {
   // properties can be accessed directly from QML. This is done before creating the
   // QmlDocument below so that it is available when the corresponding QML component
   // is needed (see main.qml).
-//  qmlRegisterType<CourseModel>("com.courselist.coursedata", 1, 0, "CourseModel");
+  qmlRegisterType<CourseModel>("com.courselist.coursedata", 1, 0, "CourseModel");
 
   // The application settings object used to store the BBM connection state
-//  qmlRegisterType<CourseSettings>("com.courselist.coursedata", 1, 0, "CourseSettings");
+  qmlRegisterType<CourseSettings>("com.courselist.coursedata", 1, 0, "CourseSettings");
 
   // The BBM manager that can connect the application to BBM and update the BBM status message
 //  qmlRegisterType<CourseBBMManager>("com.courselist.coursebbm", 1, 0, "CourseBBMManager");

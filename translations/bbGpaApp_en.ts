@@ -35,5 +35,39 @@
         <source>broken</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Add Class</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>CoursePage</name>
+    <message>
+        <source>Edit</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>EditSheet</name>
+    <message>
+        <source>Add</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Course Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Professor Name</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

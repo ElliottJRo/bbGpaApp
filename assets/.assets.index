@@ -1,7 +1,8 @@
 1
-7
+8
 CourseListPage.qml
 CoursePage.qml
+EditSheet.qml
 images/picture1.png
 images/picture2.png
 main.qml
