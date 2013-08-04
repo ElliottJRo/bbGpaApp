@@ -1,5 +1,6 @@
 // List with context menu project template
 #include "applicationui.hpp"
+#include "gpaApp.h"
 
 #include <bb/cascades/Application>
 

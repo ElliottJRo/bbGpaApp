@@ -5,7 +5,7 @@ import com.rim.example.custom 1.0
 // creates one page with a label
 TabbedPane {
     id: tabbedPane
-    showTabsOnActionBar: false
+    showTabsOnActionBar: true
     activeTab: courseListTab
     sidebarState: SidebarState.VisibleCompact
     Tab {

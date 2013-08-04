@@ -4,19 +4,31 @@ BASEDIR =  $$quote($$_PRO_FILE_PWD_)
 device {
     CONFIG(debug, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
+                 $$quote($$BASEDIR/src/coursedata/coursemodel.cpp) \
+                 $$quote($$BASEDIR/src/coursedata/coursesettings.cpp) \
+                 $$quote($$BASEDIR/src/gpaApp.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/mylistmodel.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
+                 $$quote($$BASEDIR/src/coursedata/coursemodel.h) \
+                 $$quote($$BASEDIR/src/coursedata/coursesettings.h) \
+                 $$quote($$BASEDIR/src/gpaApp.h) \
                  $$quote($$BASEDIR/src/mylistmodel.hpp)
     }
 
     CONFIG(release, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
+                 $$quote($$BASEDIR/src/coursedata/coursemodel.cpp) \
+                 $$quote($$BASEDIR/src/coursedata/coursesettings.cpp) \
+                 $$quote($$BASEDIR/src/gpaApp.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/mylistmodel.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
+                 $$quote($$BASEDIR/src/coursedata/coursemodel.h) \
+                 $$quote($$BASEDIR/src/coursedata/coursesettings.h) \
+                 $$quote($$BASEDIR/src/gpaApp.h) \
                  $$quote($$BASEDIR/src/mylistmodel.hpp)
     }
 }
@@ -24,15 +36,22 @@ device {
 simulator {
     CONFIG(debug, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
+                 $$quote($$BASEDIR/src/coursedata/coursemodel.cpp) \
+                 $$quote($$BASEDIR/src/coursedata/coursesettings.cpp) \
+                 $$quote($$BASEDIR/src/gpaApp.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
                  $$quote($$BASEDIR/src/mylistmodel.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
+                 $$quote($$BASEDIR/src/coursedata/coursemodel.h) \
+                 $$quote($$BASEDIR/src/coursedata/coursesettings.h) \
+                 $$quote($$BASEDIR/src/gpaApp.h) \
                  $$quote($$BASEDIR/src/mylistmodel.hpp)
     }
 }
 
-INCLUDEPATH +=  $$quote($$BASEDIR/src)
+INCLUDEPATH +=  $$quote($$BASEDIR/src/coursedata) \
+         $$quote($$BASEDIR/src)
 
 CONFIG += precompile_header
 
