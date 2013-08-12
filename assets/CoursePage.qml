@@ -60,23 +60,23 @@ Page {
     ]
 
     attachedObjects: [
-//        EditSheet {
-//            id: editSheet
-//            title: qsTr("Edit") + Retranslate.onLanguageChanged
-//            hintText: "Update course item description"
-//
-//            onSaveCourseItem: {
-//                // Call the function to update the item data.
-//                courseModel.editCourseItem(coursePage.item, text);
-//
-//                // Update the current item property data used in this Page to do this
-//                // one has to copy all values to 'tempItem'.
-//                var tempItem = coursePage.item
-//                // Update the item property
-//                tempItem.title = text
-//                // Then copy all values back to 'coursePage.item'
-//                coursePage.item = tempItem
-//            }
-//        }
+      EditSheet {
+          id: editSheet
+          title: qsTr("Edit") + Retranslate.onLanguageChanged
+          hintText: "Update course item description"
+
+          onSaveCourseItem: {
+              // Call the function to update the item data.
+              courseModel.editCourseItem(coursePage.item, text);
+
+              // Update the current item property data used in this Page to do this
+              // one has to copy all values to 'tempItem'.
+              var tempItem = coursePage.item
+              // Update the item property
+              tempItem.title = text
+              // Then copy all values back to 'coursePage.item'
+              coursePage.item = tempItem
+          }
+      }
     ]
 }

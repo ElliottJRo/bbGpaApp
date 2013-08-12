@@ -113,8 +113,8 @@ Page {
             title: qsTr("Add Class") + Retranslate.onLanguageChanged
 //            imageSource: "asset:///images/add.png"
             onTriggered: {
-//                addNew.open();
-//                addNew.text = "";
+                addNew.open();
+                addNew.text = "";
             }
         },
         ActionItem {
@@ -125,20 +125,20 @@ Page {
         }
     ]
     attachedObjects: [
-//        EditSheet {
-//            // A sheet is used to add new items to the list, which is the same sheet used to edit items
-//            id: addNew
-//
-//            onSaveCourseItem: {
-//                courseModel.addCourseItem(text);
-//                courseList.scrollToPosition(ScrollPosition.Beginning, ScrollAnimation.Default);
-//            }
-//        }
-//        ComponentDefinition {
-//            // A Component definition of the Page used to display more details on the Course item.
-//            id: coursePage
-//            source: "CoursePage.qml"
-//        }
+        EditSheet {
+            // A sheet is used to add new items to the list, which is the same sheet used to edit items
+            id: addNew
+
+            onSaveCourseItem: {
+                courseModel.addCourseItem(text);
+                courseList.scrollToPosition(ScrollPosition.Beginning, ScrollAnimation.Default);
+            }
+        },
+        ComponentDefinition {
+            // A Component definition of the Page used to display more details on the Course item.
+            id: coursePage
+            source: "CoursePage.qml"
+        }
     ]
 
 }
