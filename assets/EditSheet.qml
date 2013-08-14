@@ -8,13 +8,13 @@ Sheet {
     // Custom properties
     property alias title: addBar.title
     property alias hintText: courseName.hintText
-    property alias text: courseName.text
-    property alias text: professorName.text
-    property alias value: currentMark.value
-    property alias value: wantedMark.value
+    property alias courseText: courseName.text
+    property alias profText: professorName.text
+    property alias currentMark: currentMark.value
+    property alias wantedMark: wantedMark.value
 
     // A custom signal is triggered when the acceptAction is triggered.
-    signal saveCourseItem(string text)
+//    signal saveCourseItem(string text)
     Page {
         id: addPage
         titleBar: TitleBar {
@@ -35,7 +35,7 @@ Sheet {
                 onTriggered: {
                     // Hide the Sheet and emit signal that the course should be saved.
                     editSheet.close();
-                    editSheet.saveCourseItem(courseName.text);
+//                    editSheet.saveCourseItem(courseName.text);
                 }
             }
         }
@@ -133,8 +133,8 @@ Sheet {
         } // Edit pane Container
     }// Page
     
-    onOpened: {
-        courseName.requestFocus()
-    }
+//    onOpened: {
+//        courseName.requestFocus()
+//    }
     
 }// Sheet
