@@ -1,7 +1,6 @@
 // Default empty project template
 import bb.cascades 1.0
 import com.rim.example.custom 1.0
-
 import com.courselist.coursedata 1.0
 
 
@@ -27,7 +26,7 @@ TabbedPane {
         SummaryPage {
         }
 
-    } // end of third Tab
+    } // end of second Tab
     Menu.definition: MenuDefinition {
         settingsAction: SettingsActionItem {
             //imageSource: "asset:///images/settings.png"
@@ -57,11 +56,6 @@ TabbedPane {
             SettingsPage {
             }
         }
-
-    //ComponentDefinition {
-    //  id: nextpage
-    //source: "SettingsPage.qml"
-    //}
     ]
     onCreationCompleted: {
         // this slot is called when declarative scene is created

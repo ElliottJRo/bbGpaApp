@@ -36,7 +36,6 @@
          Values can also be 1-part or 2-part. It is not necessary to have a 3-part value.
          An updated version of application must have a versionNumber value higher than the previous version. Required. -->
     <versionNumber>1.0.1</versionNumber>
-    <packageLocale>en</packageLocale>
 
     <!-- Fourth digit segment of the package version. First three segments are taken from the 
          <versionNumber> element.  Must be an integer from 0 to 2^16-1 -->
@@ -55,7 +54,6 @@
     <!--  Name of author which is used for signing. Must match the developer name of your development certificate. -->
     <author>Elliott</author>
     <authorId>gYAAgLIcgrx4s6kFaXCHoN05dAM</authorId>
-    <category>core.games</category>
     
     <!--  Unique author ID assigned by signing authority. Required if using debug tokens. -->
     <!-- <authorId>ABC1234YjsnUk235h</authorId> -->
@@ -67,14 +65,22 @@
     </initialWindow>
     
     <!--  The category where the application appears. Either core.games or core.media. -->
-    <configuration name="DefaultBuildConfig">
-       <entryPointType>Qnx/Cascades</entryPointType>
-       <platformArchitecture>armle-v7</platformArchitecture>
-       <asset path="arm/o.le-v7/bbGpaApp.so" entry="true" type="Qnx/Elf">bbGpaApp.so</asset>
-    </configuration>
+    <category>core.games</category>
+<configuration name="Device-Release">
+    <platformArchitecture>armle-v7</platformArchitecture>
+    <asset path="arm/o.le-v7/bbGpaApp.so" entry="true" type="Qnx/Elf">bbGpaApp.so</asset>
+</configuration>
+<configuration name="Device-Debug">
+<platformArchitecture>armle-v7</platformArchitecture>
+   <asset type="Qnx/Elf" entry="true" path="arm/o.le-v7/bbGpaApp">bbGpaApp</asset>
+</configuration>
     
     <!--  The icon for the application -->
+    <icon>
+        <image>icon.png</image>
+    </icon>
 
+    <asset path="icon.png">icon.png</asset>
     <asset path="assets">assets</asset>
     
     <!-- Locale support -->
@@ -84,8 +90,6 @@
     
     <!-- Request permission to execute native code.  Required for native applications. -->
     <permission system="true">run_native</permission>
-    <permission>bbm_connect</permission>
-    <permission>access_shared</permission>
     <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib"/>
 
 </qnx>

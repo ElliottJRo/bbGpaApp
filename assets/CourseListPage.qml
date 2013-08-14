@@ -129,10 +129,10 @@ Page {
             // A sheet is used to add new items to the list, which is the same sheet used to edit items
             id: addNew
 
-            onSaveCourseItem: {
-                courseModel.addCourseItem(text);
-                courseList.scrollToPosition(ScrollPosition.Beginning, ScrollAnimation.Default);
-            }
+//            onSaveCourseItem: {
+//                courseModel.addCourseItem(text);
+//                courseList.scrollToPosition(ScrollPosition.Beginning, ScrollAnimation.Default);
+//            }
         },
         ComponentDefinition {
             // A Component definition of the Page used to display more details on the Course item.
