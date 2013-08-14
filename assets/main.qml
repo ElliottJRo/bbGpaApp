@@ -1,7 +1,7 @@
 // Default empty project template
 import bb.cascades 1.0
 import com.rim.example.custom 1.0
-import com.courselist.coursedata 1.0
+//import com.courselist.coursedata 1.0
 
 
 // creates one page with a label
