@@ -45,6 +45,29 @@ device {
     }
 }
 
+simulator {
+    CONFIG(debug, debug|release) {
+        INCLUDEPATH +=  $$quote(${QNX_TARGET}/usr/include/bb/system)
+
+        DEPENDPATH +=  $$quote(${QNX_TARGET}/usr/include/bb/system)
+
+        LIBS += -lbbsystem
+
+        SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
+                 $$quote($$BASEDIR/src/coursedata/coursemodel.cpp) \
+                 $$quote($$BASEDIR/src/coursedata/coursesettings.cpp) \
+                 $$quote($$BASEDIR/src/gpaApp.cpp) \
+                 $$quote($$BASEDIR/src/main.cpp) \
+                 $$quote($$BASEDIR/src/mylistmodel.cpp)
+
+        HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
+                 $$quote($$BASEDIR/src/coursedata/coursemodel.h) \
+                 $$quote($$BASEDIR/src/coursedata/coursesettings.h) \
+                 $$quote($$BASEDIR/src/gpaApp.h) \
+                 $$quote($$BASEDIR/src/mylistmodel.hpp)
+    }
+}
+
 INCLUDEPATH +=  $$quote($$BASEDIR/src/coursedata) \
          $$quote($$BASEDIR/src)
 
