@@ -3,7 +3,7 @@ import bb.cascades 1.0
 // This the item component for the items in the course list. It is a StandardListItem
 
 StandardListItem {
-    id: bucketItem
+    id: courseItem
     title: ListItemData.title
     imageSpaceReserved: false
     description: "test"

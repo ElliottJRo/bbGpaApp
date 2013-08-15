@@ -1,9 +1,12 @@
 // List with a context menu project template
 import bb.cascades 1.0
-
 import com.rim.example.custom 1.0
+
+// import com.courselist.coursedata 1.0
+NavigationPane {
+    id: courseListNav
 Page {
-    id: page1
+    id: courseListPage
     titleBar: TitleBar {
         title: "Courses"
     }
@@ -32,23 +35,6 @@ Page {
             ]*/
         }
     }
-    
-    function assetForFlags(flags) {
-        var ret = "asset:///images/picture1.png";
-        if (flags.hidden) ret = null;
-        else if (flags.broken) ret = "asset:///images/picture2.png";
-        return ret;
-    }
-    function statusForFlags(flags) {
-        var ret = "";
-        if (flags.hidden) ret = qsTr("hidden");
-        if (flags.broken) {
-            if (ret) ret += ", ";
-            ret += qsTr("broken");
-        }
-        return ret;
-    }
-    
     
     //*********************      SIGNAL HANDLERS        *************************
     
@@ -86,4 +72,6 @@ Page {
         }
     ]
 
-}
+} // end of courseListPage
+
+} //end of navipane

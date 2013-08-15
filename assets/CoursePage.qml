@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import bb.cascades 1.0
+import com.rim.example.custom 1.0
 
 // This details Page for a course item that shows the entire task contained in a course
 // item and adds functionality for editing the item.
@@ -21,11 +22,11 @@ Page {
     id: coursePage
     property variant item
     property variant courseModel
-    property alias title: titleBar.title
 
     titleBar: TitleBar {
         id: titleBar
         visibility: ChromeVisibility.Visible
+        title: coursePage.item.text
     }
 
     Container {
@@ -40,7 +41,7 @@ Page {
             Label {
                 id: courseText
                 multiline: true
-                text: coursePage.item.title
+                text: coursePage.item.text
                 textStyle.base: SystemDefaults.TextStyles.TitleText
             }
         }
@@ -52,19 +53,19 @@ Page {
 //            imageSource: "asset:///images/edit.png"
             ActionBar.placement: ActionBarPlacement.OnBar
 
-//            onTriggered: {
-//                editSheet.open();
-//                editSheet.text = courseText.text;
-//            }
+            onTriggered: {
+                editSheet.open();
+                editSheet.courseText = courseText.text;
+            }
         }
     ]
 
     attachedObjects: [
-//      EditSheet {
-//          id: editSheet
-//          title: qsTr("Edit") + Retranslate.onLanguageChanged
-//          hintText: "Update course item description"
-//
+      EditSheet {
+          id: editSheet
+          title: qsTr("Edit") + Retranslate.onLanguageChanged
+          hintText: "Update course item description"
+
 //          onSaveCourseItem: {
 //              // Call the function to update the item data.
 //              courseModel.editCourseItem(coursePage.item, text);
@@ -77,6 +78,6 @@ Page {
 //              // Then copy all values back to 'coursePage.item'
 //              coursePage.item = tempItem
 //          }
-//      }
+      }
     ]
 }
