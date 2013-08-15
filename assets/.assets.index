@@ -1,11 +1,13 @@
 1
-10
+12
+CourseList.qml
 CourseListPage.qml
 CoursePage.qml
 EditSheet.qml
 images/picture1.png
 images/picture2.png
 InfoPage.qml
+items/courseListItem.qml
 main.qml
 mydata.json
 SettingsPage.qml
