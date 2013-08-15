@@ -1,9 +1,17 @@
 #################
 ## C/C++
 #################
-arm/*
-84x/*
-translations/*
+arm\*
+84x\*
+translations\*
+
+arm\
+84x\
+translations\
+
+arm/
+84x/
+translations/
 
 #################
 ## Eclipse
