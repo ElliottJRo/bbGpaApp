@@ -2,7 +2,7 @@
 
 #include "gpaApp.h"
 #include "coursedata/coursemodel.h"
-#include "coursedata/coursesettings.h"
+//#include "coursedata/coursesettings.h"
 //#include "coursebbm/coursebbmmanager.h"
 
 #include <bb/cascades/AbstractPane>
@@ -43,13 +43,11 @@ CourseListApp::CourseListApp() {
   // properties can be accessed directly from QML. This is done before creating the
   // QmlDocument below so that it is available when the corresponding QML component
   // is needed (see main.qml).
-#ifdef USE_NEW_LIST_WAY
-  //qmlRegisterType<CourseModel>("com.courselist.coursedata", 1, 0, "CourseModel");
-#endif
+  qmlRegisterType<CourseModel>("com.courselist.coursedata", 1, 0, "CourseModel");
+
   // The application settings object used to store the BBM connection state
-#ifdef USE_NEW_LIST_WAY
   //qmlRegisterType<CourseSettings>("com.courselist.coursedata", 1, 0, "CourseSettings");
-#endif
+
   // The BBM manager that can connect the application to BBM and update the BBM status message
 //  qmlRegisterType<CourseBBMManager>("com.courselist.coursebbm", 1, 0, "CourseBBMManager");
 
@@ -67,6 +65,8 @@ CourseListApp::CourseListApp() {
           // Set the main scene to the application Page.
           Application::instance()->setScene(appPage);
       }
+  } else {
+    printf("ERROR LOADING QML FILE");
   }
 }
 

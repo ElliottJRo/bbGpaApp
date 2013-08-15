@@ -1,7 +1,7 @@
 // List with context menu project template
 
 
-//#define USE_NEW_LIST_WAY
+#define USE_NEW_LIST_WAY
 
 #ifdef USE_NEW_LIST_WAY
   #include "gpaApp.h"
@@ -25,6 +25,7 @@ Q_DECL_EXPORT int main(int argc, char **argv)
     // this is where the server is started etc
     Application app(argc, argv);
 
+    /*
     // localization support
     QTranslator translator;
     QString locale_string = QLocale().name();
@@ -32,10 +33,11 @@ Q_DECL_EXPORT int main(int argc, char **argv)
     if (translator.load(filename, "app/native/qm")) {
         app.installTranslator( &translator );
     }
+*/
 
     // create the application pane object to init UI etc.
 #ifdef USE_NEW_LIST_WAY
-    new CourseListApp(&app);
+    new CourseListApp();
 #else
     new ApplicationUI(&app);
 #endif

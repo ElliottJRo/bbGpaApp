@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 import bb.cascades 1.0
-import com.rim.example.custom 1.0
+//import com.rim.example.custom 1.0
+import com.courselist.coursedata 1.0
 
 // This details Page for a course item that shows the entire task contained in a course
 // item and adds functionality for editing the item.
@@ -26,7 +27,7 @@ Page {
     titleBar: TitleBar {
         id: titleBar
         visibility: ChromeVisibility.Visible
-        title: coursePage.item.text
+        title: coursePage.item.title
     }
 
     Container {
@@ -41,7 +42,7 @@ Page {
             Label {
                 id: courseText
                 multiline: true
-                text: coursePage.item.text
+                text: coursePage.item.title
                 textStyle.base: SystemDefaults.TextStyles.TitleText
             }
         }

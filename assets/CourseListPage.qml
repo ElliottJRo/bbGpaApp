@@ -1,8 +1,9 @@
 // List with a context menu project template
 import bb.cascades 1.0
-import com.rim.example.custom 1.0
+//import com.rim.example.custom 1.0
 
-// import com.courselist.coursedata 1.0
+import com.courselist.coursedata 1.0
+
 NavigationPane {
     id: courseListNav
 Page {
@@ -15,7 +16,7 @@ Page {
         CourseList {
             id: courseList
             
-            /*
+            
             attachedObjects: [
                 // The bucket model is a non visible object so it is set up as an attached object.
                 // The model itself is a QListDataModel defined in bucketmodel.h and registered
@@ -26,13 +27,13 @@ Page {
                     // The path to the JSON file with initial data, this file will be moved to
                     // the data folder on the first launch of the application (in order to
                     // be able to get write access).
-                    //jsonAssetPath: "app/native/assets/models/bucket.json"
+                    jsonAssetPath: "app/native/assets/models/bucket.json"
 
                     // The filtering is initially set to "todo" to show items which has not
                     // been checked off the list so far.
-                    //filter: "todo"
+                    filter: "todo"
                 }
-            ]*/
+            ]
         }
     }
     

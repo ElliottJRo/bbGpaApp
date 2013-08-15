@@ -1,7 +1,7 @@
 // Default empty project template
 import bb.cascades 1.0
-import com.rim.example.custom 1.0
-//import com.courselist.coursedata 1.0
+//import com.rim.example.custom 1.0
+import com.courselist.coursedata 1.0
 
 
 // creates one page with a label
@@ -29,7 +29,7 @@ TabbedPane {
     } // end of second Tab
     Menu.definition: MenuDefinition {
         settingsAction: SettingsActionItem {
-            //imageSource: "asset:///images/settings.png"
+            imageSource: "asset:///images/settings.png"
             onTriggered: {
                 settings.open();
             }
@@ -37,7 +37,7 @@ TabbedPane {
         actions: [
             ActionItem {
                 title: "Info"
-                //imageSource: "asset:///images/info.png"
+                imageSource: "asset:///images/info.png"
                 onTriggered: {
                     info.open();
                 }

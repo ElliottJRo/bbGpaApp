@@ -170,7 +170,7 @@ public slots:
      * @param itemTitle The string with the text describing the course title.
      */
 
-    void shareCourseItem(const QString itemTitle);
+    //void shareCourseItem(const QString itemTitle);
 
     /**
      * Slot function that is triggered with the invocation item is ready to be fired.

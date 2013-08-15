@@ -265,32 +265,32 @@ void CourseModel::checkCourseIsFull()
     }
 }
 
-void CourseModel::shareCourseItem(const QString itemTitle)
-{
-
-    //Create a file to share over BBM.
-    QFile courseFile("data/courseItemToShare.buk");
-    if (courseFile.exists()) {
-        courseFile.remove();
-    }
-
-    courseFile.open(QIODevice::WriteOnly | QIODevice::Text);
-    QTextStream out(&courseFile);
-    out << itemTitle;
-    courseFile.close();
-
-    //Share the file over BBM using the Invocation Framework.
-    QString path = QDir::current().absoluteFilePath("data/courseItemToShare.buk");
-
-    mInvocation = Invocation::create(
-            InvokeQuery::create().parent(this).uri(QUrl::fromLocalFile(path)).invokeTargetId(
-                    "sys.bbm.sharehandler"));
-
-    QObject::connect(mInvocation, SIGNAL(armed()), SLOT(onArmed()));
-
-    QObject::connect(mInvocation, SIGNAL(finished()), mInvocation, SLOT(deleteLater()));
-
-}
+//void CourseModel::shareCourseItem(const QString itemTitle)
+//{
+//
+//    //Create a file to share over BBM.
+//    QFile courseFile("data/courseItemToShare.buk");
+//    if (courseFile.exists()) {
+//        courseFile.remove();
+//    }
+//
+//    courseFile.open(QIODevice::WriteOnly | QIODevice::Text);
+//    QTextStream out(&courseFile);
+//    out << itemTitle;
+//    courseFile.close();
+//
+//    //Share the file over BBM using the Invocation Framework.
+//    QString path = QDir::current().absoluteFilePath("data/courseItemToShare.buk");
+//
+//    mInvocation = Invocation::create(
+//            InvokeQuery::create().parent(this).uri(QUrl::fromLocalFile(path)).invokeTargetId(
+//                    "sys.bbm.sharehandler"));
+//
+//    QObject::connect(mInvocation, SIGNAL(armed()), SLOT(onArmed()));
+//
+//    QObject::connect(mInvocation, SIGNAL(finished()), mInvocation, SLOT(deleteLater()));
+//
+//}
 
 void CourseModel::onArmed()
 {
