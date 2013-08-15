@@ -14,7 +14,6 @@ Page {
                 textStyle.fontSize: FontSize.Large
                 textStyle.fontStyle: FontStyle.Italic
                 textStyle.textAlign: TextAlign.Justify
-                textStyle.color: Color.White
             translationY: -30.0
         }
             TextArea {
@@ -25,7 +24,6 @@ Page {
                 textStyle.fontSize: FontSize.XXSmall
                 textStyle.fontStyle: FontStyle.Italic
                 textStyle.textAlign: TextAlign.Justify
-                textStyle.color: Color.White
             translationY: -80.0
             translationX: 20.0
         }
