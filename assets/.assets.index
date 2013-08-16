@@ -1,11 +1,13 @@
 1
-12
+14
 CourseList.qml
 CourseListPage.qml
 CoursePage.qml
 EditSheet.qml
+images/info.png
 images/picture1.png
 images/picture2.png
+images/settings.png
 InfoPage.qml
 items/courseListItem.qml
 main.qml

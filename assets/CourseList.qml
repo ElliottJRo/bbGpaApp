@@ -6,9 +6,7 @@ ListView {
     id: courseList
     objectName: "courseList"
 
-    dataModel: MyListModel {
-        id: myListModel
-    }
+    dataModel:listModel
     //dataModel: courseModel
     
     property int activeItem: -1
@@ -47,28 +45,28 @@ ListView {
                 onTriggered: {
                     // define action handler here
                     console.log("action triggered: " + title + " active item: " + courseList.activeItem)
-                    var flags = myListModel.value(courseList.activeItem, "flags");
+                    var flags = listModel.value(courseList.activeItem, "flags");
                     if (! flags) flags = {
                     };
                     flags.broken = ! flags.broken;
                     title = flags.broken ? qsTr("Unbreak") : qsTr("Break");
-                    myListModel.setValue(courseList.activeItem, "flags", flags)
-                    myListModel.setValue(courseList.activeItem, "image", assetForFlags(flags));
-                    myListModel.setValue(courseList.activeItem, "status", statusForFlags(flags));
+                    listModel.setValue(courseList.activeItem, "flags", flags)
+                    listModel.setValue(courseList.activeItem, "image", assetForFlags(flags));
+                    listModel.setValue(courseList.activeItem, "status", statusForFlags(flags));
                 }
             }
             ActionItem {
                 title: qsTr("Hide")
                 onTriggered: {
                     console.log("action triggered: " + title)
-                    var flags = myListModel.value(courseList.activeItem, "flags");
+                    var flags = listModel.value(courseList.activeItem, "flags");
                     if (! flags) flags = {
                     };
                     flags.hidden = ! flags.hidden;
                     title = flags.hidden ? qsTr("Show") : qsTr("Hide");
-                    myListModel.setValue(courseList.activeItem, "flags", flags)
-                    myListModel.setValue(courseList.activeItem, "image", assetForFlags(flags));
-                    myListModel.setValue(courseList.activeItem, "status", statusForFlags(flags));
+                    listModel.setValue(courseList.activeItem, "flags", flags)
+                    listModel.setValue(courseList.activeItem, "image", assetForFlags(flags));
+                    listModel.setValue(courseList.activeItem, "status", statusForFlags(flags));
                 }
             }
         }
@@ -112,14 +110,14 @@ ListView {
 
         // Set the Page properties and push the Page to the NavigationPane.
         page.item = chosenItem;
-        page.courseModel = myListModel;
-        //page.title = myListModel.text;
+        page.courseModel = listModel;
+        //page.title = listModel.text;
         courseListNav.push(page);
     }
 
     onCreationCompleted: {
         // this signal will be called when the qml page is created or loaded
-        myListModel.load("app/native/assets/mydata.json")
+        listModel.load("app/native/assets/mydata.json")
     }
 
     layoutProperties: StackLayoutProperties {

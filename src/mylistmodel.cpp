@@ -51,21 +51,30 @@ void MyListModel::load()
 void MyListModel::save(QString newData)
 {
     bb::data::JsonDataAccess jda;
+    //read everything from .json file into a list
     QVariantList lst = jda.load(filePath).value<QVariantList>();
+
+    //Construct newEntry
     QVariantMap itemMap;
         itemMap["text"] = QVariant(newData);
         itemMap["description"] = QVariant("");
         itemMap["status"] = QVariant("");
-        itemMap["image"] = QVariant("");
-    lst.insert(0,itemMap);
-    jda.save(QVariant(lst),filePath);
+        itemMap["image"] = QVariant("asset:///images/picture1.png");
+    QVariant newEntry=(QVariant)itemMap;
+
+    //insert the new entry into list
+    lst.insert(0,newEntry);
+
+    //write back to .json file
+    jda.save(lst,filePath);
     if (jda.hasError()) {
         bb::data::DataAccessError error = jda.error();
-        qDebug() << filePath << "JSON loading error: " << error.errorType() << ": " << error.errorMessage();
+        qDebug() << filePath << "JSON saving error: " << error.errorType() << ": " << error.errorMessage();
     }
     else {
-        qDebug() << filePath << "JSON data loaded OK!";
-        append(lst);
+    	//if saving is finished, update list
+        qDebug() << filePath << "JSON data saved OK!";
+        append(newEntry);
     }
 }
 

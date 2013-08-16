@@ -1,6 +1,7 @@
 // List with a context menu project template
 import bb.cascades 1.0
 import com.rim.example.custom 1.0
+import com.courselist.coursedata 1.0
 
 // import com.courselist.coursedata 1.0
 NavigationPane {
@@ -15,13 +16,13 @@ Page {
         CourseList {
             id: courseList
             
-            /*
+            
             attachedObjects: [
                 // The bucket model is a non visible object so it is set up as an attached object.
                 // The model itself is a QListDataModel defined in bucketmodel.h and registered
                 // as a type in the creation of the application.
-                CourseModel {
-                    id: courseModel
+                MyListModel {
+                    id: listModel
 
                     // The path to the JSON file with initial data, this file will be moved to
                     // the data folder on the first launch of the application (in order to
@@ -32,13 +33,14 @@ Page {
                     // been checked off the list so far.
                     //filter: "todo"
                 }
-            ]*/
+            ]
         }
     }
     
     //*********************      SIGNAL HANDLERS        *************************
     
-    actionBarVisibility: ChromeVisibility.Overlay
+    //Fix the problem that the last item of list can not be seen
+    actionBarVisibility: ChromeVisibility.Visible
     actions: [
         ActionItem {
             // An ActionItem for adding more items to the list
@@ -60,10 +62,10 @@ Page {
         EditSheet {
             // A sheet is used to add new items to the list, which is the same sheet used to edit items
             id: addNew
-//            onSaveCourseItem: {
-//                courseModel.addCourseItem(text);
-//                courseList.scrollToPosition(ScrollPosition.Beginning, ScrollAnimation.Default);
-//            }
+            onSaveCourseItem: {
+                listModel.save(text);
+                courseList.scrollToPosition(ScrollPosition.End, ScrollAnimation.Default);
+            }
         },
         ComponentDefinition {
             // A Component definition of the Page used to display more details on the Course item.

@@ -1,5 +1,6 @@
 import bb.cascades 1.0
 
+import com.courselist.coursedata 1.0
 // This QML sheet is used for editing and adding new courses to the gpaApp
 
 Sheet {
@@ -12,9 +13,10 @@ Sheet {
     property alias profText: professorName.text
     property alias currentMark: currentMark.value
     property alias wantedMark: wantedMark.value
+    
 
     // A custom signal is triggered when the acceptAction is triggered.
-//    signal saveCourseItem(string text)
+    signal saveCourseItem(string text)
     Page {
         id: addPage
         titleBar: TitleBar {
@@ -34,8 +36,9 @@ Sheet {
                 title: qsTr("Save") + Retranslate.onLanguageChanged
                 onTriggered: {
                     // Hide the Sheet and emit signal that the course should be saved.
+                    
+                    editSheet.saveCourseItem(courseName.text);
                     editSheet.close();
-//                    editSheet.saveCourseItem(courseName.text);
                 }
             }
         }
