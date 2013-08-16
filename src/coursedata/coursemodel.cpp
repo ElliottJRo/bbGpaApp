@@ -205,20 +205,24 @@ void CourseModel::deleteCourseItems(const QVariantList selectionList)
 void CourseModel::addCourseItem(const QString itemTitle)
 {
     QVariantMap itemMap;
-    itemMap["title"] = QVariant(itemTitle);
-    itemMap["status"] = QVariant("todo");
+    itemMap["text"] = QVariant(itemTitle);
+    itemMap["description"] = QVariant("");
+    itemMap["status"] = QVariant("");
+    itemMap["image"] = QVariant("");
 
-    if (indexOf(itemMap) == -1) {
-        if (mFilter.compare("todo") == 0) {
-            // New items are added to the todo list. If the filter is set to todo,
-            // the current list is shown and the new item is added at the top of the list model.
-            insert(0, itemMap);
-        }
-
-        // Add the new item to the data list.
-        mCourseData.insert(0, itemMap);
-        saveData();
-    }
+//    if (indexOf(itemMap) == -1) {
+////        if (mFilter.compare("todo") == 0) {
+//            // New items are added to the todo list. If the filter is set to todo,
+//            // the current list is shown and the new item is added at the top of the list model.
+//            insert(0, itemMap);
+////        }
+//
+//        // Add the new item to the data list.
+//        mCourseData.insert(0, itemMap);
+//        saveData();
+//    }
+    mCourseData.insert(0, itemMap);
+    saveData();
 
     // A new item has been added check to see if the max limit has been reached.
     checkCourseIsFull();

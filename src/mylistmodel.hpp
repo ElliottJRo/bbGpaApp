@@ -24,7 +24,12 @@ public:
      *
      * @param file_name  file to load
      */
+
+    Q_INVOKABLE void save(QString newData);
+
     Q_INVOKABLE void load(const QString& file_name);
+
+    Q_INVOKABLE void load();
     /*!
      * @brief Convenience method to read the model data.
      *
@@ -40,8 +45,10 @@ public:
      * @param val  new value
      */
     Q_INVOKABLE void setValue(int ix, const QString &fld_name, const QVariant &val);
+
 public:
     MyListModel(QObject* parent = 0);
+    QString filePath;
     virtual ~MyListModel();
 };
 

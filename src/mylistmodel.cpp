@@ -8,6 +8,7 @@ using namespace bb::cascades;
 MyListModel::MyListModel(QObject* parent)
 : bb::cascades::QVariantListDataModel()
 {
+	filePath="app/native/assets/mydata.json";
     qDebug() << "Creating MyListModel object:" << this;
     setParent(parent);
 }
@@ -20,6 +21,7 @@ MyListModel::~MyListModel()
 void MyListModel::load(const QString& file_name)
 {
     bb::data::JsonDataAccess jda;
+    filePath=file_name;
     QVariantList lst = jda.load(file_name).value<QVariantList>();
     if (jda.hasError()) {
         bb::data::DataAccessError error = jda.error();
@@ -27,6 +29,42 @@ void MyListModel::load(const QString& file_name)
     }
     else {
         qDebug() << file_name << "JSON data loaded OK!";
+        append(lst);
+    }
+}
+
+void MyListModel::load()
+{
+
+    bb::data::JsonDataAccess jda;
+    QVariantList lst = jda.load(filePath).value<QVariantList>();
+    if (jda.hasError()) {
+        bb::data::DataAccessError error = jda.error();
+        qDebug() << filePath << "JSON loading error: " << error.errorType() << ": " << error.errorMessage();
+    }
+    else {
+        qDebug() << filePath << "JSON data loaded OK!";
+        append(lst);
+    }
+}
+
+void MyListModel::save(QString newData)
+{
+    bb::data::JsonDataAccess jda;
+    QVariantList lst = jda.load(filePath).value<QVariantList>();
+    QVariantMap itemMap;
+        itemMap["text"] = QVariant(newData);
+        itemMap["description"] = QVariant("");
+        itemMap["status"] = QVariant("");
+        itemMap["image"] = QVariant("");
+    lst.insert(0,itemMap);
+    jda.save(QVariant(lst),filePath);
+    if (jda.hasError()) {
+        bb::data::DataAccessError error = jda.error();
+        qDebug() << filePath << "JSON loading error: " << error.errorType() << ": " << error.errorMessage();
+    }
+    else {
+        qDebug() << filePath << "JSON data loaded OK!";
         append(lst);
     }
 }
