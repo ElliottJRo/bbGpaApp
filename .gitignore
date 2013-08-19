@@ -13,5 +13,4 @@
 *.a
 /arm
 /x86
-/translations
 /.settings
