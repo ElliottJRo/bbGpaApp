@@ -1,0 +1,1 @@
+include (../bbGpaApp.pro)
