@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import bb.cascades 1.0
-import com.rim.example.custom 1.0
+import com.bbGpaApp.listModel 1.0
 
 // This details Page for a course item that shows the entire task contained in a course
 // item and adds functionality for editing the item.
@@ -41,7 +41,19 @@ Page {
             Label {
                 id: courseText
                 multiline: true
-                text: coursePage.item.text
+                text:  "Course:	"+coursePage.item.text
+                textStyle.base: SystemDefaults.TextStyles.TitleText
+            }
+            Label {
+                id: courseGrade
+                multiline: true
+                text: "Grade:	"+coursePage.item.description
+                textStyle.base: SystemDefaults.TextStyles.TitleText
+            }
+            Label {
+                id: courseCredits
+                multiline: true
+                text: "Credits:	"+coursePage.item.status
                 textStyle.base: SystemDefaults.TextStyles.TitleText
             }
         }
@@ -55,7 +67,7 @@ Page {
 
             onTriggered: {
                 editSheet.open();
-                editSheet.courseText = courseText.text;
+                editSheet.courseText = item.text;
             }
         }
     ]

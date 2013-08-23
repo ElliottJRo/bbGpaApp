@@ -26,7 +26,6 @@ int main(int argc, char **argv)
     // this is where the server is started etc
     Application app(argc, argv);
 
-    qmlRegisterType<CourseModel>("com.courselist.coursedata", 1, 0, "CourseModel");
     // localization support
     QTranslator translator;
     QString locale_string = QLocale().name();

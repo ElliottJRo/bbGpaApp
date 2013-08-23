@@ -25,7 +25,7 @@ public:
      * @param file_name  file to load
      */
 
-    Q_INVOKABLE void save(QString newData);
+    Q_INVOKABLE void saveNewItem(QString newData,float mark,float credits);
 
     Q_INVOKABLE void load(const QString& file_name);
 
@@ -46,10 +46,18 @@ public:
      */
     Q_INVOKABLE void setValue(int ix, const QString &fld_name, const QVariant &val);
 
+    Q_INVOKABLE	QString markToGrade(float mark);
+
+    void deleteSelectedItems(const QVariantList selectionList);
+    void deleteItemAtIndex(QVariantList indexPath);
+    bool saveToFile();
+
 public:
     MyListModel(QObject* parent = 0);
     QString filePath;
+    QVariantList itemList;
     virtual ~MyListModel();
+
 };
 
 

@@ -1,60 +1,62 @@
-[{
-	"text": "Highland",
-	"description": "Image01",
-	"status": "",
-	"image": "asset:///images/picture1.png"
-},
-{
-	"text": "LowLand",
-	"description": "Image02",
-	"status": "",
-	"image": "asset:///images/picture1.png"
-},
-{
-	"text": "Test3",
-	"description": "Image03",
-	"status": "",
-	"image": "asset:///images/picture1.png"
-},
-{
-	"text": "Hello",
-	"description": "Image04",
-	"status": "",
-	"image": "asset:///images/picture1.png"
-},
-{
-	"text": "wooot",
-	"description": "Image05",
-	"status": "",
-	"image": "asset:///images/picture1.png"
-},
-{
-	"text": "yayy",
-	"description": "Image06",
-	"status": "",
-	"image": "asset:///images/picture1.png"
-},
-{
-	"text": "Highland",
-	"description": "Image07",
-	"status": "",
-	"image": "asset:///images/picture1.png"
-},
-{
-	"text": "Highland",
-	"description": "Image08",
-	"status": "",
-	"image": "asset:///images/picture1.png"
-},
-{
-	"text": "Highland",
-	"description": "Image09",
-	"status": "",
-	"image": "asset:///images/picture1.png"
-},
-{
-	"text": "Highland",
-	"description": "Image10",
-	"status": "",
-	"image": "asset:///images/picture1.png"
-}]
+[
+    {
+        "text": "CMPT101",
+        "description": "A",
+        "status": 3,
+        "image": "asset:///images/picture1.png"
+    },
+    {
+        "text": "CMPT102",
+        "description": "B",
+        "status": 3,
+        "image": "asset:///images/picture1.png"
+    },
+    {
+        "text": "CMPT103",
+        "description": "C",
+        "status": 4,
+        "image": "asset:///images/picture1.png"
+    },
+    {
+        "text": "CMPT104",
+        "description": "D",
+        "status": 3,
+        "image": "asset:///images/picture1.png"
+    },
+    {
+        "text": "CMPT105",
+        "description": "E",
+        "status": 2,
+        "image": "asset:///images/picture1.png"
+    },
+    {
+        "text": "CMPT106",
+        "description": "A",
+        "status": 3,
+        "image": "asset:///images/picture1.png"
+    },
+    {
+        "text": "CMPT107",
+        "description": "A",
+        "status": 2,
+        "image": "asset:///images/picture1.png"
+    },
+    {
+        "text": "CMPT108",
+        "description": "B",
+        "status": 3,
+        "image": "asset:///images/picture1.png"
+    },
+    {
+        "text": "CMPT109",
+        "description": "B",
+        "status": 4,
+        "image": "asset:///images/picture1.png"
+    },
+    {
+        "text": "CMPT110",
+        "description": "B",
+        "status": 5,
+        "image": "asset:///images/picture1.png"
+    }
+]

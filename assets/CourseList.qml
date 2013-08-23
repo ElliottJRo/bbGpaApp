@@ -1,6 +1,7 @@
 import bb.cascades 1.0
-import com.rim.example.custom 1.0
-// import com.courselist.coursedata 1.0
+import com.bbGpaApp.listModel 1.0
+
+
 
 ListView {
     id: courseList
@@ -69,6 +70,16 @@ ListView {
                     listModel.setValue(courseList.activeItem, "status", statusForFlags(flags));
                 }
             }
+            DeleteActionItem {
+                title: qsTr("Delete") + Retranslate.onLanguageChanged
+                
+                onTriggered: {
+                    // Delete the selected items. Clear selection before items are manipulated to avoid blink.
+                    var selectionList = courseList.selectionList();
+                    courseList.clearSelection();
+                    listModel.deleteSelectedItems(selectionList);
+                }
+            }
         }
     ]
     // Override default GroupDataModel::itemType() behaviour, which is to return item type "header"
@@ -125,4 +136,10 @@ ListView {
     }
     horizontalAlignment: HorizontalAlignment.Fill
     verticalAlignment: VerticalAlignment.Fill
+    
+    attachedObjects: [
+        MyListModel{
+            id:listModel
+        }
+    ]
 }

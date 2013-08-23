@@ -1,9 +1,7 @@
 // List with a context menu project template
 import bb.cascades 1.0
-import com.rim.example.custom 1.0
-import com.courselist.coursedata 1.0
+import com.bbGpaApp.listModel 1.0
 
-// import com.courselist.coursedata 1.0
 NavigationPane {
     id: courseListNav
 Page {
@@ -63,7 +61,7 @@ Page {
             // A sheet is used to add new items to the list, which is the same sheet used to edit items
             id: addNew
             onSaveCourseItem: {
-                listModel.save(text);
+                listModel.saveNewItem(courseText,mark,credits);
                 courseList.scrollToPosition(ScrollPosition.End, ScrollAnimation.Default);
             }
         },

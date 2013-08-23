@@ -1,6 +1,5 @@
 import bb.cascades 1.0
-
-import com.courselist.coursedata 1.0
+import com.bbGpaApp.listModel 1.0
 // This QML sheet is used for editing and adding new courses to the gpaApp
 
 Sheet {
@@ -11,12 +10,12 @@ Sheet {
     property alias hintText: courseName.hintText
     property alias courseText: courseName.text
     property alias profText: professorName.text
-    property alias currentMark: currentMark.value
-    property alias wantedMark: wantedMark.value
+    property alias mark: markSlider.value
+    property alias credits: creditsSlider.value
     
 
     // A custom signal is triggered when the acceptAction is triggered.
-    signal saveCourseItem(string text)
+    signal saveCourseItem()
     Page {
         id: addPage
         titleBar: TitleBar {
@@ -37,7 +36,7 @@ Sheet {
                 onTriggered: {
                     // Hide the Sheet and emit signal that the course should be saved.
                     
-                    editSheet.saveCourseItem(courseName.text);
+                    editSheet.saveCourseItem();
                     editSheet.close();
                 }
             }
@@ -96,17 +95,27 @@ Sheet {
                         minHeight: 10.
                     }
                     TextField {
-                        id: currentMarkText
+                        id: markText
                         inputMode: TextFieldInputMode.Text
                         enabled: false
-                        text: "Current Mark:" + Math.floor(currentMark.value)
+                        text: "Mark:" + Math.floor(mark)
                         horizontalAlignment: HorizontalAlignment.Center
                         leftPadding: 50.0
                         rightPadding: 50.0
 
                     }
+                    TextField {
+                        id: gradeText
+                        inputMode: TextFieldInputMode.Text
+                        enabled: false
+                        text: "Grade:"+listModel.markToGrade(mark)
+                        horizontalAlignment: HorizontalAlignment.Center
+                        leftPadding: 50.0
+                        rightPadding: 50.0
+                    
+                    }
                     Slider {
-                        id: currentMark
+                        id: markSlider
                         fromValue: 0.0
                         toValue: 100.0
 
@@ -115,29 +124,31 @@ Sheet {
                         minHeight: 10.0
                     }
                     TextField {
-                        id: wantedMarkText
+                        id: creditsText
                         inputMode: TextFieldInputMode.Text
                         enabled: false
-                        text: "Wanted Mark:" + Math.floor(wantedMark.value)
+                        text: "Credits:	" + Math.floor(creditsSlider.value)
                         horizontalAlignment: HorizontalAlignment.Center
-                        leftPadding: 50.0
-                        rightPadding: 50.0
+                        leftPadding: 50
+                        rightPadding: 50
 
                     }
                     Slider {
-                        id: wantedMark
-                        fromValue: 0.0
-                        toValue: 100.0
+                        id: creditsSlider
+                        fromValue: 0
+                        toValue: 10
 
                     }
 
                 } // Text Area Container
             } // Scroll View
         } // Edit pane Container
+    attachedObjects: [
+	    MyListModel{
+	        id:listModel
+	    }
+    ]
     }// Page
     
-//    onOpened: {
-//        courseName.requestFocus()
-//    }
     
 }// Sheet
