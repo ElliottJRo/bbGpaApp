@@ -2,7 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.0">
 <context>
-    <name>CourseListPage</name>
+    <name>CourseList</name>
     <message>
         <source>Picture actions</source>
         <translation type="unfinished"></translation>
@@ -35,6 +35,9 @@
         <source>broken</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>CourseListPage</name>
     <message>
         <source>Add Class</source>
         <translation type="unfinished"></translation>
