@@ -2,13 +2,7 @@
 BASEDIR =  $$quote($$_PRO_FILE_PWD_)
 
 device {
-    CONFIG(release, debug|release) {
-        INCLUDEPATH +=  $$quote("${QNX_TARGET}/usr/include/bb/system") \
-                 $$quote(C:/bbndk/target_10_1_0_1720/qnx6)
-
-        DEPENDPATH +=  $$quote("${QNX_TARGET}/usr/include/bb/system") \
-                 $$quote(C:/bbndk/target_10_1_0_1720/qnx6)
-
+    CONFIG(debug, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/coursedata/coursemodel.cpp) \
                  $$quote($$BASEDIR/src/coursedata/coursesettings.cpp) \
@@ -23,13 +17,7 @@ device {
                  $$quote($$BASEDIR/src/mylistmodel.hpp)
     }
 
-    CONFIG(debug, debug|release) {
-        INCLUDEPATH +=  $$quote("${QNX_TARGET}/usr/include/bb/system") \
-                 $$quote(C:/bbndk/target_10_1_0_1720/qnx6)
-
-        DEPENDPATH +=  $$quote("${QNX_TARGET}/usr/include/bb/system") \
-                 $$quote(C:/bbndk/target_10_1_0_1720/qnx6)
-
+    CONFIG(release, debug|release) {
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/coursedata/coursemodel.cpp) \
                  $$quote($$BASEDIR/src/coursedata/coursesettings.cpp) \
@@ -47,12 +35,6 @@ device {
 
 simulator {
     CONFIG(debug, debug|release) {
-        INCLUDEPATH +=  $$quote(${QNX_TARGET}/usr/include/bb/system)
-
-        DEPENDPATH +=  $$quote(${QNX_TARGET}/usr/include/bb/system)
-
-        LIBS += -lbbsystem
-
         SOURCES +=  $$quote($$BASEDIR/src/applicationui.cpp) \
                  $$quote($$BASEDIR/src/coursedata/coursemodel.cpp) \
                  $$quote($$BASEDIR/src/coursedata/coursesettings.cpp) \
@@ -92,5 +74,4 @@ lupdate_inclusion {
              $$quote($$BASEDIR/../src/*.hxx)
 }
 
-TRANSLATIONS =  $$quote($${TARGET}_en.ts) \
-         $$quote($${TARGET}.ts)
+TRANSLATIONS =  $$quote($${TARGET}.ts)

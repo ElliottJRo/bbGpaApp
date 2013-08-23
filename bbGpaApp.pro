@@ -5,14 +5,5 @@ LIBS   += -lbbdata
 LIBS += -lbbplatformbbm
 LIBS += -lbbsystem
 
+
 include(config.pri)
-
-# Add qml subfolders and relevant cpp files for translation 
-lupdate_inclusion {
-  SOURCES +=  $$quote($$BASEDIR/../src/coursebbm/*.c) \
-             $$quote($$BASEDIR/../src/coursebbm/*.cpp) \
-             $$quote($$BASEDIR/../assets/items/*.qml) 
-
-  HEADERS +=  $$quote($$BASEDIR/../src/coursebbm/*.h) \
-             $$quote($$BASEDIR/../src/coursebbm/*.hpp)
-}
