@@ -39,7 +39,7 @@ Page {
             horizontalAlignment: HorizontalAlignment.Left
 
             Label {
-                id: courseText
+                id: courseName
                 multiline: true
                 text:  "Course:	"+coursePage.item.text
                 textStyle.base: SystemDefaults.TextStyles.TitleText
@@ -66,30 +66,32 @@ Page {
             ActionBar.placement: ActionBarPlacement.OnBar
 
             onTriggered: {
-                editSheet.open();
-                editSheet.courseText = item.text;
+                editSheet2.open();
+                editSheet2.courseText = item.text;
             }
         }
     ]
 
     attachedObjects: [
       EditSheet {
-          id: editSheet
+          id: editSheet2
           title: qsTr("Edit") + Retranslate.onLanguageChanged
           hintText: "Update course item description"
 
-//          onSaveCourseItem: {
-//              // Call the function to update the item data.
-//              courseModel.editCourseItem(coursePage.item, text);
-//
-//              // Update the current item property data used in this Page to do this
-//              // one has to copy all values to 'tempItem'.
-//              var tempItem = coursePage.item
-//              // Update the item property
-//              tempItem.title = text
-//              // Then copy all values back to 'coursePage.item'
-//              coursePage.item = tempItem
-//          }
+          onSaveCourseItem: {
+              // Call the function to update the item data.
+              listModel.editSelectedItem(item,courseText,mark,credits);
+
+              // Update the current item property data used in this Page to do this
+              // one has to copy all values to 'tempItem'.
+              var tempItem = coursePage.item
+              // Update the item property
+              tempItem.title = courseText
+              tempItem.description=mark.toFixed(0)
+              tempItem.status=credits.toFixed(0)
+              // Then copy all values back to 'coursePage.item'
+              coursePage.item = tempItem
+          }
       }
     ]
 }

@@ -49,7 +49,7 @@ void MyListModel::load()
     }
 }
 
-void MyListModel::saveNewItem(QString newData,float mark,float credits)
+void MyListModel::saveNewItem(QString newData,float mark,float credits,int index)
 {
 
     bb::data::JsonDataAccess jda;
@@ -76,7 +76,7 @@ void MyListModel::saveNewItem(QString newData,float mark,float credits)
     else {
     	//if saving is finished, update list
         qDebug() << filePath << "JSON data saved OK!";
-        insert(0,newEntry);
+        insert(index,newEntry);
     }
 }
 
@@ -151,6 +151,29 @@ bool MyListModel::saveToFile()
 
     return true;
 }
+
+
+void MyListModel::editSelectedItem(const QVariant olditem,QString newData,float mark,float credits){
+
+    QVariantMap itemMap = olditem.toMap();
+    int itemDataIndex = itemList.indexOf(itemMap);
+    int itemIndex = indexOf(itemMap);
+
+    // Update the content.
+    			itemMap["text"] = QVariant(newData);
+    	        itemMap["description"] = QVariant(markToGrade(mark));
+    	        itemMap["status"] = QVariant(floorf(credits));
+    	        itemMap["image"] = QVariant("asset:///images/picture1.png");
+
+    // And replace the item in both the model and the data list.
+    itemList.replace(itemDataIndex, itemMap);
+    replace(itemIndex, itemMap);
+
+    saveToFile();
+
+}
+
+
 
 
 QString MyListModel::markToGrade(float mark){
