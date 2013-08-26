@@ -52,9 +52,7 @@ void MyListModel::load()
 void MyListModel::saveNewItem(QString newData,float mark,float credits,int index)
 {
 
-    bb::data::JsonDataAccess jda;
-    //read everything from .json file into a list
-    QVariantList lst = jda.load(filePath).value<QVariantList>();
+
 
     //Construct newEntry
     QVariantMap itemMap;
@@ -65,19 +63,10 @@ void MyListModel::saveNewItem(QString newData,float mark,float credits,int index
     QVariant newEntry=(QVariant)itemMap;
 
     //insert the new entry into list
-    lst.insert(0,newEntry);
+    itemList.insert(index,newEntry);
+    insert(index,newEntry);
+    saveToFile();
 
-    //write back to .json file
-    jda.save(lst,filePath);
-    if (jda.hasError()) {
-        bb::data::DataAccessError error = jda.error();
-        qDebug() << filePath << "JSON saving error: " << error.errorType() << ": " << error.errorMessage();
-    }
-    else {
-    	//if saving is finished, update list
-        qDebug() << filePath << "JSON data saved OK!";
-        insert(index,newEntry);
-    }
 }
 
 QVariant MyListModel::value(int ix, const QString &fld_name)
