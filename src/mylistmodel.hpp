@@ -48,7 +48,13 @@ public:
 
     Q_INVOKABLE	QString markToGrade(float mark);
 
-    void deleteSelectedItems(const QVariantList selectionList);
+    /*!
+     * @brief delete function for course item
+     *
+     * @param selectionList  list of selected items
+     */
+    Q_INVOKABLE void deleteSelectedItems(const QVariantList selectionList);
+
     void deleteItemAtIndex(QVariantList indexPath);
     bool saveToFile();
 
