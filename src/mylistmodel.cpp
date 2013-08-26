@@ -76,7 +76,7 @@ void MyListModel::saveNewItem(QString newData,float mark,float credits)
     else {
     	//if saving is finished, update list
         qDebug() << filePath << "JSON data saved OK!";
-        append(newEntry);
+        insert(0,newEntry);
     }
 }
 

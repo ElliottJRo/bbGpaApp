@@ -12,7 +12,7 @@ Page {
 
     Container {
         CourseList {
-            id: courseList
+            id: courseListIns
             
             
             attachedObjects: [
@@ -62,7 +62,8 @@ Page {
             id: addNew
             onSaveCourseItem: {
                 listModel.saveNewItem(courseText,mark,credits);
-                courseList.scrollToPosition(ScrollPosition.End, ScrollAnimation.Default);
+                courseListIns.scrollToPosition(ScrollPosition.End, ScrollAnimation.Default);
+                courseListIns.scrollToPosition(ScrollPosition.Beginning, ScrollAnimation.Default);
             }
         },
         ComponentDefinition {

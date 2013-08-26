@@ -1,5 +1,5 @@
 1
-14
+13
 CourseList.qml
 CourseListPage.qml
 CoursePage.qml
@@ -9,7 +9,6 @@ images/picture1.png
 images/picture2.png
 images/settings.png
 InfoPage.qml
-items/courseListItem.qml
 main.qml
 mydata.json
 SettingsPage.qml

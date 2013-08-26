@@ -5,9 +5,9 @@ import com.bbGpaApp.listModel 1.0
 
 ListView {
     id: courseList
-    objectName: "courseList"
+    //objectName: "courseList"
 
-    dataModel:listModel
+    dataModel: listModel 
     //dataModel: courseModel
     
     property int activeItem: -1
@@ -137,9 +137,5 @@ ListView {
     horizontalAlignment: HorizontalAlignment.Fill
     verticalAlignment: VerticalAlignment.Fill
     
-    attachedObjects: [
-        MyListModel{
-            id:listModel
-        }
-    ]
+
 }

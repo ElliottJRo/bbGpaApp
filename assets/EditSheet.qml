@@ -108,7 +108,7 @@ Sheet {
                         id: gradeText
                         inputMode: TextFieldInputMode.Text
                         enabled: false
-                        text: "Grade:"+listModel.markToGrade(mark)
+                        text: "Grade:"+tempModel.markToGrade(mark)
                         horizontalAlignment: HorizontalAlignment.Center
                         leftPadding: 50.0
                         rightPadding: 50.0
@@ -145,7 +145,7 @@ Sheet {
         } // Edit pane Container
     attachedObjects: [
 	    MyListModel{
-	        id:listModel
+	        id:tempModel
 	    }
     ]
     }// Page
