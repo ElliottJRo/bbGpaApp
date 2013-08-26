@@ -36,7 +36,7 @@ TabbedPane {
         actions: [
             ActionItem {
                 title: "Info"
-                //imageSource: "asset:///images/info.png"
+                imageSource: "asset:///images/info.png"
                 onTriggered: {
                     info.open();
                 }
