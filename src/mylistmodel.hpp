@@ -12,6 +12,8 @@
 #include <QMetaType>
 #include <bb/cascades/QListDataModel>
 
+#include "gpaModel.h"
+
 /*!
  * @brief Mutable list model implementation
  */
@@ -46,11 +48,16 @@ public:
      */
     Q_INVOKABLE void setValue(int ix, const QString &fld_name, const QVariant &val);
 
-    Q_INVOKABLE	QString markToGrade(float mark);
 
+    //delete a number of selected items from list
     Q_INVOKABLE void deleteSelectedItems(const QVariantList selectionList);
 
+    //edit selected item
     Q_INVOKABLE void editSelectedItem(const QVariant olditem,QString newData,float mark,float credits);
+
+    Q_INVOKABLE QVariant calculateGpa433();
+    //convert percentage to grade
+    Q_INVOKABLE	QString markToGrade(float mark);
 
 public:
     void deleteItemAtIndex(QVariantList indexPath);

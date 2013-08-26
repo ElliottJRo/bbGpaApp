@@ -14,24 +14,6 @@ Page {
         CourseList {
             id: courseListIns
             
-            
-            attachedObjects: [
-                // The bucket model is a non visible object so it is set up as an attached object.
-                // The model itself is a QListDataModel defined in bucketmodel.h and registered
-                // as a type in the creation of the application.
-                MyListModel {
-                    id: listModel
-
-                    // The path to the JSON file with initial data, this file will be moved to
-                    // the data folder on the first launch of the application (in order to
-                    // be able to get write access).
-                    //jsonAssetPath: "app/native/assets/models/bucket.json"
-
-                    // The filtering is initially set to "todo" to show items which has not
-                    // been checked off the list so far.
-                    //filter: "todo"
-                }
-            ]
         }
     }
     

@@ -54,8 +54,21 @@ TabbedPane {
             id: settings
             SettingsPage {
             }
+        },
+        MyListModel {
+                    id: listModel
+                    
+                    // The path to the JSON file with initial data, this file will be moved to
+                    // the data folder on the first launch of the application (in order to
+                    // be able to get write access).
+                    //jsonAssetPath: "app/native/assets/models/bucket.json"
+                    
+                    // The filtering is initially set to "todo" to show items which has not
+                    // been checked off the list so far.
+                    //filter: "todo"
         }
     ]
+
     onCreationCompleted: {
         // this slot is called when declarative scene is created
         // write post creation initialization here

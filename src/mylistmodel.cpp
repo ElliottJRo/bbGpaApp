@@ -173,7 +173,16 @@ void MyListModel::editSelectedItem(const QVariant olditem,QString newData,float 
 
 }
 
-
+QVariant MyListModel::calculateGpa433(){
+	QVariant result;
+	QVariantList gradeList,creditsList;
+	for(int i=0;i<itemList.size();i++){
+		gradeList.append((itemList[i].toMap())["description"]);
+		creditsList.append((itemList[i].toMap())["status"]);
+	}
+	result=computeCGPA(0,0,gradeList,creditsList,itemList.size());
+	return result;
+}
 
 
 QString MyListModel::markToGrade(float mark){

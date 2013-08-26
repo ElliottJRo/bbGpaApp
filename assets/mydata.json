@@ -25,38 +25,8 @@
     },
     {
         "text": "CMPT105",
-        "description": "E",
+        "description": "F",
         "status": 2,
-        "image": "asset:///images/picture1.png"
-    },
-    {
-        "text": "CMPT106",
-        "description": "A",
-        "status": 3,
-        "image": "asset:///images/picture1.png"
-    },
-    {
-        "text": "CMPT107",
-        "description": "A",
-        "status": 2,
-        "image": "asset:///images/picture1.png"
-    },
-    {
-        "text": "CMPT108",
-        "description": "B",
-        "status": 3,
-        "image": "asset:///images/picture1.png"
-    },
-    {
-        "text": "CMPT109",
-        "description": "B",
-        "status": 4,
-        "image": "asset:///images/picture1.png"
-    },
-    {
-        "text": "CMPT110",
-        "description": "B",
-        "status": 5,
         "image": "asset:///images/picture1.png"
     }
 ]
