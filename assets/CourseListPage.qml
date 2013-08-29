@@ -48,7 +48,7 @@ Page {
             // A sheet is used to add new items to the list, which is the same sheet used to edit items
             id: addNew
             onSaveCourseItem: {
-                listModel.saveNewItem(courseText,mark,credits,0);
+                listModel.saveNewItem(courseText,mark.toFixed(0),credits,0);
                 courseListIns.scrollToPosition(ScrollPosition.End, ScrollAnimation.Default);
                 courseListIns.scrollToPosition(ScrollPosition.Beginning, ScrollAnimation.Default);
             }

@@ -1,31 +1,36 @@
 [
     {
         "text": "CMPT101",
-        "description": "A",
+        "grade": "A",
+        "mark": 92,
         "status": 3,
         "image": "asset:///images/picture1.png"
     },
     {
         "text": "CMPT102",
-        "description": "B",
+        "grade": "B",
+        "mark": 77,
         "status": 3,
         "image": "asset:///images/picture1.png"
     },
     {
         "text": "CMPT103",
-        "description": "C",
+        "grade": "C",
+        "mark": 64,
         "status": 4,
         "image": "asset:///images/picture1.png"
     },
     {
         "text": "CMPT104",
-        "description": "D",
+        "grade": "D",
+        "mark": 60,
         "status": 3,
         "image": "asset:///images/picture1.png"
     },
     {
         "text": "CMPT105",
-        "description": "F",
+        "grade": "F",
+        "mark": 35,
         "status": 2,
         "image": "asset:///images/picture1.png"
     }

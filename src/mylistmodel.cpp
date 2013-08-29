@@ -57,7 +57,8 @@ void MyListModel::saveNewItem(QString newData,float mark,float credits,int index
     //Construct newEntry
     QVariantMap itemMap;
         itemMap["text"] = QVariant(newData);
-        itemMap["description"] = QVariant(QString::number(mark,'g',2)+"    "+markToGrade(mark));
+        itemMap["mark"] = QVariant(mark);
+        itemMap["grade"]= QVariant(markToGrade(mark));
         itemMap["status"] = QVariant(floorf(credits));
         itemMap["image"] = QVariant("asset:///images/picture1.png");
     QVariant newEntry=(QVariant)itemMap;
@@ -150,7 +151,8 @@ QVariant MyListModel::editSelectedItem(const QVariant olditem,QString newData,fl
 
     // Update the content.
     			itemMap["text"] = QVariant(newData);
-    			itemMap["description"] = QVariant(QString::number(mark,'g',2)+"    "+markToGrade(mark));
+    			itemMap["mark"] = QVariant(mark);
+    			itemMap["grade"]= QVariant(markToGrade(mark));
     	        itemMap["status"] = QVariant(floorf(credits));
     	        itemMap["image"] = QVariant("asset:///images/picture1.png");
 
@@ -166,7 +168,7 @@ QVariant MyListModel::calculateGpa433(){
 	QVariant result;
 	QVariantList gradeList,creditsList;
 	for(int i=0;i<itemList.size();i++){
-		gradeList.append((itemList[i].toMap())["description"]);
+		gradeList.append((itemList[i].toMap())["grade"]);
 		creditsList.append((itemList[i].toMap())["status"]);
 	}
 	result=computeCGPA(0,0,gradeList,creditsList,itemList.size());

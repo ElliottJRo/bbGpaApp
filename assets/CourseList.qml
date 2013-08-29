@@ -26,7 +26,7 @@ ListView {
             // StandardListItem is a convivience component for lists with default cascades look and feel
             StandardListItem {
                 title: ListItemData.text
-                description: ListItemData.description
+                description: ListItemData.grade+"    "+ListItemData.mark
                 status: ListItemData.status
                 imageSource: ListItemData.image
                 onTouch: {

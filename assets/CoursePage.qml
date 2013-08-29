@@ -45,9 +45,15 @@ Page {
                 textStyle.base: SystemDefaults.TextStyles.TitleText
             }
             Label {
+                id: courseMark
+                multiline: true
+                text: "Mark:	"+coursePage.item.mark
+                textStyle.base: SystemDefaults.TextStyles.TitleText
+            }
+            Label {
                 id: courseGrade
                 multiline: true
-                text: "Grade:	"+coursePage.item.description
+                text: "Grade:	"+coursePage.item.grade
                 textStyle.base: SystemDefaults.TextStyles.TitleText
             }
             Label {
@@ -68,6 +74,8 @@ Page {
             onTriggered: {
                 editSheet2.open();
                 editSheet2.courseText = item.text;
+                editSheet2.mark=item.mark;
+                editSheet2.credits=item.status;
                 
 
             }
@@ -82,7 +90,7 @@ Page {
 
           onSaveCourseItem: {
               // Call the function to update the item data.
-              var tempItem=listModel.editSelectedItem(item,courseText,mark,credits);
+              var tempItem=listModel.editSelectedItem(item,courseText,mark.toFixed(0),credits);
 
               // Update the current item property data used in this Page to do this
               // one has to copy all values to 'tempItem'.
