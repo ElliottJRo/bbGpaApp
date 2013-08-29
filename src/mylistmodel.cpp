@@ -9,7 +9,7 @@ using namespace bb::cascades;
 MyListModel::MyListModel(QObject* parent)
 : bb::cascades::QVariantListDataModel()
 {
-	filePath="app/native/assets/mydata.json";
+	filePath="app/native/assets/json/mydata.json";
     qDebug() << "Creating MyListModel object:" << this;
     setParent(parent);
 }
