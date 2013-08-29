@@ -68,8 +68,7 @@ Page {
             onTriggered: {
                 editSheet2.open();
                 editSheet2.courseText = item.text;
-                editSheet2.credits = coursePage.item.status;
-                editSheet2.mark = listModel.gradeToMark(coursePage.item.description);
+                
 
             }
         }
@@ -83,15 +82,15 @@ Page {
 
           onSaveCourseItem: {
               // Call the function to update the item data.
-              listModel.editSelectedItem(item,courseText,mark,credits);
+              var tempItem=listModel.editSelectedItem(item,courseText,mark,credits);
 
               // Update the current item property data used in this Page to do this
               // one has to copy all values to 'tempItem'.
-              var tempItem = coursePage.item
-              // Update the item property
-              tempItem.title = courseText
-              tempItem.description = listModel.markToGrade(mark.toFixed(0))
-              tempItem.status = credits.toFixed(0)
+//              var tempItem = coursePage.item
+//              // Update the item property
+//              tempItem.title = courseText
+//              tempItem.description=mark.toFixed(0)+"    "+listModel.markToGrade(mark);
+//              tempItem.status=credits.toFixed(0)
               // Then copy all values back to 'coursePage.item'
               coursePage.item = tempItem
           }

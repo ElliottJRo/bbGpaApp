@@ -53,12 +53,11 @@ public:
     Q_INVOKABLE void deleteSelectedItems(const QVariantList selectionList);
 
     //edit selected item
-    Q_INVOKABLE void editSelectedItem(const QVariant olditem,QString newData,float mark,float credits);
+    Q_INVOKABLE QVariant editSelectedItem(const QVariant olditem,QString newData,float mark,float credits);
 
     Q_INVOKABLE QVariant calculateGpa433();
     //convert percentage to grade
     Q_INVOKABLE	QString markToGrade(float mark);
-    Q_INVOKABLE int gradeToMark(QString grade);
 
 public:
     void deleteItemAtIndex(QVariantList indexPath);
