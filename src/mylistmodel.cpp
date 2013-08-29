@@ -57,7 +57,7 @@ void MyListModel::saveNewItem(QString newData,float mark,float credits,int index
     //Construct newEntry
     QVariantMap itemMap;
         itemMap["text"] = QVariant(newData);
-        itemMap["description"] = QVariant(markToGrade(mark));
+        itemMap["description"] = QVariant(QString::number(mark,'g',2)+"    "+markToGrade(mark));
         itemMap["status"] = QVariant(floorf(credits));
         itemMap["image"] = QVariant("asset:///images/picture1.png");
     QVariant newEntry=(QVariant)itemMap;
@@ -142,7 +142,7 @@ bool MyListModel::saveToFile()
 }
 
 
-void MyListModel::editSelectedItem(const QVariant olditem,QString newData,float mark,float credits){
+QVariant MyListModel::editSelectedItem(const QVariant olditem,QString newData,float mark,float credits){
 
     QVariantMap itemMap = olditem.toMap();
     int itemDataIndex = itemList.indexOf(itemMap);
@@ -150,7 +150,7 @@ void MyListModel::editSelectedItem(const QVariant olditem,QString newData,float 
 
     // Update the content.
     			itemMap["text"] = QVariant(newData);
-    	        itemMap["description"] = QVariant(markToGrade(mark));
+    			itemMap["description"] = QVariant(QString::number(mark,'g',2)+"    "+markToGrade(mark));
     	        itemMap["status"] = QVariant(floorf(credits));
     	        itemMap["image"] = QVariant("asset:///images/picture1.png");
 
@@ -159,7 +159,7 @@ void MyListModel::editSelectedItem(const QVariant olditem,QString newData,float 
     replace(itemIndex, itemMap);
 
     saveToFile();
-
+    return itemMap;
 }
 
 QVariant MyListModel::calculateGpa433(){
@@ -201,45 +201,4 @@ QString MyListModel::markToGrade(float mark){
 		return "N/A";
 	}
 }
-
-int MyListModel::gradeToMark(QString grade){
-    int gradePoint(0) ;
-
-    if (grade=="A+" || grade=="a+"){
-      gradePoint = 96 ;
-    }
-    else if(grade=="A" || grade=="a"){
-      gradePoint = 91 ;
-    }
-    else if (grade=="A-" || grade=="a-"){
-      gradePoint = 86 ;
-    }
-    else if (grade=="B+" || grade=="b+"){
-      gradePoint = 81 ;
-    }
-    else if (grade=="B" || grade=="b"){
-      gradePoint = 76 ;
-    }
-    else if (grade=="B-"|| grade=="b-"){
-      gradePoint = 71 ;
-    }
-    else if (grade=="C+" || grade=="c+"){
-      gradePoint = 66 ;
-    }
-    else if (grade=="C" || grade=="c"){
-      gradePoint = 61 ;
-    }
-    else if (grade=="C-" || grade=="c-"){
-      gradePoint = 56 ;
-    }
-    else if (grade=="D" || grade=="d"){
-      gradePoint = 51 ;
-    }
-    else if (grade=="F" || grade=="f") {          // FAIL
-      gradePoint = 33 ;
-    }
-
-    return gradePoint ;
-
-  }
 
