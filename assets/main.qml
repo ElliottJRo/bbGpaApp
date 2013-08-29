@@ -3,6 +3,7 @@ import bb.cascades 1.0
 import com.bbGpaApp.listModel 1.0
 
 
+
 // creates one page with a label
 TabbedPane {
     id: tabbedPane
