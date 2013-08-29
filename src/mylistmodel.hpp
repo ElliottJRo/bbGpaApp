@@ -58,6 +58,7 @@ public:
     Q_INVOKABLE QVariant calculateGpa433();
     //convert percentage to grade
     Q_INVOKABLE	QString markToGrade(float mark);
+    Q_INVOKABLE int gradeToMark(QString grade);
 
 public:
     void deleteItemAtIndex(QVariantList indexPath);

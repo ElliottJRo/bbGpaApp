@@ -202,3 +202,44 @@ QString MyListModel::markToGrade(float mark){
 	}
 }
 
+int MyListModel::gradeToMark(QString grade){
+    int gradePoint(0) ;
+
+    if (grade=="A+" || grade=="a+"){
+      gradePoint = 96 ;
+    }
+    else if(grade=="A" || grade=="a"){
+      gradePoint = 91 ;
+    }
+    else if (grade=="A-" || grade=="a-"){
+      gradePoint = 86 ;
+    }
+    else if (grade=="B+" || grade=="b+"){
+      gradePoint = 81 ;
+    }
+    else if (grade=="B" || grade=="b"){
+      gradePoint = 76 ;
+    }
+    else if (grade=="B-"|| grade=="b-"){
+      gradePoint = 71 ;
+    }
+    else if (grade=="C+" || grade=="c+"){
+      gradePoint = 66 ;
+    }
+    else if (grade=="C" || grade=="c"){
+      gradePoint = 61 ;
+    }
+    else if (grade=="C-" || grade=="c-"){
+      gradePoint = 56 ;
+    }
+    else if (grade=="D" || grade=="d"){
+      gradePoint = 51 ;
+    }
+    else if (grade=="F" || grade=="f") {          // FAIL
+      gradePoint = 33 ;
+    }
+
+    return gradePoint ;
+
+  }
+
