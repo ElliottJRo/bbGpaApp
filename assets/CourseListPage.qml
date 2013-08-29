@@ -29,6 +29,11 @@ Page {
             onTriggered: {
                 addNew.open();
                 addNew.title = "Add Class";
+                //flush old data
+                addNew.courseText = "";
+                addNew.profText = "";
+                addNew.mark = 0;
+                addNew.credits = 0;
             }
         },
         ActionItem {
