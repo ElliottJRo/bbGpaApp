@@ -46,14 +46,28 @@
 				// Extract the first coordinate pair; jQuery has parsed it, so
 				// the data is now just an ordinary JavaScript object
 
-				var firstcoordinate = "(" + series.data[0][0] + ", " + series.data[0][1] + ")";
+				//var firstcoordinate = "(" + series.data[0][0] + ", " + series.data[0][1] + ")";
 				//button.siblings("span").text("Fetched " + series.label + ", first point: " + firstcoordinate);
 
 				// Push the new data onto our existing data array
+				var datalist=[]
+				
 
+				for (var i = 0; i < series.data.length; i++) {
+					var point=[];
+					point.push(series.data[i].recordTime);
+					point.push(series.data[i].gpa);
+					datalist.push(point);
+				};
+
+				
+
+				var formatedData = {label: series.label,
+									data: datalist}
+				
 				if (!alreadyFetched[series.label]) {
 					alreadyFetched[series.label] = true;
-					data.push(series);
+					data.push(formatedData);
 				}
 
 				$.plot("#placeholder", data, options);
@@ -87,16 +101,15 @@
 		<h2>GPA Curve</h2>
 	</div>
 
+
+	
+
+
 	<div id="content">
 
 		<div class="demo-container">
 			<div id="placeholder" class="demo-placeholder"></div>
 		</div>
-<!-- 		<p>
-			<button class="fetchSeries">First dataset</button>
-			[ <a href="data-eu-gdp-growth.json">see data</a> ]
-			<span></span>
-		</p> -->
 
 
 	</div>
