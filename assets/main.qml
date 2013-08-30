@@ -14,7 +14,7 @@ TabbedPane {
     Tab {
         id: courseListTab
         title: "Classes"
-        //imageSource: ""
+        imageSource: "asset:///images/coursesPageIcon.png"
         CourseListPage {
         }
     } // end of first Tab
@@ -22,7 +22,7 @@ TabbedPane {
     Tab {
         id: summaryTab
         title: "Summary"
-        //imageSource: ""
+        imageSource: "asset:///images/summaryPageIcon.png"
         SummaryPage {
         }
 
