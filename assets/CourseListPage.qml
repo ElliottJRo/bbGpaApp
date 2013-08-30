@@ -37,10 +37,10 @@ Page {
             }
         },
         ActionItem {
-            title: "Delete Class"
+            title: "Delete Class (broken)"
         },
         ActionItem {
-            title: "Sort"
+            title: "Sort (broken)"
         }
     ]
     attachedObjects: [
