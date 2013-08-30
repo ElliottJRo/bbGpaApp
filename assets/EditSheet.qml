@@ -118,7 +118,9 @@ Sheet {
                         id: markSlider
                         fromValue: 0.0
                         toValue: 100.0
-
+                        onImmediateValueChanged: {
+                            mark = immediateValue;
+                        }
                     }
                     Divider {
                         minHeight: 10.0
@@ -136,8 +138,10 @@ Sheet {
                     Slider {
                         id: creditsSlider
                         fromValue: 0
-                        toValue: 10
-
+                        toValue: 4
+                        onImmediateValueChanged: {
+                          creditsText.text = "Credits: " + Math.floor(creditsSlider.immediateValue)
+                        }
                     }
 
                 } // Text Area Container
