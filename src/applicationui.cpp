@@ -1,7 +1,7 @@
 // List with context menu project template
 #include "applicationui.hpp"
 #include "mylistmodel.hpp"
-//#include "drawingmodel.hpp"
+#include "recordmodel.hpp"
 
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
@@ -13,7 +13,7 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app)
 : QObject(app)
 {
     // register the MyListModel C++ type to be visible in QML
-//	qmlRegisterType<DrawingModel>("com.bbGpaApp.drawModel", 1, 0, "DrawingModel");
+	qmlRegisterType<RecordModel>("com.bbGpaApp.recordModel", 1, 0, "RecordModel");
     qmlRegisterType<MyListModel>("com.bbGpaApp.listModel", 1, 0, "MyListModel");
 
     // create scene document from main.qml asset

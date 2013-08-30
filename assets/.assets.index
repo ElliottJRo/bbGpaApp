@@ -1,5 +1,5 @@
 1
-45
+46
 CourseList.qml
 CourseListPage.qml
 CoursePage.qml
@@ -42,6 +42,7 @@ images/settings.png
 InfoPage.qml
 json/GPA.json
 json/mydata.json
+json/test.html
 main.qml
 SettingsPage.qml
 SummaryPage.qml
