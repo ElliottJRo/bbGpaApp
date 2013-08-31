@@ -15,7 +15,7 @@ ListView {
             StandardListItem {
                 title: ListItemData.text
                 description: "Test Name"
-                status: qsTr("Grade: ") + ListItemData.grade+" : "+ListItemData.mark + qsTr("% : Credits:") + ListItemData.status
+                status: qsTr("Grade: ") + ListItemData.grade+" : "+ListItemData.mark + qsTr("% : Credits:") + ListItemData.credits
                 imageSpaceReserved: false
             }
             

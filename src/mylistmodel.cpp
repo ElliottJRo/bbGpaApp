@@ -9,8 +9,9 @@ using namespace bb::cascades;
 MyListModel::MyListModel(QObject* parent)
 : bb::cascades::QVariantListDataModel()
 {
-  filePath="app/native/assets/json/mydata.json";
+	filePath="app/native/assets/json/mydata.json";
     qDebug() << "Creating MyListModel object:" << this;
+    calculateGpa433();
     setParent(parent);
 }
 
@@ -45,18 +46,22 @@ void MyListModel::load()
     }
     else {
         qDebug() << filePath << "JSON data loaded OK!";
+
         append(itemList);
     }
 }
 
 void MyListModel::saveNewItem(QString newData,float mark,float credits,int index, QString sem)
 {
+
+
+
     //Construct newEntry
     QVariantMap itemMap;
         itemMap["text"] = QVariant(newData);
         itemMap["mark"] = QVariant(mark);
         itemMap["grade"]= QVariant(markToGrade(mark));
-        itemMap["status"] = QVariant(floorf(credits));
+        itemMap["credits"] = QVariant(floorf(credits));
         itemMap["semester"] = QVariant(sem);
         itemMap["image"] = QVariant("asset:///images/picture1.png");
     QVariant newEntry=(QVariant)itemMap;
@@ -108,7 +113,7 @@ void MyListModel::deleteSelectedItems(const QVariantList selectionList)
     }
 
     if(!saveToFile()){
-      qDebug() << "Saving loading error";
+    	qDebug() << "Saving loading error";
     }
 }
 
@@ -137,6 +142,7 @@ bool MyListModel::saveToFile()
         return false;
     }
 
+
     return true;
 }
 
@@ -149,11 +155,11 @@ QVariant MyListModel::editSelectedItem(const QVariant olditem,QString newData,fl
 
     // Update the content.
     itemMap["text"] = QVariant(newData);
-    itemMap["mark"] = QVariant(mark);
-    itemMap["grade"]= QVariant(markToGrade(mark));
-    itemMap["semester"] = QVariant(sem);
-    itemMap["status"] = QVariant(floorf(credits));
-    itemMap["image"] = QVariant("asset:///images/picture1.png");
+	itemMap["mark"] = QVariant(mark);
+	itemMap["grade"]= QVariant(markToGrade(mark));
+	itemMap["credits"] = QVariant(floorf(credits));
+	itemMap["semester"] = QVariant(sem);
+	itemMap["image"] = QVariant("asset:///images/picture1.png");
 
     // And replace the item in both the model and the data list.
     itemList.replace(itemDataIndex, itemMap);
@@ -163,46 +169,57 @@ QVariant MyListModel::editSelectedItem(const QVariant olditem,QString newData,fl
     return itemMap;
 }
 
-QVariant MyListModel::calculateGpa433(){
-  QVariant result;
-  QVariantList gradeList,creditsList;
-
-  for(int i=0;i<itemList.size();i++){
-    gradeList.append((itemList[i].toMap())["grade"]);
-    creditsList.append((itemList[i].toMap())["status"]);
-  }
-
-  result=computeCGPA(0,0,gradeList,creditsList,itemList.size());
-
-  return result;
+double MyListModel::calculateGpa433()
+{
+	QVariantList gradeList,creditsList;
+	for(int i=0;i<itemList.size();i++){
+		gradeList.append((itemList[i].toMap())["grade"]);
+		creditsList.append((itemList[i].toMap())["credits"]);
+	}
+	cgpa=computeCGPA(0,0,gradeList,creditsList,itemList.size());
+	cgpa=floor(cgpa*100+0.5)/100;
+	qDebug()<<"gpa from list: "<<cgpa;
+	return cgpa;
 }
 
 
 QString MyListModel::markToGrade(float mark){
-  if(mark<50){
-    return "F";
-  }else if(mark<55){
-    return  "D";
-  }else if(mark<60){
-    return  "C-";
-  }else if(mark<65){
-    return  "C";
-  }else if(mark<70){
-    return  "C+";
-  }else if(mark<75){
-    return  "B-";
-  }else if(mark<80){
-    return  "B";
-  }else if(mark<85){
-    return  "B+";
-  }else if(mark<90){
-    return  "A-";
-  }else if(mark<95){
-    return  "A";
-  }else if(mark<=100){
-    return  "A+";
-  }else{
-    return "N/A";
-  }
+	if(mark<50){
+		return "F";
+	}else if(mark<55){
+		return	"D";
+	}else if(mark<60){
+		return	"C-";
+	}else if(mark<65){
+		return	"C";
+	}else if(mark<70){
+		return	"C+";
+	}else if(mark<75){
+		return	"B-";
+	}else if(mark<80){
+		return	"B";
+	}else if(mark<85){
+		return	"B+";
+	}else if(mark<90){
+		return	"A-";
+	}else if(mark<95){
+		return	"A";
+	}else if(mark<=100){
+		return	"A+";
+	}else{
+		return "N/A";
+	}
 }
 
+int MyListModel::totalUnits(){
+	int totalUnits=0,temp;
+    foreach(QVariant v,itemList){
+    	temp=v.toMap()["credits"].value<int>();
+    	totalUnits+=temp;
+    }
+    return totalUnits;
+}
+
+double MyListModel::cGPA(){
+	return cgpa;
+}

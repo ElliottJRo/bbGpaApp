@@ -55,9 +55,12 @@ public:
     //edit selected item
     Q_INVOKABLE QVariant editSelectedItem(const QVariant olditem,QString newData,float mark,float credits, QString sem);
 
-    Q_INVOKABLE QVariant calculateGpa433();
+    Q_INVOKABLE double calculateGpa433();
     //convert percentage to grade
     Q_INVOKABLE	QString markToGrade(float mark);
+
+    Q_INVOKABLE int totalUnits();
+    Q_INVOKABLE double cGPA();
 
 public:
     void deleteItemAtIndex(QVariantList indexPath);
@@ -65,6 +68,7 @@ public:
 
 public:
     MyListModel(QObject* parent = 0);
+    double cgpa;
     QString filePath;
     QVariantList itemList;
     virtual ~MyListModel();

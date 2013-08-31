@@ -1,6 +1,6 @@
 #include "gpaModel.h"
 
-float computeCGPA(float currentGpa, float unitsNumberPassed, QVariantList  grades , QVariantList courseUnits , int size){
+double computeCGPA(float currentGpa, float unitsNumberPassed, QVariantList  grades , QVariantList courseUnits , int size){
 	float totalUnits(0) , totalGradePoints(0) , termGPA(0) , cGPA(0);
 
 
@@ -15,7 +15,7 @@ float computeCGPA(float currentGpa, float unitsNumberPassed, QVariantList  grade
 
 }
 
-float computeGradePoints(QVariant c){
+double computeGradePoints(QVariant c){
 	float gradePoint(0) ;
 
 	if (c=="A+" || c=="a+"){

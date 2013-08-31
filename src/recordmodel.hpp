@@ -15,11 +15,20 @@
 class RecordModel: public bb::cascades::QVariantListDataModel {
 	Q_OBJECT
 public: Q_INVOKABLE bool load();
+		Q_INVOKABLE int totalUnits();
+		Q_INVOKABLE double cGPA();
+		Q_INVOKABLE bool saveNewRecord(QVariant time,QVariant GPA,QVariant credits);
+		Q_INVOKABLE void Debugger(QVariant a,QVariant b);
+
 public:
 	RecordModel(QObject* parent = 0);
 	QString filePath;
 	QVariantList itemList;
+	bool reload();
 	virtual ~RecordModel();
+protected:
+	bool saveToFile(QVariant newItem=0);
+
 };
 
 #endif /* RecordModel_HPP_ */

@@ -49,7 +49,7 @@ Page {
                 multiline: true
                 text:  "Semester: "+coursePage.item.semester
                 textStyle.base: SystemDefaults.TextStyles.TitleText
-            }
+           }
             Label {
                 id: courseMark
                 multiline: true
@@ -65,7 +65,7 @@ Page {
             Label {
                 id: courseCredits
                 multiline: true
-                text: "Credits:	"+coursePage.item.status
+                text: "Credits:	"+coursePage.item.credits
                 textStyle.base: SystemDefaults.TextStyles.TitleText
             }
         }
@@ -81,7 +81,7 @@ Page {
                 editSheet2.open();
                 editSheet2.courseText = item.text;
                 editSheet2.mark=item.mark;
-                editSheet2.credits=item.status;
+                editSheet2.credits=item.credits;
                 
 
             }

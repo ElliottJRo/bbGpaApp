@@ -3,7 +3,7 @@
         "text": "CMPT101",
         "grade": "A",
         "mark": 92,
-        "status": 3,
+        "credits": 3,
         "semester": 1,
         "image": "asset:///images/picture1.png"
     },
@@ -11,7 +11,7 @@
         "text": "CMPT102",
         "grade": "B",
         "mark": 77,
-        "status": 3,
+        "credits": 3,
         "semester": 1,
         "image": "asset:///images/picture1.png"
     },
@@ -19,7 +19,7 @@
         "text": "CMPT103",
         "grade": "C",
         "mark": 64,
-        "status": 4,
+        "credits": 4,
         "semester": 1,
         "image": "asset:///images/picture1.png"
     },
@@ -27,7 +27,7 @@
         "text": "CMPT104",
         "grade": "D",
         "mark": 60,
-        "status": 3,
+        "credits": 3,
         "semester": 1,
         "image": "asset:///images/picture1.png"
     },
@@ -35,7 +35,7 @@
         "text": "CMPT105",
         "grade": "F",
         "mark": 35,
-        "status": 2,
+        "credits": 2,
         "semester": 1,
         "image": "asset:///images/picture1.png"
     }

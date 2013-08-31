@@ -13,9 +13,10 @@ Sheet {
     property alias mark: markSlider.value
     property alias credits: creditsSlider.value
     property alias semester: semesterPicker.description
+    
 
     // A custom signal is triggered when the acceptAction is triggered.
-    signal saveCourseItem();
+    signal saveCourseItem()
     Page {
         id: addPage
         titleBar: TitleBar {
@@ -98,7 +99,7 @@ Sheet {
                         rootIndexPath: []
                         preferredRowCount: 3
                         dataModel: XmlDataModel {
-                            source: "asset:///xml/semesterList.xml"
+                        source: "asset:///xml/semesterList.xml"
                         }
                         pickerItemComponents: [
                             PickerItemComponent {
@@ -119,7 +120,6 @@ Sheet {
                         }
                     }
 
-                    
                     Divider {
                         minHeight: 10.
                     }

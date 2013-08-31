@@ -5,5 +5,5 @@
 using namespace std ;
 
 
-float computeGradePoints(QVariant c);
-float computeCGPA(float currentGpa, float unitsNumberPassed, QVariantList  grades , QVariantList courseUnits , int size) ;
+double computeGradePoints(QVariant c);
+double computeCGPA(float currentGpa, float unitsNumberPassed, QVariantList  grades , QVariantList courseUnits , int size) ;
