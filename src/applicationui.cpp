@@ -13,7 +13,7 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app)
 : QObject(app)
 {
     // register the MyListModel C++ type to be visible in QML
-	qmlRegisterType<RecordModel>("com.bbGpaApp.recordModel", 1, 0, "RecordModel");
+    qmlRegisterType<RecordModel>("com.bbGpaApp.recordModel", 1, 0, "RecordModel");
     qmlRegisterType<MyListModel>("com.bbGpaApp.listModel", 1, 0, "MyListModel");
 
     // create scene document from main.qml asset

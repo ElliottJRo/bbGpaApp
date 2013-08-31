@@ -2,7 +2,6 @@ import bb.cascades 1.0
 import com.bbGpaApp.listModel 1.0
 
 
-
 ListView {
     id: courseList
     dataModel: listModel 
@@ -15,13 +14,11 @@ ListView {
             // StandardListItem is a convivience component for lists with default cascades look and feel
             StandardListItem {
                 title: ListItemData.text
-                description: ListItemData.grade+"    "+ListItemData.mark
-                status: ListItemData.status
-                imageSource: ListItemData.image
-                onTouch: {
-
-                }
+                description: "Test Name"
+                status: qsTr("Grade: ") + ListItemData.grade+" : "+ListItemData.mark + qsTr("% : Credits:") + ListItemData.status
+                imageSpaceReserved: false
             }
+            
         }
     ]
     
@@ -86,6 +83,5 @@ ListView {
     }
     horizontalAlignment: HorizontalAlignment.Fill
     verticalAlignment: VerticalAlignment.Fill
-    
 
 }

@@ -8,13 +8,15 @@ device {
                  $$quote($$BASEDIR/src/coursedata/coursesettings.cpp) \
                  $$quote($$BASEDIR/src/gpaModel.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
-                 $$quote($$BASEDIR/src/mylistmodel.cpp)
+                 $$quote($$BASEDIR/src/mylistmodel.cpp) \
+                 $$quote($$BASEDIR/src/recordmodel.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
                  $$quote($$BASEDIR/src/coursedata/coursemodel.h) \
                  $$quote($$BASEDIR/src/coursedata/coursesettings.h) \
                  $$quote($$BASEDIR/src/gpaModel.h) \
-                 $$quote($$BASEDIR/src/mylistmodel.hpp)
+                 $$quote($$BASEDIR/src/mylistmodel.hpp) \
+                 $$quote($$BASEDIR/src/recordmodel.hpp)
     }
 
     CONFIG(debug, debug|release) {
@@ -23,13 +25,15 @@ device {
                  $$quote($$BASEDIR/src/coursedata/coursesettings.cpp) \
                  $$quote($$BASEDIR/src/gpaModel.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
-                 $$quote($$BASEDIR/src/mylistmodel.cpp)
+                 $$quote($$BASEDIR/src/mylistmodel.cpp) \
+                 $$quote($$BASEDIR/src/recordmodel.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
                  $$quote($$BASEDIR/src/coursedata/coursemodel.h) \
                  $$quote($$BASEDIR/src/coursedata/coursesettings.h) \
                  $$quote($$BASEDIR/src/gpaModel.h) \
-                 $$quote($$BASEDIR/src/mylistmodel.hpp)
+                 $$quote($$BASEDIR/src/mylistmodel.hpp) \
+                 $$quote($$BASEDIR/src/recordmodel.hpp)
     }
 }
 
@@ -40,13 +44,15 @@ simulator {
                  $$quote($$BASEDIR/src/coursedata/coursesettings.cpp) \
                  $$quote($$BASEDIR/src/gpaModel.cpp) \
                  $$quote($$BASEDIR/src/main.cpp) \
-                 $$quote($$BASEDIR/src/mylistmodel.cpp)
+                 $$quote($$BASEDIR/src/mylistmodel.cpp) \
+                 $$quote($$BASEDIR/src/recordmodel.cpp)
 
         HEADERS +=  $$quote($$BASEDIR/src/applicationui.hpp) \
                  $$quote($$BASEDIR/src/coursedata/coursemodel.h) \
                  $$quote($$BASEDIR/src/coursedata/coursesettings.h) \
                  $$quote($$BASEDIR/src/gpaModel.h) \
-                 $$quote($$BASEDIR/src/mylistmodel.hpp)
+                 $$quote($$BASEDIR/src/mylistmodel.hpp) \
+                 $$quote($$BASEDIR/src/recordmodel.hpp)
     }
 }
 
@@ -74,4 +80,6 @@ lupdate_inclusion {
              $$quote($$BASEDIR/../src/*.hxx)
 }
 
-TRANSLATIONS =  $$quote($${TARGET}.ts)
+TRANSLATIONS =  $$quote($${TARGET}_en.ts) \
+         $$quote($${TARGET}_ko.ts) \
+         $$quote($${TARGET}.ts)
