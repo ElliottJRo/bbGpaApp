@@ -99,7 +99,7 @@ Sheet {
                         rootIndexPath: []
                         preferredRowCount: 3
                         dataModel: XmlDataModel {
-                        source: "asset:///xml/semesterList.xml"
+                        	source: "asset:///xml/semesterList.xml"
                         }
                         pickerItemComponents: [
                             PickerItemComponent {
