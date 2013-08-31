@@ -12,10 +12,10 @@ Sheet {
     property alias profText: professorName.text
     property alias mark: markSlider.value
     property alias credits: creditsSlider.value
-    
+    property alias semester: semesterPicker.description
 
     // A custom signal is triggered when the acceptAction is triggered.
-    signal saveCourseItem()
+    signal saveCourseItem();
     Page {
         id: addPage
         titleBar: TitleBar {
@@ -91,6 +91,35 @@ Sheet {
                             base: editTextStyle.style
                         }
                     }
+                    Picker {
+                        id: semesterPicker
+                        title: "Semester"
+                        description: "0"
+                        rootIndexPath: []
+                        preferredRowCount: 3
+                        dataModel: XmlDataModel {
+                            source: "asset:///xml/semesterList.xml"
+                        }
+                        pickerItemComponents: [
+                            PickerItemComponent {
+                                type: "item2"
+                                
+                                content: Container {
+                                    Label {
+                                        text: pickerItemData.text
+                                        textStyle.fontSizeValue: 18.0
+                                    }
+                                }
+                            }
+                      ]
+                        onSelectedValueChanged: {
+                            var semesterValue = semesterPicker.selectedValue;
+                            semesterValue++;
+                            semesterPicker.description = semesterValue;
+                        }
+                    }
+
+                    
                     Divider {
                         minHeight: 10.
                     }

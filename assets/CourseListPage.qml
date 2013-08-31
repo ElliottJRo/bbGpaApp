@@ -30,6 +30,7 @@ Page {
                 addNew.open();
                 addNew.title = "Add Class";
                 //flush old data
+                addNew.semester = "0";
                 addNew.courseText = "";
                 addNew.profText = "";
                 addNew.mark = 0;
@@ -48,7 +49,7 @@ Page {
             // A sheet is used to add new items to the list, which is the same sheet used to edit items
             id: addNew
             onSaveCourseItem: {
-                listModel.saveNewItem(courseText,mark.toFixed(0),credits,0);
+                listModel.saveNewItem(courseText,mark.toFixed(0),credits,0,semester);
                 courseListIns.scrollToPosition(ScrollPosition.End, ScrollAnimation.Default);
                 courseListIns.scrollToPosition(ScrollPosition.Beginning, ScrollAnimation.Default);
             }

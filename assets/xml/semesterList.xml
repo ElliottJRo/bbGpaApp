@@ -1,0 +1,10 @@
+<model>
+  <column colspan="2">
+    <item2 text="Semester 1"/>
+    <item2 text="Semester 2"/>
+    <item2 text="Semester 3"/>
+    <item2 text="Semester 4"/>
+    <item2 text="Semester 5"/>
+    <item2 text="Semester 6"/>
+  </column>
+</model>

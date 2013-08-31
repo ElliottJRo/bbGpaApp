@@ -1,5 +1,5 @@
 1
-47
+48
 CourseList.qml
 CourseListPage.qml
 CoursePage.qml
@@ -47,3 +47,4 @@ json/mydata.json
 main.qml
 SettingsPage.qml
 SummaryPage.qml
+xml/semesterList.xml

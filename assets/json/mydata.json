@@ -4,6 +4,7 @@
         "grade": "A",
         "mark": 92,
         "status": 3,
+        "semester": 1,
         "image": "asset:///images/picture1.png"
     },
     {
@@ -11,6 +12,7 @@
         "grade": "B",
         "mark": 77,
         "status": 3,
+        "semester": 1,
         "image": "asset:///images/picture1.png"
     },
     {
@@ -18,6 +20,7 @@
         "grade": "C",
         "mark": 64,
         "status": 4,
+        "semester": 1,
         "image": "asset:///images/picture1.png"
     },
     {
@@ -25,6 +28,7 @@
         "grade": "D",
         "mark": 60,
         "status": 3,
+        "semester": 1,
         "image": "asset:///images/picture1.png"
     },
     {
@@ -32,6 +36,7 @@
         "grade": "F",
         "mark": 35,
         "status": 2,
+        "semester": 1,
         "image": "asset:///images/picture1.png"
     }
 ]

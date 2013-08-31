@@ -27,7 +27,7 @@ public:
      * @param file_name  file to load
      */
 
-    Q_INVOKABLE void saveNewItem(QString newData,float mark,float credits,int index);
+    Q_INVOKABLE void saveNewItem(QString newData,float mark,float credits,int index, QString sem);
 
     Q_INVOKABLE void load(const QString& file_name);
 
@@ -53,7 +53,7 @@ public:
     Q_INVOKABLE void deleteSelectedItems(const QVariantList selectionList);
 
     //edit selected item
-    Q_INVOKABLE QVariant editSelectedItem(const QVariant olditem,QString newData,float mark,float credits);
+    Q_INVOKABLE QVariant editSelectedItem(const QVariant olditem,QString newData,float mark,float credits, QString sem);
 
     Q_INVOKABLE QVariant calculateGpa433();
     //convert percentage to grade

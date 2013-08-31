@@ -45,6 +45,12 @@ Page {
                 textStyle.base: SystemDefaults.TextStyles.TitleText
             }
             Label {
+                id: semeserNum
+                multiline: true
+                text:  "Semester: "+coursePage.item.semester
+                textStyle.base: SystemDefaults.TextStyles.TitleText
+            }
+            Label {
                 id: courseMark
                 multiline: true
                 text: "Mark:	"+coursePage.item.mark
@@ -90,7 +96,7 @@ Page {
 
           onSaveCourseItem: {
               // Call the function to update the item data.
-              var tempItem=listModel.editSelectedItem(item,courseText,mark.toFixed(0),credits);
+              var tempItem=listModel.editSelectedItem(item,courseText,mark.toFixed(0),credits,semester);
 
               // Update the current item property data used in this Page to do this
               // one has to copy all values to 'tempItem'.
