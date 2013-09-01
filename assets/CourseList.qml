@@ -4,22 +4,25 @@ import com.bbGpaApp.listModel 1.0
 
 ListView {
     id: courseList
-    dataModel: listModel 
+    dataModel: listModel
     
     property int activeItem: -1
-    
+    property variant item
+
     listItemComponents: [
         // define delegates for different item types here
         ListItemComponent {
             // StandardListItem is a convivience component for lists with default cascades look and feel
             StandardListItem {
+                
                 title: ListItemData.text
-                description: "Test Name"
+                description: "Semester: " + ListItemData.semester
                 status: qsTr("Grade: ") + ListItemData.grade+" : "+ListItemData.mark + qsTr("% : Credits:") + ListItemData.credits
                 imageSpaceReserved: false
             }
             
         }
+        
     ]
     
     contextActions: [
@@ -30,9 +33,16 @@ ListView {
             ActionItem {
                 title: qsTr("Edit")
                 onTriggered: {
+                    var selectionList = courseList.selectionList();
+                    courseList.clearSelection();
+                    var chosenItem = dataModel.data(selectionList);
+                    courseList.item = chosenItem;
                     // define action handler here
-                    console.log("action triggered: " + title + " active item: " + courseList.activeItem)
-                    
+                    editFromCourseList.open();
+                    editFromCourseList.courseText = item.text;
+                    editFromCourseList.semester = item.semester;
+                    editFromCourseList.mark=item.mark;
+                    editFromCourseList.credits=item.credits;
                 }
             }
             DeleteActionItem {
@@ -72,6 +82,21 @@ ListView {
         //page.title = listModel.text;
         courseListNav.push(page);
     }
+    attachedObjects: [
+        EditSheet {
+            // an attached sheet to edit the course via courseList Page
+            id: editFromCourseList
+            title: qsTr("Edit") + Retranslate.onLanguageChanged
+            hintText: "Update course item description"
+            onSaveCourseItem: {
+                // Call the function to update the item data.
+                var tempItem=listModel.editSelectedItem(item,courseText,mark.toFixed(0),credits,semester);
+                
+                // Then copy all values back to 'coursePage.item'
+                courseList.item = tempItem
+            }
+        }
+    ]
 
     onCreationCompleted: {
         // this signal will be called when the qml page is created or loaded

@@ -1,6 +1,6 @@
 
 // List with a context menu project template
-import bb.cascades 1.2
+import bb.cascades 1.0
 import com.bbGpaApp.listModel 1.0
 import com.bbGpaApp.recordModel 1.0
 

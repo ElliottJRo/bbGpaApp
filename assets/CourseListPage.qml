@@ -36,12 +36,6 @@ Page {
                 addNew.mark = 0;
                 addNew.credits = 0;
             }
-        },
-        ActionItem {
-            title: "Delete Class (broken)"
-        },
-        ActionItem {
-            title: "Sort (broken)"
         }
     ]
     attachedObjects: [

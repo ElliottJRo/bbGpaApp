@@ -81,6 +81,7 @@ Page {
                 editSheet2.open();
                 editSheet2.courseText = item.text;
                 editSheet2.mark=item.mark;
+                editSheet2.semester=item.semester;
                 editSheet2.credits=item.credits;
                 
 
