@@ -33,8 +33,14 @@ bool RecordModel::load(){
 	    }
 	    else {
 	        qDebug() << filePath << "JSON data loaded OK!";
+
 	        itemList=record["data"].value<QVariantList>();
-	        append(itemList);
+
+	        QListIterator<QVariant> i(itemList);
+	        i.toBack();
+	        while (i.hasPrevious())
+	        	templist.append(i.previous());
+	        append(templist);
 //	        foreach (QVariant v, itemList)
 //	        {
 //	          qDebug() << "String Value: " << v.toMap()["recordTime"] << "\n";
@@ -54,13 +60,20 @@ RecordModel::~RecordModel() {
 }
 
 int RecordModel::totalUnits(){
-	QVariant v= itemList[0].toMap()["credits"];
+	QVariant v;
+	if(!itemList.isEmpty()){
+		v= (itemList.last()).toMap()["credits"];
+	}
+
 	qDebug()<<"credits from json: "<<v.value<int>();
 	return v.value<int>();
 }
 
 double RecordModel::cGPA(){
-	double v= itemList[0].toMap()["gpa"].value<double>();
+	double v;
+	if(!itemList.isEmpty()){
+		v= (itemList.last()).toMap()["gpa"].value<double>();
+	}
 	//keep 2 digits after decimal point
 	v=floor(v*100+0.5)/100;
 	qDebug()<<"gpa from json: "<<v;
@@ -77,7 +90,7 @@ bool RecordModel::saveNewRecord(QVariant time,QVariant GPA,QVariant credits){
 
 bool RecordModel::saveToFile(QVariant newItem){
 	if(newItem!=0){
-		itemList.insert(0,newItem);
+		itemList.append(newItem);
 	}
 	QVariantMap newRecord;
 	newRecord["label"]= "CGPA";
@@ -95,6 +108,34 @@ bool RecordModel::saveToFile(QVariant newItem){
 		 qDebug()<<v["recordTime"]<<v["credits"]<<v["gpa"];
 		 return true;
 	 }
+}
+
+bool RecordModel::deleteSelectedItems(const QVariantList selectionList){
+    if (selectionList.at(0).canConvert<QVariantList>()) {
+        for (int i = selectionList.count() - 1; i >= 0; i--) {
+
+            // Get the item at the index path of position i in the selection list.
+            QVariantList indexPath = selectionList.at(i).toList();
+            deleteItemAtIndex(indexPath);
+        }
+    } else {
+        deleteItemAtIndex(selectionList);
+    }
+
+	return saveToFile();
+}
+
+void RecordModel::deleteItemAtIndex(QVariantList indexPath){
+	QVariant modelItem = data(indexPath);
+
+	    // Two indices are needed: the index of the item in the data list and
+	    // the index of the item in the current model.
+	    int itemDataIndex = itemList.indexOf(modelItem);
+	    //int itemIndex = indexPath.last().toInt();
+
+	    // Remove the item from the data list and from the current data model items.
+	    itemList.removeAt(itemDataIndex);
+	    //removeAt(itemIndex);
 }
 
 //void RecordModel::openJsonFile(){

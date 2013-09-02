@@ -7,6 +7,8 @@ import bb.cascades 1.0
 //    property alias title: graphBar.title
     Page{
         //id: graphPage
+        
+        property alias webview : webViewScrollable
         titleBar: TitleBar {
             id: graphBar
             title: qsTr("GPA Curve")+Retranslate.onLanguageChanged

@@ -19,6 +19,7 @@ public: Q_INVOKABLE bool load();
 		Q_INVOKABLE double cGPA();
 		Q_INVOKABLE bool saveNewRecord(QVariant time,QVariant GPA,QVariant credits);
 		Q_INVOKABLE void Debugger(QVariant a,QVariant b);
+		Q_INVOKABLE bool deleteSelectedItems(const QVariantList selectionList);
 
 public:
 	RecordModel(QObject* parent = 0);
@@ -28,6 +29,7 @@ public:
 	virtual ~RecordModel();
 protected:
 	bool saveToFile(QVariant newItem=0);
+	void deleteItemAtIndex(QVariantList indexPath);
 
 };
 

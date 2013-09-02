@@ -10,6 +10,7 @@ NavigationPane {
     Page {
         id: summaryPage
         property variant gpa;
+        property variant newGraphPage;
         
         titleBar: TitleBar {
             id: titleBar
@@ -42,9 +43,9 @@ NavigationPane {
                 onClicked: {
 //                    gpaResult.text = listModel.calculateGpa433().toFixed(2);
                     summaryPage.gpa= listModel.calculateGpa433();
-//                    var  a=listModel.totalUnits()!=gpaRecord.totalUnits()
-//                    var  b=listModel.cGPA()!=gpaRecord.cGPA()
-//                    gpaRecord.Debugger(a,b);
+                    var  a=listModel.totalUnits()!=gpaRecord.totalUnits()
+                    var  b=listModel.cGPA()!=gpaRecord.cGPA()
+                    gpaRecord.Debugger(a,b);
                     if(listModel.totalUnits()!=gpaRecord.totalUnits() || listModel.cGPA()!=gpaRecord.cGPA()){
                     	saveStatus.text=" New Record Saved!"+summaryPage.gpa
                         gpaRecord.saveNewRecord(2013,listModel.cGPA(),listModel.totalUnits());
@@ -58,48 +59,29 @@ NavigationPane {
                 textStyle.color: Color.Cyan
                 horizontalAlignment: HorizontalAlignment.Center
             }
-            ListView {
-
-                dataModel: RecordModel {
-                    id: gpaRecord
-                }
-                preferredHeight: 600
-                listItemComponents: [
-                    // define delegates for different item types here
-                    ListItemComponent {
-                        // StandardListItem is a convivience component for lists with default cascades look and feel
-                        StandardListItem {
-                            title: ListItemData.recordTime
-                            status: qsTr("GPA: ") + ListItemData.gpa.toFixed(2)+" : " + qsTr(" : Credits:") + ListItemData.credits
-//                            status: ListItemData.status
-//                            imageSource: ListItemData.image
-//                            onTouch: {
-//                            
-//                            }
-                        }
-                    }
-                ]
-                verticalAlignment: VerticalAlignment.Bottom
-                horizontalAlignment: HorizontalAlignment.Center
-                topMargin: 0.0
-            }
+            RecordList {
+                
+           }
         }
         
         actions: [
             ActionItem {
                 title: "Graph"
                 onTriggered:{
-//                    gpaCurve.open();
-					var  page=graphPage.createObject()
-                    summaryNavi.push(page)
+
+                    summaryPage.newGraphPage.webview.reload()
+                    summaryNavi.push(summaryPage.newGraphPage)
                 }
             }
         
         ]
+        onCreationCompleted: {
+            summaryPage.newGraphPage=graphPage.createObject()
+        }
         attachedObjects: [
-            GraphPage {
-                id: gpaCurve
-            },
+        	RecordModel {
+        		id: gpaRecord
+        	},
             ComponentDefinition {
                 // A Component definition of the Page used to display more details on the Course item.
                 id: graphPage
