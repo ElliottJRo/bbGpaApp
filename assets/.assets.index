@@ -1,5 +1,5 @@
 1
-48
+50
 CourseList.qml
 CourseListPage.qml
 CoursePage.qml
@@ -36,6 +36,8 @@ html/flot/PLUGINS.md
 html/flot/README.md
 html/GPAGraph.html
 images/coursesPageIcon.png
+images/ic_add.png
+images/ic_edit.png
 images/info.png
 images/picture1.png
 images/picture2.png

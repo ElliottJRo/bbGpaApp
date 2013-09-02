@@ -32,6 +32,7 @@ ListView {
             subtitle: qsTr("Set of the useful things to do ...")
             ActionItem {
                 title: qsTr("Edit")
+                imageSource: "asset:///images/ic_edit.png"
                 onTriggered: {
                     var selectionList = courseList.selectionList();
                     courseList.clearSelection();

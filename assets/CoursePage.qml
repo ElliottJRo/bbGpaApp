@@ -74,7 +74,7 @@ Page {
     actions: [
         ActionItem {
             title: qsTr("Edit") + Retranslate.onLanguageChanged
-//            imageSource: "asset:///images/edit.png"
+            imageSource: "asset:///images/ic_edit.png"
             ActionBar.placement: ActionBarPlacement.OnBar
 
             onTriggered: {

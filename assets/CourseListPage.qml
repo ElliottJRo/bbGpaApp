@@ -25,7 +25,7 @@ Page {
         ActionItem {
             // An ActionItem for adding more items to the list
             title: qsTr("Add Class") + Retranslate.onLanguageChanged
-//            imageSource: "asset:///images/add.png"
+            imageSource: "asset:///images/ic_add.png"
             onTriggered: {
                 addNew.open();
                 addNew.title = "Add Class";
