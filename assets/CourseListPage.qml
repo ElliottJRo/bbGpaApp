@@ -30,7 +30,7 @@ Page {
                 addNew.open();
                 addNew.title = "Add Class";
                 //flush old data
-                addNew.semester = "0";
+                addNew.semester = "1";
                 addNew.courseText = "";
                 addNew.profText = "";
                 addNew.mark = 0;
