@@ -121,7 +121,7 @@ Sheet {
                     }
 
                     Divider {
-                        minHeight: 10.
+                        minHeight: 10
                     }
                     TextField {
                         id: markText
@@ -152,7 +152,7 @@ Sheet {
                         }
                     }
                     Divider {
-                        minHeight: 10.0
+                        minHeight: 10
                     }
                     TextField {
                         id: creditsText

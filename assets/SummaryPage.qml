@@ -48,7 +48,7 @@ NavigationPane {
                     gpaRecord.Debugger(a,b);
                     if(listModel.totalUnits()!=gpaRecord.totalUnits() || listModel.cGPA()!=gpaRecord.cGPA()){
                     	saveStatus.text=" New Record Saved!"+summaryPage.gpa
-                        gpaRecord.saveNewRecord(2013,listModel.cGPA(),listModel.totalUnits());
+                        gpaRecord.saveNewRecord(Qt.formatDate(new Date(),"yyyy/MM/dd"),listModel.cGPA(),listModel.totalUnits());
                     }
                 }
                 horizontalAlignment: HorizontalAlignment.Center
@@ -58,6 +58,15 @@ NavigationPane {
                 textStyle.fontSize: FontSize.XXLarge
                 textStyle.color: Color.Cyan
                 horizontalAlignment: HorizontalAlignment.Center
+            }
+            Label {
+                text: Qt.formatDate(new Date(),"yyyy/MM/dd")
+            }
+            Label {
+                text:qsTr("	  	  GPA		Credits		   Time")
+            }
+            Divider {
+                
             }
             RecordList {
                 

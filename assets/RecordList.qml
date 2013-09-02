@@ -11,8 +11,8 @@ ListView {
         ListItemComponent {
             // StandardListItem is a convivience component for lists with default cascades look and feel
             StandardListItem {
-                title: ListItemData.recordTime
-                status: qsTr("GPA: ") + ListItemData.gpa.toFixed(2)+" : " + qsTr(" : Credits:") + ListItemData.credits
+                status: ListItemData.recordTime
+                title: (ListItem.indexPath[0]+1)+qsTr(".		") + ListItemData.gpa.toFixed(2)+ qsTr("		") + ListItemData.credits
                 
             }
         }
