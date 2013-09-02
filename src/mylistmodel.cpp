@@ -169,17 +169,23 @@ QVariant MyListModel::editSelectedItem(const QVariant olditem,QString newData,fl
     return itemMap;
 }
 
-double MyListModel::calculateGpa433()
+QVariant MyListModel::calculateGpa433()
 {
-	QVariantList gradeList,creditsList;
-	for(int i=0;i<itemList.size();i++){
-		gradeList.append((itemList[i].toMap())["grade"]);
-		creditsList.append((itemList[i].toMap())["credits"]);
+	qDebug()<<itemList.size();
+	if(itemList.size()!=0){
+		QVariantList gradeList,creditsList;
+		for(int i=0;i<itemList.size();i++){
+				gradeList.append((itemList[i].toMap())["grade"]);
+				creditsList.append((itemList[i].toMap())["credits"]);
+			}
+			cgpa=computeCGPA(0,0,gradeList,creditsList,itemList.size());
+			cgpa=floor(cgpa*100+0.5)/100;
+			qDebug()<<"gpa from list: "<<cgpa;
+			return cgpa;
+	}else{
+		cgpa=-1;
+		return "No Course found!";
 	}
-	cgpa=computeCGPA(0,0,gradeList,creditsList,itemList.size());
-	cgpa=floor(cgpa*100+0.5)/100;
-	qDebug()<<"gpa from list: "<<cgpa;
-	return cgpa;
 }
 
 

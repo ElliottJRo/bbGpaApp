@@ -29,7 +29,7 @@ NavigationPane {
             }
             Label {
                 id: gpaResult
-                text: summaryPage.gpa.toFixed(2);
+                text: summaryPage.gpa;
                 verticalAlignment: VerticalAlignment.Top
                 horizontalAlignment: HorizontalAlignment.Center
                 textStyle.fontSizeValue: 10.0
@@ -43,11 +43,11 @@ NavigationPane {
                 onClicked: {
 //                    gpaResult.text = listModel.calculateGpa433().toFixed(2);
                     summaryPage.gpa= listModel.calculateGpa433();
-                    var  a=listModel.totalUnits()!=gpaRecord.totalUnits()
-                    var  b=listModel.cGPA()!=gpaRecord.cGPA()
-                    gpaRecord.Debugger(a,b);
-                    if(listModel.totalUnits()!=gpaRecord.totalUnits() || listModel.cGPA()!=gpaRecord.cGPA()){
-                    	saveStatus.text=" New Record Saved!"+summaryPage.gpa
+//                    var  a=listModel.totalUnits()!=gpaRecord.totalUnits()
+//                    var  b=listModel.cGPA()!=gpaRecord.cGPA()
+//                    gpaRecord.Debugger(a,b);
+                    if((listModel.cGPA()>0)&&(listModel.totalUnits()!=gpaRecord.totalUnits() || listModel.cGPA()!=gpaRecord.cGPA())){
+                    	saveStatus.text=" New Record Saved!"
                         gpaRecord.saveNewRecord(Qt.formatDate(new Date(),"yyyy/MM/dd"),listModel.cGPA(),listModel.totalUnits());
                     }
                 }
@@ -59,9 +59,9 @@ NavigationPane {
                 textStyle.color: Color.Cyan
                 horizontalAlignment: HorizontalAlignment.Center
             }
-            Label {
-                text: Qt.formatDate(new Date(),"yyyy/MM/dd")
-            }
+//            Label {
+//                text: Qt.formatDate(new Date(),"yyyy/MM/dd")
+//            }
             Label {
                 text:qsTr("	  	  GPA		Credits		   Time")
             }

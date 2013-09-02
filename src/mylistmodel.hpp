@@ -55,7 +55,7 @@ public:
     //edit selected item
     Q_INVOKABLE QVariant editSelectedItem(const QVariant olditem,QString newData,float mark,float credits, QString sem);
 
-    Q_INVOKABLE double calculateGpa433();
+    Q_INVOKABLE QVariant calculateGpa433();
     //convert percentage to grade
     Q_INVOKABLE	QString markToGrade(float mark);
 
