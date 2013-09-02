@@ -30,22 +30,24 @@ ListView {
             // put context menu actions here
             title: qsTr("Course actions")
             subtitle: qsTr("Set of the useful things to do ...")
-            ActionItem {
-                title: qsTr("Edit")
-                imageSource: "asset:///images/ic_edit.png"
-                onTriggered: {
-                    var selectionList = courseList.selectionList();
-                    courseList.clearSelection();
-                    var chosenItem = dataModel.data(selectionList);
-                    courseList.item = chosenItem;
-                    // define action handler here
-                    editFromCourseList.open();
-                    editFromCourseList.courseText = item.text;
-                    editFromCourseList.semester = item.semester;
-                    editFromCourseList.mark=item.mark;
-                    editFromCourseList.credits=item.credits;
-                }
-            }
+            
+            //Got rid of edit from course list because its not working atm
+//            ActionItem {
+//                title: qsTr("Edit")
+//                imageSource: "asset:///images/ic_edit.png"
+//                onTriggered: {
+//                    var selectionList = courseList.selectionList();
+//                    courseList.clearSelection();
+//                    var chosenItem = dataModel.data(selectionList);
+//                    courseList.item = chosenItem;
+//                    // define action handler here
+//                    editFromCourseList.open();
+//                    editFromCourseList.courseText = item.text;
+//                    editFromCourseList.semester = item.semester;
+//                    editFromCourseList.mark=item.mark;
+//                    editFromCourseList.credits=item.credits;
+//                }
+//            }
             DeleteActionItem {
                 title: qsTr("Delete") + Retranslate.onLanguageChanged
                 
