@@ -53,7 +53,7 @@ Page {
             verticalAlignment: VerticalAlignment.Bottom
             imageSource: "asset:///images/settings.png"
             preferredWidth: 600
-            translationY: -10.0
+            translationY: -25.0
         }
         }
 }

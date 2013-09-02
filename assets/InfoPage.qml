@@ -1,11 +1,12 @@
 import bb.cascades 1.0
 
 Page {
+    titleBar: TitleBar {
+        title: "Information"
+    }
     Container {
         id: infoContainer
-        Header {
-            title: "Information"
-        }
+        topPadding: 10
         TextArea {
                 text: "Credits:"
 
@@ -53,7 +54,7 @@ Page {
             verticalAlignment: VerticalAlignment.Bottom
             imageSource: "asset:///images/info.png"
             preferredWidth: 600
-            translationY: 70.0
+            translationY: 470.0
         }
         
         
