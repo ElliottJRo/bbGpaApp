@@ -1,26 +1,49 @@
 import bb.cascades 1.0
 
 Page {
-    Container {
+   		titleBar: TitleBar {
+         	title: "Settings"
+        }
+    content: Container {
+            
         
         Header {
-            title: "Settings"
+            title: "Features"
         }
-        layout: DockLayout {
-        }
-        Label{
-            text: "Graph"
-            translationY: 80.0
-            textStyle.fontSize: FontSize.XXLarge
-            translationX: 20.0
-        }
-        ToggleButton {
-            id: graphButton
-            translationY: 90.0
-            onCheckedChanged: {
+        ListView {
+            layout: FlowListLayout {
             }
-            translationX: 470.0
+            topPadding: -70
+            dataModel: XmlDataModel {
+                source: "asset:///items.xml"
+            }
+        listItemComponents: [
+            
+            ListItemComponent {
+                type: "header"
+                
+                ToggleButton {
+                    id: graphButton
+                    translationY: 105.0
+                    onCheckedChanged: {
+                    }
+                    
+                    translationX: 540.0
+                    checked: true
+                }
+            },
+            ListItemComponent {
+                type: "listitem"
+                StandardListItem {
+                    imageSource: "asset:///images/graphIcon.gif"
+                    title: ListItemData.title
+                    
+                }
+            }
+        ]
         }
+        
+        
     
 
         Button {
@@ -32,7 +55,6 @@ Page {
             preferredWidth: 600
             translationY: -10.0
         }
-
         }
-    }
+}
 

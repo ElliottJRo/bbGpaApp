@@ -18,52 +18,53 @@ NavigationPane {
             title: "Summary"
         }
         Container {
-            
+            topPadding: 20
             layout: StackLayout {
 
             }
-            Label {
-                text: "Your CGPA is:"
-                verticalAlignment: VerticalAlignment.Top
-                horizontalAlignment: HorizontalAlignment.Left
-            }
-            Label {
-                id: gpaResult
-                text: summaryPage.gpa;
-                verticalAlignment: VerticalAlignment.Top
-                horizontalAlignment: HorizontalAlignment.Center
-                textStyle.fontSizeValue: 10.0
-            
-            }
-            Label {
-                id:saveStatus
-            }
             Button {
-                text: qsTr("Press Here")
+                text: qsTr("Calculate CGPA")
                 onClicked: {
-//                    gpaResult.text = listModel.calculateGpa433().toFixed(2);
+                    //                    gpaResult.text = listModel.calculateGpa433().toFixed(2);
                     summaryPage.gpa= listModel.calculateGpa433();
-//                    var  a=listModel.totalUnits()!=gpaRecord.totalUnits()
-//                    var  b=listModel.cGPA()!=gpaRecord.cGPA()
-//                    gpaRecord.Debugger(a,b);
+                    //                    var  a=listModel.totalUnits()!=gpaRecord.totalUnits()
+                    //                    var  b=listModel.cGPA()!=gpaRecord.cGPA()
+                    //                    gpaRecord.Debugger(a,b);
                     if((listModel.cGPA()>0)&&(listModel.totalUnits()!=gpaRecord.totalUnits() || listModel.cGPA()!=gpaRecord.cGPA())){
-                    	saveStatus.text=" New Record Saved!"
+                        saveStatus.text=" New Record Saved! "
                         gpaRecord.saveNewRecord(Qt.formatDate(new Date(),"yyyy/MM/dd"),listModel.cGPA(),listModel.totalUnits());
                     }
                 }
                 horizontalAlignment: HorizontalAlignment.Center
             }
             Label {
+                text: "  Your CGPA is: " +summaryPage.gpa
+                verticalAlignment: VerticalAlignment.Top
+                horizontalAlignment: HorizontalAlignment.Left
+            }
+            /*Label {
+                id: gpaResult
+                text: summaryPage.gpa;
+                verticalAlignment: VerticalAlignment.Top
+                horizontalAlignment: HorizontalAlignment.Center
+                textStyle.fontSizeValue: 10.0
+            
+            }*/
+            Label {
+                id:saveStatus
+            }
+            
+            Label {
                 text: "History"
                 textStyle.fontSize: FontSize.XXLarge
-                textStyle.color: Color.Cyan
+                textStyle.color: Color.Blue
                 horizontalAlignment: HorizontalAlignment.Center
             }
 //            Label {
 //                text: Qt.formatDate(new Date(),"yyyy/MM/dd")
 //            }
             Label {
-                text:qsTr("	  	  GPA		Credits		   Time")
+                text:qsTr("\t  Date\t\t\t\tGPA\t        Credits    ")
             }
             Divider {
                 

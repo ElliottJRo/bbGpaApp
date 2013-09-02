@@ -11,7 +11,7 @@ import bb.cascades 1.0
         property alias webview : webViewScrollable
         titleBar: TitleBar {
             id: graphBar
-            title: qsTr("GPA Curve")+Retranslate.onLanguageChanged
+            title: qsTr("Graph")+Retranslate.onLanguageChanged
             visibility: ChromeVisibility.Visible
         }
         Container {
@@ -28,7 +28,7 @@ import bb.cascades 1.0
                     background: Color.LightGray
                     
                     Label {
-                        text: "Heelpo"
+                        text: " Improvement Graph"
                     }
                     
                     WebView {
