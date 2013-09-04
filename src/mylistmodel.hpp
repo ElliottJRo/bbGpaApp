@@ -11,6 +11,7 @@
 #include <QVariant>
 #include <QMetaType>
 #include <bb/cascades/QListDataModel>
+#include <bb/cascades/Page>
 
 #include "gpaModel.h"
 
@@ -61,6 +62,9 @@ public:
 
     Q_INVOKABLE int totalUnits();
     Q_INVOKABLE double cGPA();
+
+    //reset the parent of page
+    Q_INVOKABLE void resetParent(QObject* page);
 
 public:
     void deleteItemAtIndex(QVariantList indexPath);

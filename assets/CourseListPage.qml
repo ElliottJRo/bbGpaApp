@@ -4,6 +4,8 @@ import com.bbGpaApp.listModel 1.0
 
 NavigationPane {
     id: courseListNav
+    
+    property alias navigator:courseListNav
 Page {
     id: courseListPage
     titleBar: TitleBar {

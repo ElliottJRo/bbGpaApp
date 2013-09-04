@@ -229,3 +229,8 @@ int MyListModel::totalUnits(){
 double MyListModel::cGPA(){
 	return cgpa;
 }
+
+void MyListModel::resetParent(QObject* page){
+	page->setParent(0);
+//	page->removeAllActions();
+}

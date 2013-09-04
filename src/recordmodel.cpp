@@ -138,6 +138,7 @@ void RecordModel::deleteItemAtIndex(QVariantList indexPath){
 	    //removeAt(itemIndex);
 }
 
+
 //void RecordModel::openJsonFile(){
 //    bb::system::InvokeManager invokeManager;
 //    bb::system::InvokeRequest request;

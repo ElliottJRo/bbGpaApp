@@ -7,6 +7,7 @@ import com.bbGpaApp.recordModel 1.0
 NavigationPane {
     id: summaryNavi
     
+    property alias navigator:summaryNavi
     Page {
         id: summaryPage
         property variant gpa;
