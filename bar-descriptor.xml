@@ -30,7 +30,6 @@
 
     <!-- The name that is displayed in the BlackBerry 10 application installer. 
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
-    <name>bbGpaApp</name>
     
     <!-- A string value of the format <0-999>.<0-999>.<0-999> that represents application version which can be used to check for application upgrade. 
          Values can also be 1-part or 2-part. It is not necessary to have a 3-part value.
@@ -46,18 +45,19 @@
 
     <!-- Description, displayed in the BlackBerry 10 application installer.
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
-    <description>The bbGpaApp application</description>
 
     <!-- Copyright information. Optional. -->
     <!-- <copyright></copyright> -->
 
     <!--  Name of author which is used for signing. Must match the developer name of your development certificate. -->
     <author>Example Inc.</author>
+    <description>A simple Gpa calculator to keep track of your grades.</description>
+    <name>My Gpa</name>
     <splashScreens>
-       <image>splash.png</image>
+       <image>splash.jpg</image>
     </splashScreens>
     <icon>
-       <image>icon.png</image>
+       <image>icon.jpg</image>
     </icon>
     <configuration name="Device-Release">
        <entryPointType>Qnx/Cascades</entryPointType>
@@ -96,8 +96,8 @@
     <asset path="translations" dest="qm">
         <include name="*.qm"/>
     </asset>
-    <asset path="icon.png">icon.png</asset>
-    <asset path="splash.png">splash.png</asset>
+    <asset path="assets/images/splash.jpg">splash.jpg</asset>
+    <asset path="assets/images/icon.jpg">icon.jpg</asset>
     
     <!-- Request permission to execute native code.  Required for native applications. -->
     <permission system="true">run_native</permission>
