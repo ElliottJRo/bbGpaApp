@@ -10,8 +10,6 @@ TabbedPane {
     sidebarState: SidebarState.VisibleCompact
     
     property variant infoPageIns;
-//    property variant infoPageIns4SummaryPage;
-//    property variant settingsPageIns4CourseListPage;
     property variant settingsPageIns;
     
     Tab {
@@ -20,12 +18,6 @@ TabbedPane {
         imageSource: "asset:///images/coursesPageIcon.png"
         CourseListPage {
             id: courseListPageIns
-            onPopTransitionEnded: {
-                listModel.resetParent(infoPageIns)
-                listModel.resetParent(settingsPageIns)
-//                infoPageIns.removeAllActions ();
-//                settingsPageIns.removeAllActions();
-            }
         }
     } // end of first Tab
     
@@ -35,52 +27,34 @@ TabbedPane {
         imageSource: "asset:///images/summaryPageIcon.png"
         SummaryPage {
             id: summaryPageIns
-            onPopTransitionEnded: {
-                listModel.resetParent(infoPageIns)
-                listModel.resetParent(settingsPageIns)
-//                infoPageIns.removeAllActions();
-//                settingsPageIns.removeAllActions ();
-            }
         }
     
     } // end of second Tab
     Menu.definition: MenuDefinition {
         settingsAction: SettingsActionItem {
-            //imageSource: "asset:///images/settings.png"
             onTriggered: {
-                if(activeTab==courseListTab){
-                    courseListPageIns.push(settingsPageIns);
-                }else{
-                    summaryPageIns.push(settingsPageIns);
-                }
+                console.log("tab is " + tabbedPane.activeTab);
+                settingsPg.open();
             }
-        
         }
         actions: [
             ActionItem {
                 title: "Info"
                 imageSource: "asset:///images/info.png"
                 onTriggered: {
-                    if (activeTab==courseListTab){
-                        courseListPageIns.push(infoPageIns);
-                    }else{
-                        summaryPageIns.push(infoPageIns);
-                    }
+                    console.log("tab is " + tabbedPane.activeTab);
+                    infoPg.open();
                 }
             }
         ]
     }
     
     attachedObjects: [
-        ComponentDefinition {
-            // A Component definition of the Page used to display more details on the Course item.
-            id: infoPage
-            source: "InfoPage.qml"
+        InfoPage {
+            id: infoPg
         },
-        ComponentDefinition {
-            // A Component definition of the Page used to display more details on the Course item.
-            id: settingsPage
-            source: "SettingsPage.qml"
+        SettingsPage {
+            id: settingsPg
         },
         MyListModel {
             id: listModel

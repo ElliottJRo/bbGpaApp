@@ -1,5 +1,5 @@
 1
-53
+54
 CourseList.qml
 CourseListPage.qml
 CoursePage.qml
@@ -39,6 +39,7 @@ images/coursesPageIcon.png
 images/graphIcon.gif
 images/icon.jpg
 images/ic_add.png
+images/ic_down.png
 images/ic_edit.png
 images/info.png
 images/settings.png
