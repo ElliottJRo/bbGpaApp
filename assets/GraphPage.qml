@@ -1,58 +1,70 @@
 import bb.cascades 1.0
-//import com.bbGpaApp.drawModel 1.0
+import bb.cascades.advertisement 1.0
 
 //Sheet {
 //    id: graphSheet
 //    
 //    property alias title: graphBar.title
-    Page{
-        //id: graphPage
+Page{
+    //id: graphPage
+    
+    property alias webview : webViewScrollable
+    titleBar: TitleBar {
+        id: graphBar
+        title: qsTr("Graph")+Retranslate.onLanguageChanged
+        visibility: ChromeVisibility.Visible
+    }
+    Container {
         
-        property alias webview : webViewScrollable
-        titleBar: TitleBar {
-            id: graphBar
-            title: qsTr("Graph")+Retranslate.onLanguageChanged
-            visibility: ChromeVisibility.Visible
-        }
-        Container {
+        ScrollView {
+            id: scrollView
+            scrollViewProperties {
+                scrollMode: ScrollMode.Both
+                pinchToZoomEnabled: true
+            }
+            layoutProperties: StackLayoutProperties { spaceQuota: 1.0 }
             
-            ScrollView {
-                id: scrollView
-                scrollViewProperties {
-                    scrollMode: ScrollMode.Both
-                    pinchToZoomEnabled: true
-                }
-                layoutProperties: StackLayoutProperties { spaceQuota: 1.0 }
+            Container {
+                background: Color.LightGray
                 
-                Container {
-                    background: Color.LightGray
+                Label {
+                    text: " Improvement Graph"
+                }
+                
+                WebView {
+                    id: webViewScrollable
+                    url: "local:///assets/html/GPAGraph.html"
                     
-                    Label {
-                        text: " Improvement Graph"
+                    onMinContentScaleChanged: {
+                        scrollView.scrollViewProperties.minContentScale = minContentScale;
                     }
                     
-                    WebView {
-                        id: webViewScrollable
-                        url: "local:///assets/html/GPAGraph.html"
-                        
-                        onMinContentScaleChanged: {
-                            scrollView.scrollViewProperties.minContentScale = minContentScale;
-                        }
-                        
-                        onMaxContentScaleChanged: {
-                            scrollView.scrollViewProperties.maxContentScale = maxContentScale;
-                        }
+                    onMaxContentScaleChanged: {
+                        scrollView.scrollViewProperties.maxContentScale = maxContentScale;
                     }
                 }
             }
-            
-        }    
-        
-//        attachedObjects: [
-//            DrawingModel{
-//                id:dModel
-//            }
-//        ]
-    }
+        }
+        Banner {
+            id:ad
+            zoneId: 117145//217188	
+            refreshRate: 60
+            preferredWidth: 300		
+            preferredHeight: 50
+            transitionsEnabled: true
+            //                placeHolderURL: "asset:///placeholder_728x90.png"
+            backgroundColor: Color.Transparent
+            borderColor: Color.Blue
+            borderWidth: 2
+            horizontalAlignment: HorizontalAlignment.Center
+        }
+    }//end of container    
+    
+    //        attachedObjects: [
+    //            DrawingModel{
+    //                id:dModel
+    //            }
+    //        ]
+}
 
 //}

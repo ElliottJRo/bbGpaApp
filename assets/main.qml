@@ -1,6 +1,7 @@
 // Default empty project template
 import bb.cascades 1.0
 import com.bbGpaApp.listModel 1.0
+import bb.cascades.advertisement 1.0
 
 // creates one page with a label
 TabbedPane {
@@ -18,6 +19,7 @@ TabbedPane {
         imageSource: "asset:///images/coursesPageIcon.png"
         CourseListPage {
             id: courseListPageIns
+            listModel: listModel
         }
     } // end of first Tab
     
@@ -27,9 +29,20 @@ TabbedPane {
         imageSource: "asset:///images/summaryPageIcon.png"
         SummaryPage {
             id: summaryPageIns
+            listModel: listModel
         }
     
     } // end of second Tab
+    Tab {
+        id:graphTab
+        title: "Graph"
+        imageSource: "asset:///images/graphIcon.gif"
+        GraphPage {
+            onCreationCompleted: {
+                webview.reload()
+            }
+        }
+    }
     Menu.definition: MenuDefinition {
         settingsAction: SettingsActionItem {
             onTriggered: {

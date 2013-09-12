@@ -5,7 +5,7 @@ ListView {
     id: recordList
     
     dataModel: gpaRecord
-    preferredHeight: 600
+    
     listItemComponents: [
         // define delegates for different item types here
         ListItemComponent {

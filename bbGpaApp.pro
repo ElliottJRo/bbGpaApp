@@ -5,6 +5,7 @@ LIBS   += -lbbdata
 LIBS += -lbbplatformbbm
 LIBS += -lbbsystem
 LIBS += -lbb
+LIBS += -lbbcascadesadvertisement
 
 
 include(config.pri)

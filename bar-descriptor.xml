@@ -36,7 +36,7 @@
          An updated version of application must have a versionNumber value higher than the previous version. Required. -->
     <versionNumber>1.0.2</versionNumber>
     <packageLocale>en-CA</packageLocale>
-    <buildId>1</buildId>
+    <buildId>2</buildId>
 
     <!-- Fourth digit segment of the package version. First three segments are taken from the 
          <versionNumber> element.  Must be an integer from 0 to 2^16-1 -->
@@ -51,7 +51,7 @@
     <!-- <copyright></copyright> -->
 
     <!--  Name of author which is used for signing. Must match the developer name of your development certificate. -->
-    <author>Elliott</author>
+    <author>A. Khorasi, D. Khakwani, E. Ro, Q. Maknojia, R. Zheng, S. Chowdhury</author>
     <authorId>gYAAgLIcgrx4s6kFaXCHoN05dAM</authorId>
     <description>A simple Gpa calculator to keep track of your grades.</description>
     <name>My Gpa</name>
@@ -103,6 +103,8 @@
     
     <!-- Request permission to execute native code.  Required for native applications. -->
     <permission system="true">run_native</permission>
+    <permission>read_device_identifying_information</permission>
+    <permission>access_location_services</permission>
     <env var="LD_LIBRARY_PATH" value="app/native/lib:/usr/lib/qt4/lib"/>
 
 </qnx>

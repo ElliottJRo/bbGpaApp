@@ -6,6 +6,7 @@
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/AbstractPane>
+#include <bb/cascades/advertisement/Banner>
 
 using namespace bb::cascades;
 
@@ -15,6 +16,9 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app)
     // register the MyListModel C++ type to be visible in QML
     qmlRegisterType<RecordModel>("com.bbGpaApp.recordModel", 1, 0, "RecordModel");
     qmlRegisterType<MyListModel>("com.bbGpaApp.listModel", 1, 0, "MyListModel");
+	qmlRegisterType<bb::cascades::advertisement::Banner>(
+	   "bb.cascades.advertisement", 1, 0, "Banner");
+
 
     // create scene document from main.qml asset
     // set parent to created document to ensure it exists for the whole application lifetime
