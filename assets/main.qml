@@ -16,7 +16,7 @@ TabbedPane {
     Tab {
         id: courseListTab
         title: "Classes"
-        imageSource: "asset:///images/coursesPageIcon.png"
+        imageSource: "asset:///images/ic_courseTab.png"
         CourseListPage {
             id: courseListPageIns
             listModel: listModel
@@ -26,7 +26,7 @@ TabbedPane {
     Tab {
         id: summaryTab
         title: "Summary"
-        imageSource: "asset:///images/summaryPageIcon.png"
+        imageSource: "asset:///images/ic_summaryTab.png"
         SummaryPage {
             id: summaryPageIns
             listModel: listModel
@@ -36,7 +36,7 @@ TabbedPane {
     Tab {
         id:graphTab
         title: "Graph"
-        imageSource: "asset:///images/graphIcon.gif"
+        imageSource: "asset:///images/ic_graph.png"
         GraphPage {
             onCreationCompleted: {
                 webview.reload()
@@ -53,7 +53,7 @@ TabbedPane {
         actions: [
             ActionItem {
                 title: "Info"
-                imageSource: "asset:///images/info.png"
+                imageSource: "asset:///images/ic_info.png"
                 onTriggered: {
                     console.log("tab is " + tabbedPane.activeTab);
                     infoPg.open();

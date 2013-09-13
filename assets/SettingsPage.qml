@@ -37,7 +37,7 @@ Sheet {
                     ListItemComponent {
                         type: "listitem"
                         StandardListItem {
-                            imageSource: "asset:///images/graphIcon.gif"
+                            imageSource: "asset:///images/ic_graph.png"
                             title: ListItemData.title
                         
                         }
