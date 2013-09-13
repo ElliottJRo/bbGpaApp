@@ -12,6 +12,7 @@ MyListModel::MyListModel(QObject* parent)
 	filePath="app/native/assets/json/mydata.json";
     qDebug() << "Creating MyListModel object:" << this;
     calculateGpa433();
+    isCourseListEmpty();
     setParent(parent);
 }
 
@@ -233,4 +234,14 @@ double MyListModel::cGPA(){
 void MyListModel::resetParent(QObject* page){
 	page->setParent(0);
 //	page->removeAllActions();
+}
+
+bool MyListModel::isCourseListEmpty() {
+  if(itemList.size()!=0) {
+    qDebug() << "isCourseListEmpty: list is not empty";
+    return false;
+  } else {
+    qDebug() << "isCourseListEmpty: list is empty";
+    return true;
+  }
 }

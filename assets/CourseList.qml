@@ -56,7 +56,16 @@ ListView {
                     var selectionList = courseList.selectionList();
                     courseList.clearSelection();
                     listModel.deleteSelectedItems(selectionList);
+                    
+                    if(listModel.isCourseListEmpty()) {
+                        courseListIns.visible = false;
+                        emptyCourseListContainer.visible = true;
+                    } else {
+                        courseListIns.visible = true;
+                        emptyCourseListContainer.visible = false;
+                    }
                 }
+                
             }
         }
     ]

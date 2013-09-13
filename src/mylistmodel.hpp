@@ -60,6 +60,9 @@ public:
     //convert percentage to grade
     Q_INVOKABLE	QString markToGrade(float mark);
 
+    // returns true of course list is empty
+    Q_INVOKABLE bool isCourseListEmpty();
+
     Q_INVOKABLE int totalUnits();
     Q_INVOKABLE double cGPA();
 

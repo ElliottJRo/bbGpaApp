@@ -61,14 +61,13 @@ NavigationPane {
             Label {
                 text: "History"
                 textStyle.fontSize: FontSize.XXLarge
-                textStyle.color: Color.Blue
                 horizontalAlignment: HorizontalAlignment.Center
             }
 //            Label {
 //                text: Qt.formatDate(new Date(),"yyyy/MM/dd")
 //            }
             Label {
-                text:qsTr("\t  Date\t\t\t\tGPA\t        Credits    ")
+                text:qsTr("  Entry \tGPA\t\tCredits\t\t\tDate")
             }
             Divider {
                 

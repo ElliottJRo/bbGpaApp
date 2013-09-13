@@ -91,12 +91,6 @@ TabbedPane {
         // enable layout to adapt to the device rotation
         // don't forget to enable screen rotation in bar-bescriptor.xml (Application->Orientation->Auto-orient)
         OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.All;
-        
-        //initialize the instance of info page and settings page
-        infoPageIns = infoPage.createObject();
-//        infoPageIns4SummaryPage = infoPage.createObject();
-//        settingsPageIns4CourseListPage = settingsPage.createObject();
-        settingsPageIns = settingsPage.createObject();
     
     }
 }// end of TabbedPane
