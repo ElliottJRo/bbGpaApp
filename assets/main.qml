@@ -38,9 +38,10 @@ TabbedPane {
         title: qsTr("Graph") + Retranslate.onLanguageChanged
         imageSource: "asset:///images/ic_graph.png"
         GraphPage {
-            onCreationCompleted: {
-                webview.reload()
-            }
+            id:gp
+        }
+        onTriggered: {
+            gp.webview.reload();
         }
     }
     Menu.definition: MenuDefinition {

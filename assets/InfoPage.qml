@@ -7,45 +7,54 @@ Sheet {
         }
         actionBarVisibility: ChromeVisibility.Overlay
         Container {
+            layout: StackLayout {
+                
+            }
             id: infoContainer
             topPadding: 10
             TextArea {
                 text: qsTr("Credits:") + Retranslate.onLanguageChanged
-
+                
                 editable: false
-                    scrollMode: TextAreaScrollMode.Stiff
-                    textStyle.fontSize: FontSize.Large
-                    textStyle.fontStyle: FontStyle.Italic
-                    textStyle.textAlign: TextAlign.Justify
+                scrollMode: TextAreaScrollMode.Stiff
+                textStyle.fontSize: FontSize.Large
+                textStyle.fontStyle: FontStyle.Italic
+                textStyle.textAlign: TextAlign.Justify
                 translationY: -30.0
             }
-                TextArea {
-                    text: "Aaqib Khorasi\nDanish Khakwani\nElliott Ro\nRui Zheng\nSunny Chowdhury\nQaim Maknojia"
-    
-                    editable: false
-                    scrollMode: TextAreaScrollMode.Stiff
-                    textStyle.fontSize: FontSize.XXSmall
-                    textStyle.fontStyle: FontStyle.Italic
-                    textStyle.textAlign: TextAlign.Justify
+            TextArea {
+                text: "Aaqib Khorasi\nDanish Khakwani\nElliott Ro\nRui Zheng\nSunny Chowdhury\nQaim Maknojia"
+                
+                editable: false
+                scrollMode: TextAreaScrollMode.Stiff
+                textStyle.fontSize: FontSize.XXSmall
+                textStyle.fontStyle: FontStyle.Italic
+                textStyle.textAlign: TextAlign.Justify
                 translationY: -80.0
                 translationX: 20.0
             }
-            
-            Button{
-                text: qsTr("Email") + Retranslate.onLanguageChanged
-                preferredWidth: 200
-                translationY: -70.0
+            Button {
+                text: qsTr("Privacy Policy")+ Retranslate.onLanguageChanged
                 horizontalAlignment: HorizontalAlignment.Center
                 onClicked: {
-                emailInvocation.query.uri = "mailto:sfugpaapp@gmail.com"
-                emailInvocation.query.updateQuery();
+                	privacyPageIns.open();
                 }
             }
-              Label {
-                  text: "<html>sfugpaapp@gmail.com</html>"
-                  horizontalAlignment: HorizontalAlignment.Center
-                  textStyle.fontSize: FontSize.XLarge
-                  translationY: -90.0
+            Button{
+                text: qsTr("Email") + Retranslate.onLanguageChanged
+                //preferredWidth: 200
+                //translationY: -70.0
+                horizontalAlignment: HorizontalAlignment.Center
+                onClicked: {
+                    emailInvocation.query.uri = "mailto:sfugpaapp@gmail.com"
+                    emailInvocation.query.updateQuery();
+                }
+            }
+            Label {
+                text: "<html>sfugpaapp@gmail.com</html>"
+                horizontalAlignment: HorizontalAlignment.Center
+                textStyle.fontSize: FontSize.XLarge
+                //translationY: -90.0
             }
         }
         actions: [
@@ -65,9 +74,13 @@ Sheet {
                 query.invokeTargetId: "sys.pim.uib.email.hybridcomposer"
                 query.invokeActionId: "bb.action.SENDEMAIL"
                 onArmed: {
-                    emailInvocation.trigger(emailInvocation.query.invokeActionId);
+                    emailInvocation.trigger(emailInvocation.query.invokeActionId)
                 }
+            },
+            PrivacyPage {
+                id: privacyPageIns
             }
-        ]    	
-    }
+        ]    
+    }	
+
 }

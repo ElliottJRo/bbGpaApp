@@ -33,14 +33,6 @@ Sheet {
                             translationX: 540.0
                             checked: true
                         }
-                    },
-                    ListItemComponent {
-                        type: "listitem"
-                        StandardListItem {
-                            imageSource: "asset:///images/ic_graph.png"
-                            title: ListItemData.title
-                        
-                        }
                     }
                 ]
             }

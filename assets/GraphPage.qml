@@ -9,7 +9,9 @@ Page{
         visibility: ChromeVisibility.Visible
     }
     Container {
-        
+        layout: DockLayout {
+            
+        }
         ScrollView {
             id: scrollView
             scrollViewProperties {
@@ -45,12 +47,13 @@ Page{
             refreshRate: 60
             preferredWidth: 300		
             preferredHeight: 50
-            transitionsEnabled: true
+            //transitionsEnabled: true
             //                placeHolderURL: "asset:///placeholder_728x90.png"
             backgroundColor: Color.Transparent
             borderColor: Color.Blue
             borderWidth: 2
             horizontalAlignment: HorizontalAlignment.Center
+            verticalAlignment: VerticalAlignment.Bottom
         }
     }//end of container
 }
