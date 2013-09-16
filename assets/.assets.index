@@ -1,5 +1,5 @@
 1
-54
+55
 CourseList.qml
 CourseListPage.qml
 CoursePage.qml
@@ -50,6 +50,7 @@ items.xml
 json/GPA.json
 json/mydata.json
 main.qml
+PrivacyPage.qml
 RecordList.qml
 SettingsPage.qml
 SummaryPage.qml
