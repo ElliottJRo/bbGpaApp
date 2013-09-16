@@ -3,16 +3,16 @@ Sheet {
     id: insideInfo
     Page {
         titleBar: TitleBar {
-            title: "Information"
+            title: qsTr("Information") + Retranslate.onLanguageChanged
         }
         actionBarVisibility: ChromeVisibility.Overlay
         Container {
             id: infoContainer
             topPadding: 10
             TextArea {
-                    text: "Credits:"
-    
-                    editable: false
+                text: qsTr("Credits:") + Retranslate.onLanguageChanged
+
+                editable: false
                     scrollMode: TextAreaScrollMode.Stiff
                     textStyle.fontSize: FontSize.Large
                     textStyle.fontStyle: FontStyle.Italic
@@ -20,7 +20,7 @@ Sheet {
                 translationY: -30.0
             }
                 TextArea {
-                    text: "Aaqib Khorasi\nDanish Khakwani\nElliot Ro\nRui Zheng\nSunny Chowdhury\nQaim Maknojia"
+                    text: "Aaqib Khorasi\nDanish Khakwani\nElliott Ro\nRui Zheng\nSunny Chowdhury\nQaim Maknojia"
     
                     editable: false
                     scrollMode: TextAreaScrollMode.Stiff
@@ -32,31 +32,30 @@ Sheet {
             }
             
             Button{
-                    text: "Email"
-                    preferredWidth: 200
-                    translationY: -70.0
-                    horizontalAlignment: HorizontalAlignment.Center
-                    onClicked: {
-                    emailInvocation.query.uri = "mailto:sfugpaapp@gmail.com"
-                    emailInvocation.query.updateQuery();
+                text: qsTr("Email") + Retranslate.onLanguageChanged
+                preferredWidth: 200
+                translationY: -70.0
+                horizontalAlignment: HorizontalAlignment.Center
+                onClicked: {
+                emailInvocation.query.uri = "mailto:sfugpaapp@gmail.com"
+                emailInvocation.query.updateQuery();
                 }
             }
-                Label {
-                    text: "<html>sfugpaapp@gmail.com</html>"
-                    horizontalAlignment: HorizontalAlignment.Center
-                    textStyle.fontSize: FontSize.XLarge
-                    translationY: -90.0
+              Label {
+                  text: "<html>sfugpaapp@gmail.com</html>"
+                  horizontalAlignment: HorizontalAlignment.Center
+                  textStyle.fontSize: FontSize.XLarge
+                  translationY: -90.0
             }
         }
         actions: [
             ActionItem {
-                title: "Close"
+                title: qsTr("Close") + Retranslate.onLanguageChanged
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {
                     insideInfo.close();
                 }
                 imageSource: "asset:///images/ic_down.png"
-            
             }
         ]
         attachedObjects:[

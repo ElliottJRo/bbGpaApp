@@ -94,7 +94,7 @@ Sheet {
                     }
                     Picker {
                         id: semesterPicker
-                        title: "Semester"
+                        title: qsTr("Semester") + Retranslate.onLanguageChanged
                         description: "0"
                         rootIndexPath: []
                         preferredRowCount: 3
@@ -127,7 +127,7 @@ Sheet {
                         id: markText
                         inputMode: TextFieldInputMode.Text
                         enabled: false
-                        text: "Mark:" + Math.floor(mark)
+                        text: qsTr("Mark:") + Retranslate.onLanguageChanged + Math.floor(mark)
                         horizontalAlignment: HorizontalAlignment.Center
                         leftPadding: 50.0
                         rightPadding: 50.0
@@ -137,7 +137,7 @@ Sheet {
                         id: gradeText
                         inputMode: TextFieldInputMode.Text
                         enabled: false
-                        text: "Grade:"+tempModel.markToGrade(mark)
+                        text: qsTr("Grade:") + Retranslate.onLanguageChanged + tempModel.markToGrade(mark)
                         horizontalAlignment: HorizontalAlignment.Center
                         leftPadding: 50.0
                         rightPadding: 50.0
@@ -158,7 +158,7 @@ Sheet {
                         id: creditsText
                         inputMode: TextFieldInputMode.Text
                         enabled: false
-                        text: "Credits:	" + Math.floor(creditsSlider.value)
+                        text: qsTr("Credits:  ") + Retranslate.onLanguageChanged + Math.floor(creditsSlider.value)
                         horizontalAlignment: HorizontalAlignment.Center
                         leftPadding: 50
                         rightPadding: 50
@@ -169,7 +169,7 @@ Sheet {
                         fromValue: 0
                         toValue: 4
                         onImmediateValueChanged: {
-                          creditsText.text = "Credits: " + Math.floor(creditsSlider.immediateValue)
+                            creditsText.text = qsTr("Credits: ") + Retranslate.onLanguageChanged + Math.floor(creditsSlider.immediateValue)
                         }
                     }
 

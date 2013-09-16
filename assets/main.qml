@@ -15,7 +15,7 @@ TabbedPane {
     
     Tab {
         id: courseListTab
-        title: "Classes"
+        title: qsTr("Classes") + Retranslate.onLanguageChanged
         imageSource: "asset:///images/ic_courseTab.png"
         CourseListPage {
             id: courseListPageIns
@@ -25,7 +25,7 @@ TabbedPane {
     
     Tab {
         id: summaryTab
-        title: "Summary"
+        title: qsTr("Summary") + Retranslate.onLanguageChanged
         imageSource: "asset:///images/ic_summaryTab.png"
         SummaryPage {
             id: summaryPageIns
@@ -35,7 +35,7 @@ TabbedPane {
     } // end of second Tab
     Tab {
         id:graphTab
-        title: "Graph"
+        title: qsTr("Graph") + Retranslate.onLanguageChanged
         imageSource: "asset:///images/ic_graph.png"
         GraphPage {
             onCreationCompleted: {
@@ -52,7 +52,7 @@ TabbedPane {
         }
         actions: [
             ActionItem {
-                title: "Info"
+                title: qsTr("Info") + Retranslate.onLanguageChanged
                 imageSource: "asset:///images/ic_info.png"
                 onTriggered: {
                     console.log("tab is " + tabbedPane.activeTab);

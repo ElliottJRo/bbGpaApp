@@ -41,31 +41,31 @@ Page {
             Label {
                 id: courseName
                 multiline: true
-                text:  "Course:	"+coursePage.item.text
+                text:  qsTr("Course: ") + Retranslate.onLanguageChanged + coursePage.item.text
                 textStyle.base: SystemDefaults.TextStyles.TitleText
             }
             Label {
                 id: semeserNum
                 multiline: true
-                text:  "Semester: "+coursePage.item.semester
+                text:  qsTr("Semester: ") + Retranslate.onLanguageChanged + coursePage.item.semester
                 textStyle.base: SystemDefaults.TextStyles.TitleText
            }
             Label {
                 id: courseMark
                 multiline: true
-                text: "Mark:	"+coursePage.item.mark
+                text: qsTr("Mark:  ") + Retranslate.onLanguageChanged + coursePage.item.mark
                 textStyle.base: SystemDefaults.TextStyles.TitleText
             }
             Label {
                 id: courseGrade
                 multiline: true
-                text: "Grade:	"+coursePage.item.grade
+                text: qsTr("Grade:  ") + Retranslate.onLanguageChanged + coursePage.item.grade
                 textStyle.base: SystemDefaults.TextStyles.TitleText
             }
             Label {
                 id: courseCredits
                 multiline: true
-                text: "Credits:	"+coursePage.item.credits
+                text: qsTr("Credits:  ") + Retranslate.onLanguageChanged + coursePage.item.credits
                 textStyle.base: SystemDefaults.TextStyles.TitleText
             }
         }
@@ -83,7 +83,6 @@ Page {
                 editSheet2.mark=item.mark;
                 editSheet2.semester=item.semester;
                 editSheet2.credits=item.credits;
-                
 
             }
         }
@@ -97,16 +96,7 @@ Page {
 
           onSaveCourseItem: {
               // Call the function to update the item data.
-              var tempItem=listModel.editSelectedItem(item,courseText,mark.toFixed(0),credits,semester);
-
-              // Update the current item property data used in this Page to do this
-              // one has to copy all values to 'tempItem'.
-//              var tempItem = coursePage.item
-//              // Update the item property
-//              tempItem.title = courseText
-//              tempItem.description=mark.toFixed(0)+"    "+listModel.markToGrade(mark);
-//              tempItem.status=credits.toFixed(0)
-              // Then copy all values back to 'coursePage.item'
+              var tempItem = listModel.editSelectedItem(item,courseText,mark.toFixed(0),credits,semester);
               coursePage.item = tempItem
           }
       }

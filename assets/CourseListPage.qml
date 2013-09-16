@@ -37,7 +37,7 @@ NavigationPane {
                 verticalAlignment: VerticalAlignment.Center
                 horizontalAlignment: HorizontalAlignment.Center
                 Label {
-                    text: qsTr("Course list is empty\n\t Why not add a course?")
+                    text: qsTr("Course list is empty\n\t Why not add a course?") + Retranslate.onLanguageChanged
                     multiline: true
                     textStyle.textAlign: TextAlign.Center
                     textStyle.fontSize: FontSize.XLarge
@@ -48,7 +48,7 @@ NavigationPane {
                     defaultImageSource: "asset:///images/ic_add.png"
                     onClicked: {
                         addNew.open();
-                        addNew.title = "Add Class";
+                        addNew.title = qsTr("Add Class") + Retranslate.onLanguageChanged;
                         //flush old data
                         addNew.semester = "1";
                         addNew.courseText = "";
@@ -86,7 +86,7 @@ NavigationPane {
                 imageSource: "asset:///images/ic_add.png"
                 onTriggered: {
                     addNew.open();
-                    addNew.title = "Add Class";
+                    addNew.title = qsTr("Add Class") + Retranslate.onLanguageChanged;
                     //flush old data
                     addNew.semester = "1";
                     addNew.courseText = "";

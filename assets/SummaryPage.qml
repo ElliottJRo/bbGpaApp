@@ -18,7 +18,7 @@ NavigationPane {
         titleBar: TitleBar {
             id: titleBar
             visibility: ChromeVisibility.Visible
-            title: "Summary"
+            title: qsTr("Summary") + Retranslate.onLanguageChanged
         }
         Container {
             id: summaryContainer
@@ -27,7 +27,7 @@ NavigationPane {
 
             }
             Button {
-                text: qsTr("Calculate CGPA")
+                text: qsTr("Calculate") + Retranslate.onLanguageChanged + " CGPA"
                 onClicked: {
                     //                    gpaResult.text = listModel.calculateGpa433().toFixed(2);
                     summaryPage.gpa= listModel.calculateGpa433();
@@ -35,14 +35,14 @@ NavigationPane {
                     //                    var  b=listModel.cGPA()!=gpaRecord.cGPA()
                     //                    gpaRecord.Debugger(a,b);
                     if((listModel.cGPA()>0)&&(listModel.totalUnits()!=gpaRecord.totalUnits() || listModel.cGPA()!=gpaRecord.cGPA())){
-                        saveStatus.text=" New Record Saved! "
+                        saveStatus.text= qsTr(" New Record Saved! ") + Retranslate.onLanguageChanged
                         gpaRecord.saveNewRecord(Qt.formatDate(new Date(),"yyyy/MM/dd"),listModel.cGPA(),listModel.totalUnits());
                     }
                 }
                 horizontalAlignment: HorizontalAlignment.Center
             }
             Label {
-                text: "  Your CGPA is: " +summaryPage.gpa
+                text: "  " + qsTr("Your CGPA is") + Retranslate.onLanguageChanged + ": " +summaryPage.gpa
                 verticalAlignment: VerticalAlignment.Top
                 horizontalAlignment: HorizontalAlignment.Left
             }
@@ -59,7 +59,7 @@ NavigationPane {
             }
             
             Label {
-                text: "History"
+                text: qsTr("History") + Retranslate.onLanguageChanged
                 textStyle.fontSize: FontSize.XXLarge
                 horizontalAlignment: HorizontalAlignment.Center
             }
@@ -92,7 +92,7 @@ NavigationPane {
         
         actions: [
             ActionItem {
-                title: "Graph"
+                title: qsTr("Graph") + Retranslate.onLanguageChanged
                 onTriggered:{
 
                     summaryPage.newGraphPage.webview.reload()

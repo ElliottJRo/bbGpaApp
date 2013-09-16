@@ -3,14 +3,14 @@ Sheet {
     id: insideSettings
     Page {
         titleBar: TitleBar {
-            title: "Settings"
+            title: qsTr("Settings") + Retranslate.onLanguageChanged
         }
         actionBarVisibility: ChromeVisibility.Overlay
         
         Container {        
             Header {
                 id: header
-                title: "Features"
+                title: qsTr("Features") + Retranslate.onLanguageChanged
             }
             ListView {
                 layout: FlowListLayout {
@@ -47,7 +47,7 @@ Sheet {
         }
         actions: [
             ActionItem {
-                title: "Close"
+                title: qsTr("Close") + Retranslate.onLanguageChanged
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {
                     insideSettings.close();

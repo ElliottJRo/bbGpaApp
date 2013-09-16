@@ -1,13 +1,7 @@
 import bb.cascades 1.0
 import bb.cascades.advertisement 1.0
 
-//Sheet {
-//    id: graphSheet
-//    
-//    property alias title: graphBar.title
 Page{
-    //id: graphPage
-    
     property alias webview : webViewScrollable
     titleBar: TitleBar {
         id: graphBar
@@ -28,7 +22,7 @@ Page{
                 background: Color.LightGray
                 
                 Label {
-                    text: " Improvement Graph"
+                    text: qsTr(" Improvement Graph") + Retranslate.onLanguageChanged
                 }
                 
                 WebView {
@@ -58,13 +52,5 @@ Page{
             borderWidth: 2
             horizontalAlignment: HorizontalAlignment.Center
         }
-    }//end of container    
-    
-    //        attachedObjects: [
-    //            DrawingModel{
-    //                id:dModel
-    //            }
-    //        ]
+    }//end of container
 }
-
-//}

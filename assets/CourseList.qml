@@ -16,8 +16,8 @@ ListView {
             StandardListItem {
                 
                 title: ListItemData.text
-                description: "Semester: " + ListItemData.semester
-                status: qsTr("Grade: ") + ListItemData.grade+" : "+ListItemData.mark + qsTr("% : Credits:") + ListItemData.credits
+                description: qsTr("Semester") + Retranslate.onLanguageChanged+ ": " + ListItemData.semester
+                status: qsTr("Grade")+ Retranslate.onLanguageChanged + ": " + ListItemData.grade+" : "+ListItemData.mark +"% : "+ qsTr("Credits") + Retranslate.onLanguageChanged + ":" + ListItemData.credits
                 imageSpaceReserved: false
             }
             
@@ -28,8 +28,8 @@ ListView {
     contextActions: [
         ActionSet {
             // put context menu actions here
-            title: qsTr("Course actions")
-            subtitle: qsTr("Set of the useful things to do ...")
+            title: qsTr("Course actions") + Retranslate.onLanguageChanged
+            subtitle: qsTr("Set of the useful things to do ...") + Retranslate.onLanguageChanged
             
             //Got rid of edit from course list because its not working atm
 //            ActionItem {
