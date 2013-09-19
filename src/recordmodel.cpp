@@ -104,8 +104,10 @@ bool RecordModel::saveToFile(QVariant newItem){
 		    }
 	 else{
 		 reload();
-		 QVariantMap v=itemList[0].toMap();
-		 qDebug()<<v["recordTime"]<<v["credits"]<<v["gpa"];
+		 if(itemList.size()>0){
+			 QVariantMap v=itemList[0].toMap();
+			 qDebug()<<v["recordTime"]<<v["credits"]<<v["gpa"];
+		 }
 		 return true;
 	 }
 }
