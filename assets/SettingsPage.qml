@@ -1,13 +1,14 @@
 import bb.cascades 1.0
+import com.bbGpaApp.coursedata 1.0
+
 Sheet {
-    id: insideSettings
     Page {
         titleBar: TitleBar {
             title: qsTr("Settings") + Retranslate.onLanguageChanged
         }
         actionBarVisibility: ChromeVisibility.Overlay
         
-        Container {        
+        Container {
             Header {
                 id: header
                 title: qsTr("Features") + Retranslate.onLanguageChanged
@@ -17,7 +18,7 @@ Sheet {
                 }
                 topPadding: -70
                 dataModel: XmlDataModel {
-                    source: "asset:///items.xml"
+                    source: "asset:///xml/items.xml"
                 }
                 listItemComponents: [
                     
@@ -27,11 +28,12 @@ Sheet {
                         ToggleButton {
                             id: graphChecker
                             translationY: 105.0
-                            onCheckedChanged: {
-                            }
-                            
                             translationX: 540.0
-                            checked: true
+                            checked: Qt.settings.isGraphEnabled
+                            onCheckedChanged: {
+                                Qt.settings.isGraphEnabled = graphChecker.checked;
+                                console.log("SettingsPage:  isGraphEnabled =", Qt.settings.isGraphEnabled)
+                            }
                         }
                     }
                 ]
@@ -42,7 +44,7 @@ Sheet {
                 title: qsTr("Close") + Retranslate.onLanguageChanged
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {
-                    insideSettings.close();
+                    settingsPg.close();
                 }
                 imageSource: "asset:///images/ic_down.png"
             

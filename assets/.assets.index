@@ -46,7 +46,6 @@ images/ic_settings.png
 images/ic_summaryTab.png
 images/splash.jpg
 InfoPage.qml
-items.xml
 json/GPA.json
 json/mydata.json
 main.qml
@@ -54,4 +53,5 @@ PrivacyPage.qml
 RecordList.qml
 SettingsPage.qml
 SummaryPage.qml
+xml/items.xml
 xml/semesterList.xml

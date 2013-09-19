@@ -19,18 +19,11 @@ CourseSettings::CourseSettings(QObject *parent) :
         QObject(parent)
 {
     // If no value has been saved, return the default value.
-    if (mSettings.value("postToBBM").isNull()) {
-        mPostToBBM = false;
+    if (mSettings.value("isGraphEnabled").isNull()) {
+        mIsGraphEnabled = true;
     } else {
         // Otherwise, set the value stored in the settings object.
-        mPostToBBM = mSettings.value("postToBBM").toBool();
-    }
-
-    if (mSettings.value("connectToBBM").isNull()) {
-        mConnectToBBM = true;
-    } else {
-        // Otherwise, set the value stored in the settings object.
-        mConnectToBBM = mSettings.value("connectToBBM").toBool();
+        mIsGraphEnabled = mSettings.value("isGraphEnabled").toBool();
     }
 
 }
@@ -40,33 +33,18 @@ CourseSettings::~CourseSettings()
 
 }
 
-void CourseSettings::setPostToBBM(bool postToBBM)
+void CourseSettings::setIsGraphEnabled(bool isGraphEnabled)
 {
-    if (postToBBM != mPostToBBM) {
+    if (isGraphEnabled != mIsGraphEnabled) {
         // Update the application settings then update and emit the change.
-        mSettings.setValue("postToBBM", QVariant(postToBBM));
-        mPostToBBM = postToBBM;
-        emit postToBBMChanged(mPostToBBM);
+        mSettings.setValue("isGraphEnabled", QVariant(isGraphEnabled));
+        mIsGraphEnabled = isGraphEnabled;
+        emit isGraphEnabledChanged(mIsGraphEnabled);
     }
 }
 
-bool CourseSettings::postToBBM()
+bool CourseSettings::isGraphEnabled()
 {
-    return mPostToBBM;
-}
-
-void CourseSettings::setConnectToBBM(bool connectToBBM)
-{
-    if (connectToBBM != mConnectToBBM) {
-        // Update the application settings then update and emit the change.
-        mSettings.setValue("connectToBBM", QVariant(connectToBBM));
-        mConnectToBBM = connectToBBM;
-        emit connectToBBMChanged(mConnectToBBM);
-    }
-}
-
-bool CourseSettings::connectToBBM()
-{
-    return mConnectToBBM;
+    return mIsGraphEnabled;
 }
 

@@ -31,69 +31,43 @@ Q_OBJECT
 
 /**
  * The property that decides if an action in the course list should be posted to the
- * BBM Social Platform. False initially.
+ * Course Data Improvement Graph: Initially True
  */
-Q_PROPERTY(bool postToBBM READ postToBBM WRITE setPostToBBM NOTIFY postToBBMChanged)
-
-/**
- * The property that controls if a UI for connecting to BBM should be shown. True initially
- * once the user has decided to connect or not it is set to false.
- */
-Q_PROPERTY(bool connectToBBM READ connectToBBM WRITE setConnectToBBM NOTIFY connectToBBMChanged)
+Q_PROPERTY(bool isGraphEnabled READ isGraphEnabled WRITE setIsGraphEnabled NOTIFY isGraphEnabledChanged)
 
 public:
     CourseSettings(QObject *parent = 0);
     ~CourseSettings();
 
     /**
-     * Sets the property that decides if posting to BBM should be done or not.
+     * Sets the property that decides if displaying the graph or not
      *
-     * @param postToBBM If true application will communicate with the BBM app otherwise not
+     * @param isGraphEnabled If true application will allow use of graph
      */
-    void setPostToBBM(bool postToBBM);
+void setIsGraphEnabled(bool isGraphEnabled);
 
-    /**
-     * Returns the property deciding if posting to BBM should be done or not.
-     *
-     * @return True if posting should be done.
-     */
-    bool postToBBM();
+/**
+ * Returns the property deciding if app should display graph or not
+ *
+ * @return True if displaying should be done.
+ */
+bool isGraphEnabled();
 
-    /**
-     * Sets the property that decides if a UI for connecting to the BBM social platform should be shown.
-     *
-     * @param connectToBBM The boolean controlling if the UI should be shown or not
-     */
-    void setConnectToBBM(bool connectToBBM);
-
-    /**
-     * Returns the property that decides if a UI for connecting to the BBM social platform should be shown.
-     *
-     * @return True if the UI should be shown otherwise false
-     */
-    bool connectToBBM();
 
 signals:
 
     /**
      *
-     * @param postToBBM
+     * @param isGraphEnabled
      */
-    void postToBBMChanged(bool postToBBM);
-
-    /**
-     *
-     * @param connectToBBM
-     */
-    void connectToBBMChanged(bool connectToBBM);
+    void isGraphEnabledChanged(bool isGraphEnabled);
 
 private:
     // The Qt application settings object used for storing app data.
     QSettings mSettings;
 
     // Property variables
-    bool mPostToBBM;
-    bool mConnectToBBM;
+    bool mIsGraphEnabled;
 };
 
-#endif /* BUCKETSETTINGS_H_ */
+#endif /* COURSESETTINGS_H_ */

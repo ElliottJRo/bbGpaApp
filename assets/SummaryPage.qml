@@ -4,6 +4,7 @@ import bb.cascades 1.0
 import com.bbGpaApp.listModel 1.0
 import com.bbGpaApp.recordModel 1.0
 import bb.cascades.advertisement 1.0
+import com.bbGpaApp.coursedata 1.0
 
 NavigationPane {
     id: summaryNavi
@@ -92,17 +93,23 @@ NavigationPane {
         
         actions: [
             ActionItem {
+                id: graphActionItem
                 title: qsTr("Graph") + Retranslate.onLanguageChanged
                 onTriggered:{
-
+                    console.log("SummaryPage: graphActionItem called, graphEnabled: ", Qt.settings.isGraphEnabled)
+                    console.log("SummaryPage: graphActionItem called, buttonEnabled: ", graphActionItem.enabled)
                     summaryPage.newGraphPage.webview.reload()
                     summaryNavi.push(summaryPage.newGraphPage)
                 }
             }
-        
         ]
         onCreationCompleted: {
-            summaryPage.newGraphPage=graphPage.createObject()
+            summaryPage.newGraphPage = graphPage.createObject();
+            Qt.graphActionItem = graphActionItem;
+            if(!settings.isGraphEnabled) {
+                console.log("SummaryPage - onCreationComplete: graph is not enabled: ", settings.isGraphEnabled)
+                graphActionItem.setEnabled(false);
+            }
         }
         attachedObjects: [
         	RecordModel {
@@ -113,23 +120,7 @@ NavigationPane {
                 id: graphPage
                 source: "GraphPage.qml"
             }
-//            Invocation {
-//                            id: jsonInvocation
-//                            query.mimeType: "text/plain"
-//                            query.invokeTargetId: "sys.pim.uib.email.hybridcomposer"
-//                            query.invokeActionId: "bb.action.SENDEMAIL"
-//                            onArmed: {
-//                                jsonInvocation.trigger(jsonInvocation.query.invokeActionId);
-//                            }
-//            }
         ]
-
-    
-    
     }
 
 } //end of navipane
-
-
-
-
