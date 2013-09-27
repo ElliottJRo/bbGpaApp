@@ -1,7 +1,8 @@
 import bb.cascades 1.0
-import com.bbGpaApp.coursedata 1.0
+//import com.bbGpaApp.coursedata 1.0
 
 Sheet {
+    property alias isGraphOn:graphChecker.checked
     Page {
         titleBar: TitleBar {
             title: qsTr("Settings") + Retranslate.onLanguageChanged
@@ -9,42 +10,51 @@ Sheet {
         actionBarVisibility: ChromeVisibility.Overlay
         
         Container {
+            
             Header {
                 id: header
                 title: qsTr("Features") + Retranslate.onLanguageChanged
             }
-            ListView {
-                layout: FlowListLayout {
-                }
-                topPadding: -70
-                dataModel: XmlDataModel {
-                    source: "asset:///xml/items.xml"
-                }
-                listItemComponents: [
-                    
-                    ListItemComponent {
-                        type: "header"
-                        
-                        ToggleButton {
-                            id: graphChecker
-                            translationY: 105.0
-                            translationX: 540.0
-                            checked: Qt.settings.isGraphEnabled
-                            onCheckedChanged: {
-                                Qt.settings.isGraphEnabled = graphChecker.checked;
-                                console.log("SettingsPage:  isGraphEnabled =", Qt.settings.isGraphEnabled)
-                            }
-                        }
-                    }
-                ]
+            Divider {
+                preferredHeight: 10
             }
+            Container {
+                layout: DockLayout {
+                    
+                }
+                preferredWidth: 768
+                Label {
+                    text: qsTr("  Graph") + Retranslate.onLanguageChanged
+                    textStyle.fontSize: FontSize.XLarge
+                    verticalAlignment: VerticalAlignment.Top
+                    horizontalAlignment: HorizontalAlignment.Left
+
+                }
+                ToggleButton {
+                    id: graphChecker
+                    //translationX: 400.0
+                    //                            checked: Qt.settings.isGraphEnabled
+                    
+                    onCheckedChanged: {
+                        //                                Qt.settings.isGraphEnabled = graphChecker.checked;
+                        //                                console.log("SettingsPage:  isGraphEnabled =", Qt.settings.isGraphEnabled)
+                    }
+                    verticalAlignment: VerticalAlignment.Top
+                    horizontalAlignment: HorizontalAlignment.Right
+
+                }
+            }
+            Divider {
+                preferredHeight: 10
+            }
+            
         }
         actions: [
             ActionItem {
                 title: qsTr("Close") + Retranslate.onLanguageChanged
                 ActionBar.placement: ActionBarPlacement.OnBar
                 onTriggered: {
-                    settingsPg.close();
+                    close();
                 }
                 imageSource: "asset:///images/ic_down.png"
             

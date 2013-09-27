@@ -1,7 +1,8 @@
 // List with context menu project template
 #include "mylistmodel.hpp"
-
+#include <bb/cascades/WebView>
 #include <bb/data/JsonDataAccess>
+#include <bb/cascades/QmlDocument>
 #include<math.h>
 
 using namespace bb::cascades;
@@ -9,7 +10,7 @@ using namespace bb::cascades;
 MyListModel::MyListModel(QObject* parent)
 : bb::cascades::QVariantListDataModel()
 {
-	filePath="app/native/assets/json/mydata.json";
+	filePath="data/mydata.json";
     qDebug() << "Creating MyListModel object:" << this;
     calculateGpa433();
     isCourseListEmpty();
@@ -244,4 +245,14 @@ bool MyListModel::isCourseListEmpty() {
     qDebug() << "isCourseListEmpty: list is empty";
     return true;
   }
+}
+
+void MyListModel::resetUrl(QObject* ins,QString url){
+
+	WebView* webview=qobject_cast<WebView*>(ins);
+	if(webview){
+		qDebug((webview->url()).toString().toUtf8());
+		webview->setUrl(QUrl(url));
+		qDebug(webview->url().toString().toUtf8());
+	}
 }

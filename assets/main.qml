@@ -1,8 +1,9 @@
 // Default empty project template
 import bb.cascades 1.0
 import com.bbGpaApp.listModel 1.0
+//import com.bbGpaApp.coursedata 1.0
 import bb.cascades.advertisement 1.0
-import com.bbGpaApp.coursedata 1.0
+
 
 // creates one page with a label
 TabbedPane {
@@ -41,7 +42,17 @@ TabbedPane {
             id:gp
         }
         onTriggered: {
-            gp.webview.reload();
+            if(!settingsPg.isGraphOn){
+                
+                gp.webview.url="local:///assets/html/GraphOff.html"
+                //listModel.resetUrl(gp.webview,"local:///assets/html/GraphOff.html")
+            }else{
+                
+                gp.webview.url="local:///assets/html/GPAGraph.html"
+                //listModel.resetUrl(gp.webview,"local:///assets/html/GPAGraph.html")
+            }
+            console.log("url="+gp.webview.url)
+            //gp.webview.reload();
         }
     }
     Menu.definition: MenuDefinition {
@@ -83,20 +94,20 @@ TabbedPane {
             // The filtering is initially set to "todo" to show items which has not
             // been checked off the list so far.
             //filter: "todo"
-        },
-        CourseSettings {
-            id: settings
-            onIsGraphEnabledChanged: {
-                console.log("onIsGraphEnabledChanged signal called, Graph enabled is:",settings.isGraphEnabled);
-                if(settings.isGraphEnabled) {
-                    graphTab.enabled = true;
-                    Qt.graphActionItem.enabled = true;
-                } else {
-                    graphTab.enabled = false;
-                    Qt.graphActionItem.enabled = false;
-                }
-            }
         }
+//        CourseSettings {
+//            id: settings
+//            onIsGraphEnabledChanged: {
+//                console.log("onIsGraphEnabledChanged signal called, Graph enabled is:",settings.isGraphEnabled);
+//                if(settings.isGraphEnabled) {
+//                    graphTab.enabled = true;
+//                    Qt.graphActionItem.enabled = true;
+//                } else {
+//                    graphTab.enabled = false;
+//                    Qt.graphActionItem.enabled = false;
+//                }
+//            }
+//        }
     ]
     
     onCreationCompleted: {
@@ -105,7 +116,7 @@ TabbedPane {
         console.log("MainPage - onCreationCompleted()")
         
         if(!settings.isGraphEnabled) {
-            console.log("MainPage - onCreationComplete: graph is not enabled: ", settings.isGraphEnabled)
+           // console.log("MainPage - onCreationComplete: graph is not enabled: ", settings.isGraphEnabled)
             graphTab.setEnabled(false);
         }
         // enable layout to adapt to the device rotation
@@ -113,6 +124,6 @@ TabbedPane {
         OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.DisplayPortrait;
         
         // sets settings variable to be global (Qt is a global variable and this sets dynamicaly, var settings to be part of Qt)
-        Qt.settings = settings;
+        //Qt.settings = settings;
     }
 }// end of TabbedPane

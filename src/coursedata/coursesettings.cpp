@@ -25,7 +25,6 @@ CourseSettings::CourseSettings(QObject *parent) :
         // Otherwise, set the value stored in the settings object.
         mIsGraphEnabled = mSettings.value("isGraphEnabled").toBool();
     }
-
 }
 
 CourseSettings::~CourseSettings()

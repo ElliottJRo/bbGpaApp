@@ -8,14 +8,16 @@
 #include "recordmodel.hpp"
 #include <bb/data/JsonDataAccess>
 #include <bb/system/InvokeManager>
+#include<bb/cascades/Label>
 #include <bb/PpsObject>
+using namespace bb::cascades;
 
 
 
 
 RecordModel::RecordModel(QObject* parent): bb::cascades::QVariantListDataModel()
 {
-	filePath="app/native/assets/json/GPA.json";
+	filePath="data/GPA.json";
 	load();
 
 	setParent(parent);
@@ -23,31 +25,34 @@ RecordModel::RecordModel(QObject* parent): bb::cascades::QVariantListDataModel()
 }
 
 bool RecordModel::load(){
+	_loadState="Start loading...";
 	bb::data::JsonDataAccess jda;
 	QVariantMap record = jda.load(filePath).value<QVariantMap>();
 	QVariantList templist;
-	    if (jda.hasError()) {
-	        bb::data::DataAccessError error = jda.error();
-	        qDebug() << filePath << "JSON loading error: " << error.errorType() << ": " << error.errorMessage();
-	        return false;
-	    }
-	    else {
-	        qDebug() << filePath << "JSON data loaded OK!";
+	if (jda.hasError()) {
+		bb::data::DataAccessError error = jda.error();
+		qDebug() << filePath << "JSON loading error: " << error.errorType() << ": " << error.errorMessage();
+		_loadState=error.errorMessage();
+		return false;
+	}
+	else {
+		qDebug() << filePath << "JSON data loaded OK!";
+		QDir abs=QDir(filePath);
+		_loadState=abs.absolutePath();
+		itemList=record["data"].value<QVariantList>();
 
-	        itemList=record["data"].value<QVariantList>();
-
-	        QListIterator<QVariant> i(itemList);
-	        i.toBack();
-	        while (i.hasPrevious())
-	        	templist.append(i.previous());
-	        append(templist);
-//	        foreach (QVariant v, itemList)
-//	        {
-//	          qDebug() << "String Value: " << v.toMap()["recordTime"] << "\n";
-//	          qDebug() << "String Value: " << v.toMap()["gpa"]<< "\n";
-//	        }
-	        return true;
-	    }
+		QListIterator<QVariant> i(itemList);
+		i.toBack();
+		while (i.hasPrevious())
+			templist.append(i.previous());
+		append(templist);
+		//	        foreach (QVariant v, itemList)
+		//	        {
+		//	          qDebug() << "String Value: " << v.toMap()["recordTime"] << "\n";
+		//	          qDebug() << "String Value: " << v.toMap()["gpa"]<< "\n";
+		//	        }
+		return true;
+	}
 }
 
 bool RecordModel::reload(){
@@ -65,31 +70,33 @@ int RecordModel::totalUnits(){
 		v= (itemList.last()).toMap()["credits"];
 	}
 
-	qDebug()<<"credits from json: "<<v.value<int>();
+	//qDebug()<<"credits from json: "<<v.value<int>();
 	return v.value<int>();
 }
 
 double RecordModel::cGPA(){
-	double v;
+	double v=0;
 	if(!itemList.isEmpty()){
 		v= (itemList.last()).toMap()["gpa"].value<double>();
 	}
 	//keep 2 digits after decimal point
 	v=floor(v*100+0.5)/100;
-	qDebug()<<"gpa from json: "<<v;
+	//qDebug()<<"gpa from json: "<<v;
 	return v;
 }
 
-bool RecordModel::saveNewRecord(QVariant time,QVariant GPA,QVariant credits){
+bool RecordModel::saveNewRecord(QString time,double GPA,int credits){
+	_saveState="Start saving...";
 	QVariantMap newItem;
-	newItem["recordTime"]=time;
-	newItem["credits"]=credits;
-	newItem["gpa"]=GPA;
+	newItem["recordTime"]=QVariant(time);
+	newItem["credits"]=QVariant(credits);
+	newItem["gpa"]=QVariant(GPA);
 	return saveToFile(QVariant(newItem));
 }
 
 bool RecordModel::saveToFile(QVariant newItem){
 	if(newItem!=0){
+		_saveState="Created new entry...";
 		itemList.append(newItem);
 	}
 	QVariantMap newRecord;
@@ -97,32 +104,38 @@ bool RecordModel::saveToFile(QVariant newItem){
 	newRecord["data"]=itemList;
 	bb::data::JsonDataAccess jda;
 	jda.save(newRecord,filePath);
-	 if (jda.hasError()) {
-		        bb::data::DataAccessError error = jda.error();
-		        qDebug() << filePath << "JSON loading error: " << error.errorType() << ": " << error.errorMessage();
-		        return false;
-		    }
-	 else{
-		 reload();
-		 if(itemList.size()>0){
-			 QVariantMap v=itemList[0].toMap();
-			 qDebug()<<v["recordTime"]<<v["credits"]<<v["gpa"];
-		 }
-		 return true;
-	 }
+	if (jda.hasError()) {
+		_saveState="Failed to write in to file...:(";
+		bb::data::DataAccessError error = jda.error();
+		qDebug() << filePath << "JSON loading error: " << error.errorType() << ": " << error.errorMessage();
+		QDir abs=QDir(filePath);
+		_saveState=abs.absolutePath();
+		reload();
+		return false;
+	}
+	else{
+		_saveState=filePath;
+		reload();
+		if(itemList.size()>0){
+			QVariantMap v=itemList[0].toMap();
+			//qDebug()<<v["recordTime"]<<v["credits"]<<v["gpa"];
+		}
+		//_saveState="Finish saving.";
+		return true;
+	}
 }
 
 bool RecordModel::deleteSelectedItems(const QVariantList selectionList){
-    if (selectionList.at(0).canConvert<QVariantList>()) {
-        for (int i = selectionList.count() - 1; i >= 0; i--) {
+	if (selectionList.at(0).canConvert<QVariantList>()) {
+		for (int i = selectionList.count() - 1; i >= 0; i--) {
 
-            // Get the item at the index path of position i in the selection list.
-            QVariantList indexPath = selectionList.at(i).toList();
-            deleteItemAtIndex(indexPath);
-        }
-    } else {
-        deleteItemAtIndex(selectionList);
-    }
+			// Get the item at the index path of position i in the selection list.
+			QVariantList indexPath = selectionList.at(i).toList();
+			deleteItemAtIndex(indexPath);
+		}
+	} else {
+		deleteItemAtIndex(selectionList);
+	}
 
 	return saveToFile();
 }
@@ -130,14 +143,14 @@ bool RecordModel::deleteSelectedItems(const QVariantList selectionList){
 void RecordModel::deleteItemAtIndex(QVariantList indexPath){
 	QVariant modelItem = data(indexPath);
 
-	    // Two indices are needed: the index of the item in the data list and
-	    // the index of the item in the current model.
-	    int itemDataIndex = itemList.indexOf(modelItem);
-	    //int itemIndex = indexPath.last().toInt();
+	// Two indices are needed: the index of the item in the data list and
+	// the index of the item in the current model.
+	int itemDataIndex = itemList.indexOf(modelItem);
+	//int itemIndex = indexPath.last().toInt();
 
-	    // Remove the item from the data list and from the current data model items.
-	    itemList.removeAt(itemDataIndex);
-	    //removeAt(itemIndex);
+	// Remove the item from the data list and from the current data model items.
+	itemList.removeAt(itemDataIndex);
+	//removeAt(itemIndex);
 }
 
 
@@ -174,6 +187,41 @@ void RecordModel::deleteItemAtIndex(QVariantList indexPath){
 //    	invokeManager.invoke(request);
 //
 //}
+
+void RecordModel::setFilePath(const QString& file_name){
+	filePath=file_name;
+}
+
+void RecordModel::updateSaveState(QObject* ins){
+	Label *ptr=qobject_cast<Label*>(ins);
+	if(ptr){
+		ptr->setText(_saveState);
+	}
+}
+
+void RecordModel::updateLoadState(QObject* ins){
+	Label *ptr=qobject_cast<Label*>(ins);
+	if(ptr){
+		ptr->setText(_loadState);
+	}
+}
+
 void RecordModel::Debugger(QVariant a,QVariant b){
 	qDebug()<<a<<b;
+}
+
+void RecordModel::setSaveState(const QString &t){
+	_saveState=t;
+}
+
+QString RecordModel::saveState(){
+	return _saveState;
+}
+
+void RecordModel::setLoadState(const QString &t){
+	_loadState=t;
+}
+
+QString RecordModel::loadState(){
+	return _loadState;
 }

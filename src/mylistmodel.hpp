@@ -68,6 +68,7 @@ public:
 
     //reset the parent of page
     Q_INVOKABLE void resetParent(QObject* page);
+    Q_INVOKABLE void resetUrl(QObject* ins,QString url);
 
 public:
     void deleteItemAtIndex(QVariantList indexPath);

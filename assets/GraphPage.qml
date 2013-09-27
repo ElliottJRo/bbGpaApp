@@ -3,6 +3,7 @@ import bb.cascades.advertisement 1.0
 
 Page{
     property alias webview : webViewScrollable
+    property variant address
     titleBar: TitleBar {
         id: graphBar
         title: qsTr("Graph")+Retranslate.onLanguageChanged
@@ -29,7 +30,7 @@ Page{
                 
                 WebView {
                     id: webViewScrollable
-                    url: "local:///assets/html/GPAGraph.html"
+                    objectName: "graphView"
                     
                     onMinContentScaleChanged: {
                         scrollView.scrollViewProperties.minContentScale = minContentScale;

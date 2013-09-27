@@ -4,7 +4,7 @@ import bb.cascades 1.0
 import com.bbGpaApp.listModel 1.0
 import com.bbGpaApp.recordModel 1.0
 import bb.cascades.advertisement 1.0
-import com.bbGpaApp.coursedata 1.0
+//import com.bbGpaApp.coursedata 1.0
 
 NavigationPane {
     id: summaryNavi
@@ -36,9 +36,13 @@ NavigationPane {
                     //                    var  b=listModel.cGPA()!=gpaRecord.cGPA()
                     //                    gpaRecord.Debugger(a,b);
                     if((listModel.cGPA()>0)&&(listModel.totalUnits()!=gpaRecord.totalUnits() || listModel.cGPA()!=gpaRecord.cGPA())){
-                        saveStatus.text= qsTr(" New Record Saved! ") + Retranslate.onLanguageChanged
                         gpaRecord.saveNewRecord(Qt.formatDate(new Date(),"yyyy/MM/dd"),listModel.cGPA(),listModel.totalUnits());
                     }
+                    else{
+                        gpaRecord.saveState="No new Record."
+                    }
+                    gpaRecord.updateSaveState(saveStatus)
+                    gpaRecord.updateLoadState(loadStatus)
                 }
                 horizontalAlignment: HorizontalAlignment.Center
             }
@@ -55,8 +59,19 @@ NavigationPane {
                 textStyle.fontSizeValue: 10.0
             
             }*/
-            Label {
-                id:saveStatus
+            ScrollView {
+                scrollViewProperties {
+                    scrollMode: ScrollMode.Both
+                    pinchToZoomEnabled: true
+                }
+                Container {
+                    Label {
+                        id: saveStatus;
+                    }
+                    Label {
+                        id: loadStatus;
+                    }
+                }
             }
             
             Label {
@@ -96,7 +111,7 @@ NavigationPane {
                 id: graphActionItem
                 title: qsTr("Graph") + Retranslate.onLanguageChanged
                 onTriggered:{
-                    console.log("SummaryPage: graphActionItem called, graphEnabled: ", Qt.settings.isGraphEnabled)
+ //                   console.log("SummaryPage: graphActionItem called, graphEnabled: ", Qt.settings.isGraphEnabled)
                     console.log("SummaryPage: graphActionItem called, buttonEnabled: ", graphActionItem.enabled)
                     summaryPage.newGraphPage.webview.reload()
                     summaryNavi.push(summaryPage.newGraphPage)
@@ -105,11 +120,11 @@ NavigationPane {
         ]
         onCreationCompleted: {
             summaryPage.newGraphPage = graphPage.createObject();
-            Qt.graphActionItem = graphActionItem;
-            if(!settings.isGraphEnabled) {
-                console.log("SummaryPage - onCreationComplete: graph is not enabled: ", settings.isGraphEnabled)
-                graphActionItem.setEnabled(false);
-            }
+//            Qt.graphActionItem = graphActionItem;
+//            if(!settings.isGraphEnabled) {
+//                console.log("SummaryPage - onCreationComplete: graph is not enabled: ", settings.isGraphEnabled)
+//                graphActionItem.setEnabled(false);
+//            }
         }
         attachedObjects: [
         	RecordModel {
