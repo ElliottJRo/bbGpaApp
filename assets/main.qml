@@ -41,17 +41,7 @@ TabbedPane {
             id:gp
         }
         onTriggered: {
-            if(!settingsPg.isGraphOn){
-                
-                gp.webview.url=dirPaths.html+"GraphOff.html"
-                //listModel.resetUrl(gp.webview,"local:///assets/html/GraphOff.html")
-            }else{
-                
-                gp.webview.url=dirPaths.html+"GPAGraph.html"
-                //listModel.resetUrl(gp.webview,"local:///assets/html/GPAGraph.html")
-            }
-            console.log("url="+gp.webview.url)
-            //gp.webview.reload();
+            gp.webview.reload()
         }
     }
 

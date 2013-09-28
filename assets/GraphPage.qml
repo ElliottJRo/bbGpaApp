@@ -31,6 +31,7 @@ Page{
                 WebView {
                     id: webViewScrollable
                     objectName: "graphView"
+                    url: "local:///assets/html/GraphOff.html"
                     
                     onMinContentScaleChanged: {
                         scrollView.scrollViewProperties.minContentScale = minContentScale;
@@ -45,16 +46,7 @@ Page{
         Button {
             text:"F5"
             onClicked: {
-                if(!settingsPg.isGraphOn){
-                    
-                    webViewScrollable.url=dirPaths.html+"GraphOff.html"
-                    //listModel.resetUrl(gp.webview,"local:///assets/html/GraphOff.html")
-                }else{
-                    
-                    webViewScrollable.url=dirPaths.html+"GPAGraph.html"
-                    //listModel.resetUrl(gp.webview,"local:///assets/html/GPAGraph.html")
-                }
-                console.log("url="+webViewScrollable.url)
+                webViewScrollable.reload();
             }
             verticalAlignment: VerticalAlignment.Bottom
             horizontalAlignment: HorizontalAlignment.Center

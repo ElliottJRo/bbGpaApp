@@ -25,8 +25,8 @@ Q_DECL_EXPORT int main(int argc, char **argv)
 	// Registers the banner for QML
 	QString startingPath=QDir::currentPath();
 
-
-	qCopyDirectory(QDir("app/native/assets/html"), QDir("data/html"), true);
+	//TODO:change the last para to true when working on html files
+	qCopyDirectory(QDir("app/native/assets/html"), QDir("data/html"), false);
 
 	qCopyJsonFile();
 

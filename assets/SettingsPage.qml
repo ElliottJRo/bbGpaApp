@@ -36,8 +36,17 @@ Sheet {
                     //                            checked: Qt.settings.isGraphEnabled
                     
                     onCheckedChanged: {
-                        //                                Qt.settings.isGraphEnabled = graphChecker.checked;
-                        //                                console.log("SettingsPage:  isGraphEnabled =", Qt.settings.isGraphEnabled)
+                        if(!isGraphOn){
+                            
+                            gp.webview.url=dirPaths.html+"GraphOff.html"
+                            //listModel.resetUrl(gp.webview,"local:///assets/html/GraphOff.html")
+                        }else{
+                            
+                            gp.webview.url=dirPaths.html+"GPAGraph.html"
+                            //listModel.resetUrl(gp.webview,"local:///assets/html/GPAGraph.html")
+                        }
+                        console.log("url="+gp.webview.url)
+                        //gp.webview.reload();
                     }
                     verticalAlignment: VerticalAlignment.Top
                     horizontalAlignment: HorizontalAlignment.Right

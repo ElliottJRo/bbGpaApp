@@ -31,6 +31,8 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app)
 	QmlDocument *qml2 = QmlDocument::create("asset:///GraphPage.qml").parent(this);
 	qml->setContextProperty("dirPaths", dirPaths);
 	qml2->setContextProperty("dirPaths", dirPaths);
+	qml2=QmlDocument::create("asset:///SettingsPage.qml").parent(this);
+	qml2->setContextProperty("dirPaths", dirPaths);
 
 	// create root object for the UI
 	AbstractPane *root = qml->createRootObject<AbstractPane>();
