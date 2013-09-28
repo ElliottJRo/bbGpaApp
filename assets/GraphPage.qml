@@ -55,7 +55,7 @@ Page{
         }
         Banner {
             id:ad
-            zoneId: 117145//217188	
+            zoneId: 217188	
             refreshRate: 60
             preferredWidth: 300		
             preferredHeight: 50
