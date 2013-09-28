@@ -112,7 +112,7 @@ ListView {
 
     onCreationCompleted: {
         // this signal will be called when the qml page is created or loaded
-        listModel.load("data/json/mydata.json")
+        listModel.load("data/html/mydata.json")
     }
 
     layoutProperties: StackLayoutProperties {

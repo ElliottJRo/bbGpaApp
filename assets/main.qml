@@ -43,11 +43,11 @@ TabbedPane {
         onTriggered: {
             if(!settingsPg.isGraphOn){
                 
-                gp.webview.url="local:///assets/html/GraphOff.html"
+                gp.webview.url=dirPaths.html+"GraphOff.html"
                 //listModel.resetUrl(gp.webview,"local:///assets/html/GraphOff.html")
             }else{
                 
-                gp.webview.url="local:///assets/html/GPAGraph.html"
+                gp.webview.url=dirPaths.html+"GPAGraph.html"
                 //listModel.resetUrl(gp.webview,"local:///assets/html/GPAGraph.html")
             }
             console.log("url="+gp.webview.url)

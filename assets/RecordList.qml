@@ -35,6 +35,6 @@ ListView {
     horizontalAlignment: HorizontalAlignment.Center
     topMargin: 0.0
     onCreationCompleted: {
-        gpaRecord.setFilePath("data/GPA.json")
+        gpaRecord.setFilePath("data/html/GPA.json")
     }
 }

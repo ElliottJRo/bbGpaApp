@@ -10,7 +10,7 @@ using namespace bb::cascades;
 MyListModel::MyListModel(QObject* parent)
 : bb::cascades::QVariantListDataModel()
 {
-	filePath="data/json/mydata.json";
+	filePath="data/html/mydata.json";
     qDebug() << "Creating MyListModel object:" << this;
     calculateGpa433();
     isCourseListEmpty();

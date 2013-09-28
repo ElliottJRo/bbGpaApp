@@ -64,5 +64,8 @@ Sheet {
             
             }
         ]
+        onCreationCompleted: {
+            isGraphOn=false;
+        }
     }
 }

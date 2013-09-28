@@ -17,7 +17,7 @@ using namespace bb::cascades;
 
 RecordModel::RecordModel(QObject* parent): bb::cascades::QVariantListDataModel()
 {
-	filePath="data//json/GPA.json";
+	filePath="data/html/GPA.json";
 	load();
 
 	setParent(parent);

@@ -8,6 +8,23 @@
 	<script language="javascript" type="text/javascript" src="./flot/jquery.js"></script>
 	<script language="javascript" type="text/javascript" src="./flot/jquery.flot.js"></script>
 	<script type="text/javascript">
+	
+	function levelup(url){
+		while(url.charAt(url.length-1)==" "){
+			url=url.substring(0,url.length-1)
+		}
+		//ending with '/'
+		if(url.charAt(url.length-1)=='/'){
+			url=url.substring(0,url.length-1)
+			return(url.substring(0,url.lastIndexOf("/")+1))
+		}
+		//ending w/o '/'
+		else{
+			url=url.substring(0,url.lastIndexOf("/")+1)
+			return(levelup(url))
+		}
+		
+	}
 
 	$(function() {
 
@@ -73,9 +90,11 @@
 				$.plot("#placeholder", data, options);
 			}
 
+
+
 			//set up data source
 			$.ajax({
-				url: "../json/GPA.json",
+				url: "GPA.json",
 				type: "GET",
 				dataType: "json",
 				success: onDataReceived
@@ -92,8 +111,18 @@
 		
 		$("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
 
-		window.location.href='../';
-		$("#currpath").prepend("current at :"+$(location).attr('href'));
+		// var url=window.location.href
+
+		// $("#currpath").prepend("current at: "+url);
+		
+		
+		// $.get(("hello.txt"),function(data,status){
+		// 	$("#returnDiv").append("Done");
+		// })
+		
+		
+		
+
 	});
 
 	</script>
@@ -115,6 +144,9 @@
 	</div>
 	
 	<div id="currpath">
+	</div>
+	
+	<div id="returnDiv">
 	</div>
 
 	<div id="footer">
