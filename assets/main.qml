@@ -22,8 +22,7 @@ TabbedPane {
             id: courseListPageIns
             listModel: listModel
         }
-    } // end of first Tab
-    
+    } // end of first Tab    
     Tab {
         id: summaryTab
         title: qsTr("Summary") + Retranslate.onLanguageChanged
@@ -55,6 +54,7 @@ TabbedPane {
             //gp.webview.reload();
         }
     }
+
     Menu.definition: MenuDefinition {
         settingsAction: SettingsActionItem {
             onTriggered: {
@@ -86,14 +86,6 @@ TabbedPane {
         MyListModel {
             id: listModel
             
-            // The path to the JSON file with initial data, this file will be moved to
-            // the data folder on the first launch of the application (in order to
-            // be able to get write access).
-            //jsonAssetPath: "app/native/assets/models/bucket.json"
-            
-            // The filtering is initially set to "todo" to show items which has not
-            // been checked off the list so far.
-            //filter: "todo"
         }
 //        CourseSettings {
 //            id: settings
@@ -115,10 +107,6 @@ TabbedPane {
         // write post creation initialization here
         console.log("MainPage - onCreationCompleted()")
         
-        if(!settings.isGraphEnabled) {
-           // console.log("MainPage - onCreationComplete: graph is not enabled: ", settings.isGraphEnabled)
-            graphTab.setEnabled(false);
-        }
         // enable layout to adapt to the device rotation
         // don't forget to enable screen rotation in bar-bescriptor.xml (Application->Orientation->Auto-orient)
         OrientationSupport.supportedDisplayOrientation = SupportedDisplayOrientation.DisplayPortrait;

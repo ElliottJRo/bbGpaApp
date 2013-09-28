@@ -39,10 +39,10 @@ NavigationPane {
                         gpaRecord.saveNewRecord(Qt.formatDate(new Date(),"yyyy/MM/dd"),listModel.cGPA(),listModel.totalUnits());
                     }
                     else{
-                        gpaRecord.saveState="No new Record."
+                        gpaRecord.saveState="No new Record." 
                     }
                     gpaRecord.updateSaveState(saveStatus)
-                    gpaRecord.updateLoadState(loadStatus)
+                    //gpaRecord.updateLoadState(loadStatus)
                 }
                 horizontalAlignment: HorizontalAlignment.Center
             }

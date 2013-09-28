@@ -1,4 +1,5 @@
 APP_NAME = bbGpaApp
+TARGET= bbGpaApp
 
 CONFIG += qt warn_on cascades10
 LIBS   += -lbbdata

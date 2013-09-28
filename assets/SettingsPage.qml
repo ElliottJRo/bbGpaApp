@@ -47,7 +47,11 @@ Sheet {
             Divider {
                 preferredHeight: 10
             }
-            
+            Container {
+                Label {
+                    text: Qdir
+                }
+            } 
         }
         actions: [
             ActionItem {

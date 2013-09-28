@@ -10,6 +10,8 @@
 #endif
 
 #include <bb/cascades/Application>
+#include <bb/system/InvokeManager>
+#include <QString>
 #include "coursedata/coursemodel.h"
 
 
@@ -19,15 +21,31 @@ Q_DECL_EXPORT int main(int argc, char **argv)
 {
 	// this is where the server is started etc
 	// Registers the banner for QML
+	QString startingPath=QDir::currentPath();
 	QDir dir;
-	QFile file;
-	//create Qfile objects
+	QFile fileMgr;
+	qDebug(dir.absolutePath().toUtf8());
 
-	//copy the content of json files
-	file.copy("asset:///json/mydata.json",dir.homePath()+"/mydata.json");
-	qDebug(file.errorString().toUtf8());
-	file.copy("asset:///json/GPA.json",dir.homePath()+"/GPA.json");
-	qDebug(file.errorString().toUtf8());
+	dir.mkdir("data/json");
+	if(!dir.exists("data/json/mydata.json")){
+		if(!fileMgr.copy("app/native/assets/json/mydata.json","data/json/mydata.json"))
+			qDebug("Fail to copy file.");
+		else
+			qDebug("Copied!");
+	}
+
+	if(!dir.exists("data/json/GPA.json")){
+		if(!fileMgr.copy("app/native/assets/json/GPA.json","data/json/GPA.json"))
+			qDebug("Fail to copy file.");
+		else
+			qDebug("Copied!");
+	}
+
+
+
+
+
+
 
 
 	Application app(argc, argv);

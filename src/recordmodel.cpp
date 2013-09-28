@@ -17,7 +17,7 @@ using namespace bb::cascades;
 
 RecordModel::RecordModel(QObject* parent): bb::cascades::QVariantListDataModel()
 {
-	filePath="data/GPA.json";
+	filePath="data//json/GPA.json";
 	load();
 
 	setParent(parent);
@@ -108,19 +108,19 @@ bool RecordModel::saveToFile(QVariant newItem){
 		_saveState="Failed to write in to file...:(";
 		bb::data::DataAccessError error = jda.error();
 		qDebug() << filePath << "JSON loading error: " << error.errorType() << ": " << error.errorMessage();
-		QDir abs=QDir(filePath);
-		_saveState=abs.absolutePath();
+		//QDir abs=QDir(filePath);
+		//_saveState=abs.absolutePath();
 		reload();
 		return false;
 	}
 	else{
-		_saveState=filePath;
+		//_saveState=filePath;
 		reload();
-		if(itemList.size()>0){
-			QVariantMap v=itemList[0].toMap();
-			//qDebug()<<v["recordTime"]<<v["credits"]<<v["gpa"];
-		}
-		//_saveState="Finish saving.";
+//		if(itemList.size()>0){
+//			QVariantMap v=itemList[0].toMap();
+//			//qDebug()<<v["recordTime"]<<v["credits"]<<v["gpa"];
+//		}
+		_saveState="New record is saved.";
 		return true;
 	}
 }
