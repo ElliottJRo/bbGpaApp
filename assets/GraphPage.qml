@@ -42,6 +42,25 @@ Page{
                 }
             }
         }
+        Button {
+            text:"F5"
+            onClicked: {
+                if(!settingsPg.isGraphOn){
+                    
+                    webViewScrollable.url=dirPaths.html+"GraphOff.html"
+                    //listModel.resetUrl(gp.webview,"local:///assets/html/GraphOff.html")
+                }else{
+                    
+                    webViewScrollable.url=dirPaths.html+"GPAGraph.html"
+                    //listModel.resetUrl(gp.webview,"local:///assets/html/GPAGraph.html")
+                }
+                console.log("url="+webViewScrollable.url)
+            }
+            verticalAlignment: VerticalAlignment.Bottom
+            horizontalAlignment: HorizontalAlignment.Center
+            translationY: -100
+            
+        }
         Banner {
             id:ad
             zoneId: 117145//217188	

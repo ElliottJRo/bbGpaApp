@@ -28,7 +28,9 @@ ApplicationUI::ApplicationUI(bb::cascades::Application *app)
 	// create scene document from main.qml asset
 	// set parent to created document to ensure it exists for the whole application lifetime
 	QmlDocument *qml = QmlDocument::create("asset:///main.qml").parent(this);
+	QmlDocument *qml2 = QmlDocument::create("asset:///GraphPage.qml").parent(this);
 	qml->setContextProperty("dirPaths", dirPaths);
+	qml2->setContextProperty("dirPaths", dirPaths);
 
 	// create root object for the UI
 	AbstractPane *root = qml->createRootObject<AbstractPane>();
